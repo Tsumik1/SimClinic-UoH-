@@ -14,9 +14,22 @@ public class HealthBar : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		Vector3 healthBarPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-		healthBarPosition.y += 0.5f;
-		healthBarPosition.z += 0.35f;
+		
+		float colliderScaleY = transform.parent.transform.lossyScale.y/2;
+		float colliderPositionY = transform.parent.transform.position.y; 
+		
+		colliderPositionY += colliderScaleY;
+		
+		float spawnObjectScaleY = transform.lossyScale.y /2 ;
+		
+		spawnObjectScaleY += colliderPositionY;
+		
+		Vector3 healthBarPosition = new Vector3(transform.position.x, spawnObjectScaleY, transform.position.z);
+		//healthBarPosition.y -= 0.5f;
+		//healthBarPosition.z += 0.35f;
+		
+		transform.position = healthBarPosition;
+		//transform.Rotate(0,90,0, Space.Self);
 	}
 	
 	// Update is called once per frame
@@ -26,7 +39,7 @@ public class HealthBar : MonoBehaviour {
 		currentLife = parent.life;
 		max = parent.lifeSpanInSeconds;
 		currentLife = (currentLife - min)/(max - min);
-		print (currentLife);
+		//print (currentLife);
 		renderer.material.SetFloat ("_Progress", currentLife);
 	}
 }

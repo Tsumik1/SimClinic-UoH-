@@ -34,16 +34,20 @@ public class ObjectSelect : MonoBehaviour {
 	{
 		return objects[selectedObject];
 	}
+	
 	void SetSelectedObject(GameObject inputObject)
 	{
 		int index = 0 ; 
 		foreach(GameObject objectItem in objectIcons)
 		{
+			print (objectItem.name);
+			print(inputObject.name);
 			if(inputObject == objectItem)
 			{
 				selectedObject = index; 
 			}
 			index++;
 		}
+		print(selectedObject);
 	}
 }

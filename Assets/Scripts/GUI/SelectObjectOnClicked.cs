@@ -18,6 +18,7 @@ public class SelectObjectOnClicked : MonoBehaviour {
 	void Clicked()
 	{
 		objectSelector.SendMessage ("SetSelectedObject",gameObject);
+		//print (gameObject.name);
 	}
 	
 	

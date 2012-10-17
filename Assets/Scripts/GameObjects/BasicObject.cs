@@ -3,16 +3,14 @@ using System.Collections;
 
 public class BasicObject : MonoBehaviour {
 		
-	
+	public string objectName; 
+	public string objectDescription; 
 	public int cost; 
 	public int sellValue;  
 	public int costPerDay; 
 	public int repairCost; 
 	public int patientIncrease; 
 	
-	
-	public float lifeSpanInSeconds = 1000f; 
-
 	public GameObject destruction;
 	
 	public bool isOn = false; 
@@ -20,6 +18,7 @@ public class BasicObject : MonoBehaviour {
 	public bool needsRepair = true; 
 	public bool degradable = false; 
 	
+	public float lifeSpanInSeconds = 1000f; 
 	public float life; 
 	
 	public GameObject buttons; 
@@ -62,6 +61,27 @@ public class BasicObject : MonoBehaviour {
 		helper.transform.parent = transform;
 	}
 	
+	
+	
+	public void EnableHealth()
+	{
+		if(healthBar)
+		{
+			healthy = Instantiate (healthBar,transform.position,Quaternion.identity) as GameObject;
+			healthy.transform.parent = transform;
+			
+		}
+	}
+	
+	public void DisableHealth()
+	{
+		if(healthy)
+		{
+			Destroy (healthy);
+		}
+	}
+	
+	
 	public void DisableButtons()
 	{
 		if(helper)
@@ -96,14 +116,9 @@ public class BasicObject : MonoBehaviour {
 	{
 		isOn = true; 
 		Destroy (helper);
+		Destroy (healthy);
 		selected = false;
-		Vector3 healthBarPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-		healthBarPosition.y += 0.5f;
-		healthBarPosition.z += 0.35f;
-		healthy = Instantiate (healthBar,healthBarPosition,Quaternion.identity) as GameObject;
-		//healthy.transform.LookAt(Camera.main.transform.position);
-		healthy.transform.parent = transform;
-		
+	
 	}
 	public bool GetSelected()
 	{
@@ -120,16 +135,20 @@ public class BasicObject : MonoBehaviour {
 				{
 					if(generalObjects[i].transform != transform)
 					{
-						//generalObjects[i].DisableButtons(); 
-					Destroy (generalObjects[i].helper);	
-					generalObjects[i].selected = false;
+						generalObjects[i].DisableButtons(); 
+						generalObjects[i].DisableHealth ();
+						//Destroy (generalObjects[i].helper);	
+						generalObjects[i].selected = false;
 					}
 				}
 			EnableButtons ();
-			selected = true; 
+			EnableHealth ();
+			ObjectManager.SetSelectedObject (this);
+				selected = true; 
 		}
 		else
 		{
+			DisableHealth (); 
 			DisableButtons ();
 			selected = false; 
 		}
