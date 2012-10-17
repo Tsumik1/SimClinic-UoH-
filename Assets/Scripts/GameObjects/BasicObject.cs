@@ -97,8 +97,10 @@ public class BasicObject : MonoBehaviour {
 		isOn = true; 
 		Destroy (helper);
 		selected = false;
-								Vector3 healthBarPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-		healthy = Instantiate (healthBar,transform.position,Quaternion.identity) as GameObject;
+		Vector3 healthBarPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+		healthBarPosition.y += 0.5f;
+		healthBarPosition.z += 0.35f;
+		healthy = Instantiate (healthBar,healthBarPosition,Quaternion.identity) as GameObject;
 		//healthy.transform.LookAt(Camera.main.transform.position);
 		healthy.transform.parent = transform;
 		

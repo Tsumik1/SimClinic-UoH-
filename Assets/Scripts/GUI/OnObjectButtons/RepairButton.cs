@@ -18,7 +18,7 @@ public class RepairButton : MonoBehaviour {
 		BasicObject master = transform.parent.parent.GetComponent (typeof(BasicObject)) as BasicObject;
 		MoneyManager.money -= master.repairCost; 
 		master.life = master.lifeSpanInSeconds;
-		HealthBar health = transform.parent.parent.GetComponent(typeof(HealthBar)) as HealthBar; 
-		health.ResetHealthBar ();
+		//HealthBar health = transform.parent.parent.GetComponent(typeof(HealthBar)) as HealthBar; 
+		//health.ResetHealthBar ();
 	}
 }
