@@ -56,9 +56,11 @@ public class BasicObject : MonoBehaviour {
 	
 	public void EnableButtons()
 	{ 
-		
+		if(buttons)
+		{
 		helper = Instantiate (buttons, transform.position, Quaternion.identity) as GameObject;
 		helper.transform.parent = transform;
+		}
 	}
 	
 	
@@ -129,6 +131,8 @@ public class BasicObject : MonoBehaviour {
 	
 	void Clicked()
 	{
+		if(isOn)
+		{
 		if(!selected)
 		{
 			BasicObject[] generalObjects = FindObjectsOfType (typeof(BasicObject)) as BasicObject[];
@@ -155,7 +159,7 @@ public class BasicObject : MonoBehaviour {
 			selected = false; 
 		}
 		
-		
+		}
 		
 	}
 	

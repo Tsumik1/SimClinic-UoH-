@@ -16,37 +16,51 @@ public class PositionButtons : MonoBehaviour {
 	public DIRECTION pointing;
 	
 	private Vector3 newPosition; 
+	private BoxCollider col;
 	// Use this for initialization
 	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-	
-	void OnCollisionEnter(Collision other)
-	{
-		switch(pointing)
+					col = transform.parent.parent.GetComponent(typeof(BoxCollider)) as BoxCollider; 
+				switch(pointing)
 		{
 			case DIRECTION.up:
-				newPosition = new Vector3(other.transform.position.x,1f,other.transform.position.z + 2f);
+				Vector3 upPosition = new Vector3(transform.parent.position.x, 1f,transform.parent.position.z);
+				upPosition.z += col.size.y/2f +0.4f;
+				newPosition = upPosition;
 				break;
 			case DIRECTION.down:
-				newPosition = new Vector3(other.transform.position.x,1f,other.transform.position.z - 2f);
+				Vector3 downPosition = new Vector3(transform.parent.position.x, 1f,transform.parent.position.z);
+				downPosition.z -= col.size.y/2 + 0.8f;
+				newPosition = downPosition;
 				break;
 			case DIRECTION.left:
-				newPosition = new Vector3(other.transform.position.x - 2f, 1f, other.transform.position.z);
+				Vector3 leftPosition = new Vector3(transform.parent.position.x - 0.8f, 1f,col.transform.position.z);
+				leftPosition.x -= col.size.x/2;
+				newPosition = leftPosition;
+				//newPosition = new Vector3(col.transform.position.x - 2f, 1f, col.transform.position.z);
 				break;
 			case DIRECTION.right:
-				newPosition = new Vector3(other.transform.position.x + 2f, 1f, other.transform.position.z);
+				Vector3 rightPosition = new Vector3(transform.parent.position.x + 0.8f, 1f,col.transform.position.z);
+				rightPosition.x += col.size.x/2;
+				newPosition = rightPosition;
+				//newPosition = new Vector3(col.transform.position.x + 2f, 1f, col.transform.position.z);
 				break;
 			default:
 				newPosition = Vector3.zero; 
 				break;
 		}
-	transform.position = newPosition; 
+			transform.position = newPosition; 
+
+	}
+	
+	// Update is called once per frame
+	void Update () 
+	{
+
+	}
+	
+	void OnCollisionEnter(Collision other)
+	{
+
 				
 	}
 }

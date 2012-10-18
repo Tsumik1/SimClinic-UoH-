@@ -31,6 +31,14 @@ public class ObjectPlacement : MonoBehaviour {
 	//private Component script;
 	public float moveSpeed;						// The Speed the character will move
  	
+	public enum type
+	{
+		equipment = 0,
+		furniture = 1,
+		decoration = 2,
+		desk = 3,
+		deskTopObject = 4,
+	}
  
  
 	void Start () {
@@ -51,6 +59,12 @@ public class ObjectPlacement : MonoBehaviour {
 		float temp = 0f + objectCollider.size.z / 2f;
 		grounder.y = temp; 
 		transform.position = grounder; 
+		
+		if (Input.GetKeyDown (KeyCode.LeftShift))
+		{
+			Vector3 rotator = new Vector3(0,90,0);
+			transform.eulerAngles += rotator;
+		}
  		if(!isPlaced)
 		{
 			// keep track of the distance between this gameObject and destinationPosition
