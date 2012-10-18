@@ -65,11 +65,13 @@ public class BasicObject : MonoBehaviour {
 	
 	public void EnableHealth()
 	{
-		if(healthBar)
+		if(degradable)
 		{
-			healthy = Instantiate (healthBar,transform.position,Quaternion.identity) as GameObject;
-			healthy.transform.parent = transform;
-			
+			if(healthBar)
+			{
+				healthy = Instantiate (healthBar,transform.position,Quaternion.identity) as GameObject;
+				healthy.transform.parent = transform;
+			}
 		}
 	}
 	

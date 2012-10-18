@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\GameObjects\BasicObject.cs" />
      <Compile Include="Assets\Scripts\GameObjects\DestroyParent.cs" />
      <Compile Include="Assets\Scripts\GameObjects\HealthBar.cs" />
+     <Compile Include="Assets\Scripts\GameObjects\ObjectPlacementManager.cs" />
      <Compile Include="Assets\Scripts\Helper\PathThroughObjects.cs" />
      <Compile Include="Assets\Scripts\Helper\ScaleOverTimeAndDestroy.cs" />
      <Compile Include="Assets\Scripts\Helper\SellValue.cs" />

@@ -46,6 +46,11 @@ public class ObjectPlacement : MonoBehaviour {
 	}
  
 	void Update () {
+		Vector3 grounder = transform.position;
+		BoxCollider objectCollider = GetComponent(typeof(BoxCollider)) as BoxCollider;
+		float temp = 0f + objectCollider.size.z / 2f;
+		grounder.y = temp; 
+		transform.position = grounder; 
  		if(!isPlaced)
 		{
 			// keep track of the distance between this gameObject and destinationPosition
@@ -89,12 +94,15 @@ public class ObjectPlacement : MonoBehaviour {
 	 
 			// To prevent code from running if not needed
 			if(destinationDistance > .2f){
+				//float temp = 0f + transform.lossyScale.y /2;
+				//destinationPosition.y = temp;
 				myTransform.position = Vector3.MoveTowards(myTransform.position, destinationPosition, (moveSpeed * Time.deltaTime) * 2);
 			}
 			
 		if(validPlace)
 			{
 			  renderer.material.color = Color.green; 
+
 //			foreach (Transform child in transform) 
 //			{
 //            	child.renderer.material.color = Color.green; 
@@ -110,18 +118,26 @@ public class ObjectPlacement : MonoBehaviour {
 		
 		if(Input.GetMouseButtonDown(0) && validPlace)
 		{
+			ObjectPlacementManager.placing = false; 
 			renderer.material.color = defaultColour; 
 			//transform.Find("Turret").renderer.material.color = defaultColour;
+			print (objectCollider.size.y);
+			//print (temp);
 			isPlaced = true;
-			//BasicTower script = GetComponent ("BasicTower") as BasicTower;
-			SendMessage("EnableObject");
+			BasicObject script = GetComponent(typeof(BasicObject)) as BasicObject;
+			script.EnableObject();
+			script.enabled = true;
+			
+			//SendMessage("EnableObject");
 			this.enabled = false;
 			//Destroy (this);
 		}
 		
 		if(Input.GetMouseButtonDown (1))
 		{
+			ObjectPlacementManager.placing = true;
 			Destroy (gameObject);
+			
 		}
 	}
 	

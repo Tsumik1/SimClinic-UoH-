@@ -16,6 +16,17 @@ public class MoneyManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		moneyDisplay.GetComponent<TextMesh>().text = money.ToString();
+		moneyDisplay.GetComponent<TextMesh>().text = "$" + money.ToString();
+	}
+	
+	public static bool Purchase(int amount)
+	{
+		if (money - amount < 0)
+			return false;
+		else
+			{
+				money = money - amount;
+				return true;
+			}
 	}
 }
