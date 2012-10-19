@@ -16,7 +16,7 @@ public class GetSelectedObject : MonoBehaviour {
 		
 			for(int i = 0; i< objects.Length;i++)
 			{
-				if(objects[i].selected)
+				if(objects[i].GetSelected())
 				{
 					//transform.GetComponent (MeshFilter).mesh = towers[i].GetComponent (MeshFilter).mesh;
 					MeshFilter current = GetComponent (typeof(MeshFilter)) as MeshFilter; 

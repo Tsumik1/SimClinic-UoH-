@@ -65,28 +65,29 @@
      <Compile Include="Assets\Scripts\GUI\SelectObjectOnClicked.cs" />
      <Compile Include="Assets\Scripts\GUI\SkipMonth.cs" />
      <Compile Include="Assets\Scripts\GUI\SwitchScreen.cs" />
+     <Compile Include="Assets\Scripts\GUI\TimeManager.cs" />
      <Compile Include="Assets\Scripts\GameObjects\BasicObject.cs" />
      <Compile Include="Assets\Scripts\GameObjects\DestroyParent.cs" />
      <Compile Include="Assets\Scripts\GameObjects\HealthBar.cs" />
      <Compile Include="Assets\Scripts\GameObjects\ObjectPlacementManager.cs" />
+     <Compile Include="Assets\Scripts\GameObjects\WallsDown.cs" />
+     <Compile Include="Assets\Scripts\GameObjects\WallsUp.cs" />
      <Compile Include="Assets\Scripts\Helper\PathThroughObjects.cs" />
      <Compile Include="Assets\Scripts\Helper\ScaleOverTimeAndDestroy.cs" />
      <Compile Include="Assets\Scripts\Helper\SellValue.cs" />
      <Compile Include="Assets\Scripts\Helper\Spawner.cs" />
-     <Compile Include="Assets\Scripts\TimeManager.cs" />
-     <Compile Include="Assets\Scripts\WallsUp.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
      <None Include="Assets\Scripts\Shaders\ProgressBar.shader" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Standard Assets\Detonator\Resources\Detonator\Textures\HeatDistort.shader" />
+     <None Include="Assets\Scripts\Shaders\OutlinedDiffuse.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicOutline.shader" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Light.shader" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
-     <None Include="Assets\Scripts\ProgressBar.shader" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">

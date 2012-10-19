@@ -1,115 +1,96 @@
 using UnityEngine;
 using System.Collections;
 
-public class BasicObject : MonoBehaviour {
+public class BasicObject : MonoBehaviour
+{
 		
-	public string objectName; 
-	public string objectDescription; 
-	public int cost; 
-	public int sellValue;  
-	public int costPerDay; 
+	public string objectName;
+	public string objectDescription;
+	public int cost;
+	public int sellValue;
+	public int costPerDay;
 	public int costPerMonth;
-	public int repairCost; 
-	public int patientIncrease; 
-	
+	public int repairCost;
+	public int patientIncrease;
 	public GameObject destruction;
-	
-	public bool isOn = false; 
-	public bool selected = false;
-	public bool needsRepair = true; 
-	public bool degradable = false; 
-	
-	public float lifeSpanInSeconds = 1000f; 
-	public float life; 
-	
-	public GameObject buttons; 
+	public bool isOn = false;
+	public bool needsRepair = true;
+	public bool degradable = false;
+	public float lifeSpanInSeconds = 1000f;
+	public float life;
+	public GameObject buttons;
 	public GameObject healthBar;
 	
-	private GameObject helper; 
-	private GameObject healthy; 
-	
+	private GameObject helper;
+	private GameObject healthy;
 	private Transform[] children;
+	private bool selected = false;
+	
 	// Use this for initialization
-	void Start () 
+	void Start ()
 	{
 		life = lifeSpanInSeconds;
 
 		//helper.transform.position = new Vector3(transform.position.x,transform.position.y+0.6f,transform.position.z);
 		//helper.transform.parent = transform;
 		//children = helper.GetComponentsInChildren (typeof(Transform)) as Transform[];
-			//GetComponentsInChildren(Transform); //as Transform[];
+		//GetComponentsInChildren(Transform); //as Transform[];
 		//DisableButtons ();
 		//helper.collider.enabled = true;
 	}
 	
-	void GeneralAction()
+	void GeneralAction ()
 	{
-		if(isOn)
-		{
+		if (isOn) {
 			
-		}
-
-		else if(!isOn)
-		{
+		} else if (!isOn) {
 			//Might need this some time. 
 		}
 	}
 	
-	public void EnableButtons()
+	public void EnableButtons ()
 	{ 
-		if(buttons)
-		{
-		helper = Instantiate (buttons, transform.position, Quaternion.identity) as GameObject;
-		helper.transform.parent = transform;
+		if (buttons) {
+			helper = Instantiate (buttons, transform.position, Quaternion.identity) as GameObject;
+			helper.transform.parent = transform;
 		}
 	}
 	
-	
-	
-	public void EnableHealth()
+	public void EnableHealth ()
 	{
-		if(degradable)
-		{
-			if(healthBar)
-			{
-				healthy = Instantiate (healthBar,transform.position,Quaternion.identity) as GameObject;
+		if (degradable) {
+			if (healthBar) {
+				healthy = Instantiate (healthBar, transform.position, Quaternion.identity) as GameObject;
 				healthy.transform.parent = transform;
 			}
 		}
 	}
 	
-	public void DisableHealth()
+	public void DisableHealth ()
 	{
-		if(healthy)
-		{
+		if (healthy) {
 			Destroy (healthy);
 		}
 	}
 	
-	
-	public void DisableButtons()
+	public void DisableButtons ()
 	{
-		if(helper)
-			{
-				Destroy (helper);
-			}
+		if (helper) {
+			Destroy (helper);
+		}
 	}
 	
 	
 	// Update is called once per frame
-	void Update () 
+	void Update ()
 	{
-		if(isOn)
-		{
-			if(degradable)
-			{
+		if (isOn) {
+			if (degradable) {
 				life -= Time.deltaTime;
-				if(life <= 0)
-				{
-					if(destruction)
-					{
+				if (life <= 0) {
+					if (destruction) {
 
-						Instantiate (destruction,transform.position,Quaternion.identity);
+						Instantiate (destruction, transform.position, Quaternion.identity);
 						Destroy (gameObject);
 					}
 				}
@@ -117,7 +98,7 @@ public class BasicObject : MonoBehaviour {
 		}
 	}
 	
-	public void EnableObject()
+	public void EnableObject ()
 	{
 		isOn = true; 
 		Destroy (helper);
@@ -125,52 +106,63 @@ public class BasicObject : MonoBehaviour {
 		selected = false;
 	
 	}
-	public bool GetSelected()
+
+	public bool GetSelected ()
 	{
 		return selected;
 	}
 	
-	void Clicked()
+	
+	public void SetSelected(bool s)
 	{
-		if(isOn)
+		if(s)
 		{
-		if(!selected)
-		{
-			BasicObject[] generalObjects = FindObjectsOfType (typeof(BasicObject)) as BasicObject[];
-			
-				for(int i = 0; i< generalObjects.Length;i++)
-				{
-					if(generalObjects[i].transform != transform)
-					{
-						generalObjects[i].DisableButtons(); 
-						generalObjects[i].DisableHealth ();
-						//Destroy (generalObjects[i].helper);	
-						generalObjects[i].selected = false;
-					}
-				}
-			EnableButtons ();
-			EnableHealth ();
 			ObjectManager.SetSelectedObject (this);
-				selected = true; 
+			selected = true; 
 		}
 		else
 		{
-			DisableHealth (); 
-			DisableButtons ();
-			selected = false; 
+			selected = false;
 		}
-		
-		}
-		
 	}
 	
-void OnGUI()
-{
-
-}
+	void Clicked ()
+	{
+			if (isOn && ObjectPlacementManager.placing == false) {
+				if (!selected) {
+					DisableOthers ();
+					EnableButtons ();
+					EnableHealth ();
+					SetSelected (true);
+					
+				} else {
+					DisableHealth (); 
+					DisableButtons ();
+					SetSelected (false);
+				}
+			}
+	}
 	
-void OnDrawGizmos() {
+	void DisableOthers()
+	{
+		BasicObject[] generalObjects = FindObjectsOfType (typeof(BasicObject)) as BasicObject[];
+					for (int i = 0; i< generalObjects.Length; i++) {
+						if (generalObjects [i].transform != transform) {
+							generalObjects [i].DisableButtons (); 
+							generalObjects [i].DisableHealth ();
+							//Destroy (generalObjects[i].helper);	
+							generalObjects [i].selected = false;
+						}
+					}
+	}
+	void OnGUI ()
+	{
 
-}
+	}
+	
+	void OnDrawGizmos ()
+	{
+
+	}
 
 }

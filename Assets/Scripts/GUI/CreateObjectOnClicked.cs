@@ -12,12 +12,12 @@ public class CreateObjectOnClicked : MonoBehaviour {
 		{
 				ObjectPlacementManager.placing = true; 
 					GameObject item = objectSelector.GetSelectedObject();
-									BasicObject[] generalObjects = FindObjectsOfType (typeof(BasicObject)) as BasicObject[];
-							for(int i = 0; i< generalObjects.Length;i++)
+				BasicObject[] generalObjects = FindObjectsOfType (typeof(BasicObject)) as BasicObject[];
+				for(int i = 0; i< generalObjects.Length;i++)
 				{
 					generalObjects[i].DisableButtons ();	
 					generalObjects[i].DisableHealth ();
-					generalObjects[i].selected = false;
+					generalObjects[i].SetSelected(false);
 				}
 			
 			

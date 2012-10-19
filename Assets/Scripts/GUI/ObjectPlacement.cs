@@ -151,7 +151,7 @@ public class ObjectPlacement : MonoBehaviour {
 		
 		if(Input.GetMouseButtonDown (1))
 		{
-			ObjectPlacementManager.placing = true;
+			ObjectPlacementManager.placing = false;
 			Destroy (gameObject);
 			
 		}

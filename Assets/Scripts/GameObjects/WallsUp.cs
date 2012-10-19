@@ -7,7 +7,7 @@ public class WallsUp : MonoBehaviour {
 	public GameObject walls;
 	
 	
-	public bool wallsup = false; 
+	public static bool wallsup = false; 
 	
 	private GameObject wallObject;
 		// Use this for initialization
@@ -29,8 +29,8 @@ public class WallsUp : MonoBehaviour {
 		}
 		else
 		{
-			wallsup = false;
-			Destroy(wallObject);
+			//wallsup = false;
+			//Destroy(wallObject);
 		}
 	}
 }
