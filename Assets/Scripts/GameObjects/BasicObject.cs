@@ -8,6 +8,7 @@ public class BasicObject : MonoBehaviour {
 	public int cost; 
 	public int sellValue;  
 	public int costPerDay; 
+	public int costPerMonth;
 	public int repairCost; 
 	public int patientIncrease; 
 	

@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\GUI\PositionButtons.cs" />
      <Compile Include="Assets\Scripts\GUI\ScrollTexture.cs" />
      <Compile Include="Assets\Scripts\GUI\SelectObjectOnClicked.cs" />
+     <Compile Include="Assets\Scripts\GUI\SkipMonth.cs" />
      <Compile Include="Assets\Scripts\GUI\SwitchScreen.cs" />
      <Compile Include="Assets\Scripts\GameObjects\BasicObject.cs" />
      <Compile Include="Assets\Scripts\GameObjects\DestroyParent.cs" />
@@ -73,6 +74,7 @@
      <Compile Include="Assets\Scripts\Helper\SellValue.cs" />
      <Compile Include="Assets\Scripts\Helper\Spawner.cs" />
      <Compile Include="Assets\Scripts\TimeManager.cs" />
+     <Compile Include="Assets\Scripts\WallsUp.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />

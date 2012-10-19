@@ -38,6 +38,8 @@ public class ObjectPlacement : MonoBehaviour {
 		decoration = 2,
 		desk = 3,
 		deskTopObject = 4,
+		outdoors = 5,
+		
 	}
  
  

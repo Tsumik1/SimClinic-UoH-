@@ -16,8 +16,8 @@ public class Spawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		CreateGraphicalPathObjects();
-		drawFullPath ();
+		//CreateGraphicalPathObjects();
+		//drawFullPath ();
 		InvokeRepeating ("Spawn", initialSpawn, spawnTime);
 	}
 	
