@@ -43,6 +43,7 @@ public class TimeManager : MonoBehaviour
 	
 	public static void AddMonth()
 	{
+		
 		currentDate = currentDate.AddMonths (1);
 	}
 	
