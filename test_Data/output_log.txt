@@ -20,68 +20,158 @@ Platform assembly: C:\Users\shumbk\Desktop\GitHub\SimClinic-UoH-\SimClinic-UoH-\
 Loading C:\Users\shumbk\Desktop\GitHub\SimClinic-UoH-\SimClinic-UoH-\test_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
 Platform assembly: C:\Users\shumbk\Desktop\GitHub\SimClinic-UoH-\SimClinic-UoH-\test_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
 Loading C:\Users\shumbk\Desktop\GitHub\SimClinic-UoH-\SimClinic-UoH-\test_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
-- Completed reload, in  0.062 seconds
-You clicked SkipMonthButton
+- Completed reload, in  0.077 seconds
+Skipped rendering frame because GfxDevice is in invalid state (device lost)
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/Misc/Player.cpp Line: 1617)
+
+HandleD3DDeviceLost
+  HandleD3DDeviceLost: needs reset, doing it
+FullResetD3DDevice
+ResetD3DDevice
+dev->Reset
+D3Dwindow device not lost anymore
+You clicked Speed2Button
  
 (Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
 
-You clicked SkipMonthButton
+You clicked Speed1Button
  
 (Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
 
-Desk (BasicObject)
+You clicked Speed1Button
  
 (Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
 
-Desk (BasicObject)
+You clicked PlayButton
  
 (Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
 
-You clicked SkipMonthButton
+You clicked PauseButton
  
 (Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
 
-You clicked SkipMonthButton
+You clicked TemporaryWall
  
 (Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
 
-Desk (BasicObject)
+You clicked BuildButton
  
 (Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
 
-Desk (BasicObject)
+You clicked TemporaryWall
  
 (Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
 
-You clicked SkipMonthButton
+You clicked EquipmentButton
  
 (Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
 
-You clicked SkipMonthButton
+You clicked TemporaryWall
  
 (Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
 
-Desk (BasicObject)
+You clicked ultra
  
 (Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
 
-Desk (BasicObject)
+ultra
  
 (Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
 
-You clicked SkipMonthButton
+ultra
  
 (Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
 
-You clicked SkipMonthButton
+gait
  
 (Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
 
-Desk (BasicObject)
+ultra
  
 (Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
 
-Desk (BasicObject)
+medkit
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
+
+ultra
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
+
+0
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
+
+0.5000001
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
+
+You clicked RotateRightButton
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
+
+You clicked TemporaryWall
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
+
+You clicked RotateRightButton
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
+
+You clicked TemporaryWall
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
+
+You clicked RotateRightButton
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
+
+You clicked TemporaryWall
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
+
+You clicked RotateRightButton
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
+
+You clicked TemporaryWall
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
+
+You clicked RotateRightButton
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
+
+You clicked TemporaryWall
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
+
+You clicked RotateRightButton
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
+
+You clicked TemporaryWall
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
+
+You clicked RotateRightButton
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
+
+You clicked RotateRightButton
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
+
+You clicked TemporaryWall
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
+
+You clicked RotateRightButton
+ 
+(Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
+
+You clicked RotateRightButton
  
 (Filename: C:/BuildAgent/work/d9c061b1c154f5ae/Runtime/ExportGenerated/StandalonePlayer/UnityEngineDebug.cpp Line: 43)
 

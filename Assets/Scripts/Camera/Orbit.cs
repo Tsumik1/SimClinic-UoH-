@@ -8,35 +8,37 @@ public class Orbit : MonoBehaviour {
 	
 	private Vector3 angles; 
 	public bool movement = false; 
+	public enum Direction 
+	{
+		left = 0, 
+		right = 1,
+	}
+	
+	public Direction direction;
 	// Use this for initialization
+	
 	void Start () {
 		angles = transform.eulerAngles;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(movement)
-		{
-		if(angles.y + 90 == transform.eulerAngles.y)
-		{
-			angles = transform.eulerAngles;
-				movement = false;
-		}
-		else
-		{
-			Camera.main.transform.LookAt (target);
-			Camera.main.transform.Translate (Vector3.right * Time.deltaTime);
-		}
-		}
+
 	}
 	
 	void Clicked()
 	{
-		if(movement)
-		{movement = false;}
-		else
+		if(direction == Direction.left)
 		{
-		  movement = true;
+			Vector3 newAngles = new Vector3(0,0,90);
+			Camera.main.transform.Rotate (newAngles);
 		}
+		else
+			if(direction==Direction.right)
+		{
+			Vector3 newAngles = new Vector3(0,0,-90);
+			Camera.main.transform.Rotate (newAngles);
+		}
+
 	}
 }

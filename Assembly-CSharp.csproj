@@ -44,7 +44,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\CameraDrag.cs" />
+     <Compile Include="Assets\Scripts\Camera\CameraBounds.cs" />
+     <Compile Include="Assets\Scripts\Camera\CameraDrag.cs" />
+     <Compile Include="Assets\Scripts\Camera\MouseCameraControl.cs" />
+     <Compile Include="Assets\Scripts\Camera\Orbit.cs" />
+     <Compile Include="Assets\Scripts\Camera\ResetCamera.cs" />
      <Compile Include="Assets\Scripts\GUI\ButtonBehaviour.cs" />
      <Compile Include="Assets\Scripts\GUI\ButtonMove.cs" />
      <Compile Include="Assets\Scripts\GUI\CreateObjectOnClicked.cs" />
@@ -76,8 +80,8 @@
      <Compile Include="Assets\Scripts\Helper\PathThroughObjects.cs" />
      <Compile Include="Assets\Scripts\Helper\ScaleOverTimeAndDestroy.cs" />
      <Compile Include="Assets\Scripts\Helper\SellValue.cs" />
+     <Compile Include="Assets\Scripts\Helper\SetTimeScaleOnClick.cs" />
      <Compile Include="Assets\Scripts\Helper\Spawner.cs" />
-     <Compile Include="Assets\Scripts\Orbit.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />

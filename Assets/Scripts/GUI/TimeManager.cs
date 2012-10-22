@@ -28,7 +28,7 @@ public class TimeManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		Time.timeScale = timeSpeed;
+		//Time.timeScale = timeSpeed;
 		currentDate = currentDate.AddSeconds(Time.deltaTime);
 		
 		if (currentMonth > month|| currentMonth == 1 && month == 12)

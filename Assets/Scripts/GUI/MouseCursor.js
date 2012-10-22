@@ -19,7 +19,7 @@ function Start() {
     // Slightly weird but necessary way of forcing float evaluation
     var currentRatio : float = (0.0 + Screen.width) / Screen.height;
     transform.localScale.x *= nativeRatio / currentRatio;
-    Screen.showCursor = false;
+    //Screen.showCursor = false;
     fadeValue = normalAlpha;
     lastPosition = Input.mousePosition;
 }
@@ -41,32 +41,64 @@ function Update() {
             cursorIsFading = false;
         }
     }
+    
+    MoveCamera(mousePos.x/Screen.width, mousePos.y/Screen.height);
 }
  
 function MoveMouse(mousePosX : float, mousePosY : float) {
     // Make the cursor solid, and set fading to start in case mouse movement stops
     guiTexture.color.a = fadeValue = normalAlpha;
-    guiTexture.texture = normalCursor;
+    guiTexture.texture = null;
+    Screen.showCursor = true;
     cursorIsFading = true;
  
     // If the mouse is on a screen edge, first make sure the cursor doesn't go off the screen, then give it the appropriate cursor
-    if (mousePosX < .005) {
-        mousePosX = .005;
+    if (mousePosX < .05) {
+        mousePosX = .05;
         guiTexture.texture = leftCursor;
+        Screen.showCursor = false;
     }
-    if (mousePosX > .995) {
-        mousePosX = .995;
+    if (mousePosX > .900) {
+        mousePosX = .900;
         guiTexture.texture = rightCursor;
+        Screen.showCursor = false;
+        
     }
-    if (mousePosY < .005) {
-        mousePosY = .005;
+    if (mousePosY < .05) {
+        mousePosY = .05;
         guiTexture.texture = downCursor;
+        Screen.showCursor = false;
+        
     }
-    if (mousePosY > .995) {
-        mousePosY = .995;
+    if (mousePosY > .890) {
+        mousePosY = .890;
         guiTexture.texture = upCursor;
+        Screen.showCursor = false;
+        
     }
  
     transform.position.x = mousePosX;
     transform.position.y = mousePosY;
+    
+}
+
+
+function MoveCamera(mousePosX : float, mousePosY : float)
+{
+	  if (mousePosX < .001) {
+	  
+            Camera.main.transform.Translate(-0.1f, 0, 0);
+            
+    }
+    if (mousePosX > .900) {
+			 
+            Camera.main.transform.Translate(0.1f, 0, 0);
+    }
+    if (mousePosY < .001) {
+        Camera.main.transform.Translate(0,-0.1f,0);
+    }
+    if (mousePosY > .900) {
+    	Camera.main.transform.Translate(0,0.1f,0);
+    }
+
 }
