@@ -44,6 +44,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\CameraDrag.cs" />
      <Compile Include="Assets\Scripts\GUI\ButtonBehaviour.cs" />
      <Compile Include="Assets\Scripts\GUI\ButtonMove.cs" />
      <Compile Include="Assets\Scripts\GUI\CreateObjectOnClicked.cs" />
