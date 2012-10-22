@@ -2,7 +2,12 @@ using UnityEngine;
 using System.Collections;
 
 public class WallsDown : MonoBehaviour {
-
+	
+	public GameObject walls;
+	
+	private GameObject wallObject;
+	
+	public static bool walldown;
 	// Use this for initialization
 	void Start () {
 	
@@ -15,8 +20,14 @@ public class WallsDown : MonoBehaviour {
 	
 	void Clicked()
 	{
-		GameObject walls = GameObject.FindGameObjectWithTag ("wallup") as GameObject;
-		Destroy (walls);
-		WallsUp.wallsup = false;
+		if(WallsUp.wallsup)
+		{
+			wallObject = Instantiate (walls, new Vector3(0,0,0), Quaternion.identity) as GameObject;
+						wallObject.transform.eulerAngles= new Vector3(270,90,0);
+			walldown = true;
+			GameObject wall = GameObject.FindGameObjectWithTag ("wallup") as GameObject;
+			Destroy (wall);
+			WallsUp.wallsup = false;
+		}
 	}
 }

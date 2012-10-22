@@ -25,7 +25,12 @@ public class WallsUp : MonoBehaviour {
 		if(!wallsup)
 		{	
 			wallObject = Instantiate (walls) as GameObject;
+
 			wallsup = true;
+			GameObject wall = GameObject.FindGameObjectWithTag ("walldown") as GameObject;
+			Destroy (wall);
+			WallsDown.walldown = false;
+			
 		}
 		else
 		{

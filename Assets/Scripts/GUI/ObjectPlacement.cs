@@ -29,9 +29,9 @@ public class ObjectPlacement : MonoBehaviour {
 	private bool isPlaced = false; 
 	private Color defaultColour;
 	//private Component script;
-	public float moveSpeed;						// The Speed the character will move
+	public float moveSpeed = 10000;						// The Speed the character will move
  	
-	public enum type
+	public enum Type
 	{
 		equipment = 0,
 		furniture = 1,
@@ -41,6 +41,9 @@ public class ObjectPlacement : MonoBehaviour {
 		outdoors = 5,
 		
 	}
+	
+	public Type type;
+	
  
  
 	void Start () {

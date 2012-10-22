@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\Camera\MouseCameraControl.cs" />
      <Compile Include="Assets\Scripts\Camera\Orbit.cs" />
      <Compile Include="Assets\Scripts\Camera\ResetCamera.cs" />
+     <Compile Include="Assets\Scripts\Camera\SwitchToFirstPerson.cs" />
      <Compile Include="Assets\Scripts\GUI\ButtonBehaviour.cs" />
      <Compile Include="Assets\Scripts\GUI\ButtonMove.cs" />
      <Compile Include="Assets\Scripts\GUI\CreateObjectOnClicked.cs" />
@@ -74,6 +75,7 @@
      <Compile Include="Assets\Scripts\GameObjects\BasicObject.cs" />
      <Compile Include="Assets\Scripts\GameObjects\DestroyParent.cs" />
      <Compile Include="Assets\Scripts\GameObjects\HealthBar.cs" />
+     <Compile Include="Assets\Scripts\GameObjects\MouseLook.cs" />
      <Compile Include="Assets\Scripts\GameObjects\ObjectPlacementManager.cs" />
      <Compile Include="Assets\Scripts\GameObjects\WallsDown.cs" />
      <Compile Include="Assets\Scripts\GameObjects\WallsUp.cs" />

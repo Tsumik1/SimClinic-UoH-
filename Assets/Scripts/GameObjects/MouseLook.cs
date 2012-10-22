@@ -52,6 +52,26 @@ public class MouseLook : MonoBehaviour {
 			
 			transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
 		}
+		if(Input.GetKey (KeyCode.Escape))
+		{
+			
+			Camera[] cameras = 	FindObjectsOfType (typeof(Camera)) as Camera[];
+			foreach(Camera cam in cameras)
+			{
+				if(cam.tag == "MainCamera" || cam.tag == "primaryCamera")
+				{cam.enabled = true;
+				cam.GetComponent<DetectClicksAndTouches>().enabled = true;}
+				else
+				{
+					cam.enabled = false;
+					
+				}
+			}
+			
+			//Camera.main.enabled = false; 
+
+
+		}
 	}
 	
 	void Start ()
