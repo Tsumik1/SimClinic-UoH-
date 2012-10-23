@@ -52,9 +52,11 @@
      <Compile Include="Assets\Scripts\Camera\SwitchToFirstPerson.cs" />
      <Compile Include="Assets\Scripts\GUI\ButtonBehaviour.cs" />
      <Compile Include="Assets\Scripts\GUI\ButtonMove.cs" />
+     <Compile Include="Assets\Scripts\GUI\CreateGraph.cs" />
      <Compile Include="Assets\Scripts\GUI\CreateObjectOnClicked.cs" />
      <Compile Include="Assets\Scripts\GUI\DetectClicksAndTouches.cs" />
      <Compile Include="Assets\Scripts\GUI\Displays\HUDFPS.cs" />
+     <Compile Include="Assets\Scripts\GUI\GUIManager.cs" />
      <Compile Include="Assets\Scripts\GUI\GameOver\PlayAgain.cs" />
      <Compile Include="Assets\Scripts\GUI\GetSelectedObject.cs" />
      <Compile Include="Assets\Scripts\GUI\HealthManager.cs" />

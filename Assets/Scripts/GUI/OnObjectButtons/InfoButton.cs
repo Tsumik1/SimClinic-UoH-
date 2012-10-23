@@ -6,6 +6,8 @@ public class InfoButton : MonoBehaviour {
 	
 	public GameObject popup; 
 	
+	
+	private GameObject pop; 
 	// Use this for initialization
 	void Start () {
 	
@@ -20,7 +22,11 @@ public class InfoButton : MonoBehaviour {
 	{
 		ObjectManager.selectedObject.DisableHealth ();
 		ObjectManager.selectedObject.DisableButtons();
-		Instantiate (popup);
+		if(GUIManager.popUpSmall == false)
+		{
+		  Instantiate (popup);
+		  GUIManager.popUpSmall = true;
+		}
 		Destroy (this);
 	}
 }

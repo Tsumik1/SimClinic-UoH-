@@ -12,10 +12,10 @@ public class TimeManager : MonoBehaviour
 	public static DateTime currentDate;
 	public static DateTime endDate;
 	
-	public int currentMonth; 
+	public static int currentMonth; 
 	public static Day currentDay; 
 	
-	private int month; 
+	//private int month; 
 	// Use this for initialization
 	void Start () 
 	{
@@ -24,7 +24,7 @@ public class TimeManager : MonoBehaviour
 		currentDate = new DateTime(2012,10,18);
 		endDate = new DateTime(2012,10,20);
 		Time.timeScale = timeSpeed; 
-		month = currentDate.Month;
+		//month = currentDate.Month;
 		currentMonth = currentDate.Month; 
 		currentDay = new Day();
 		currentDay.day = currentDate.Day;
@@ -114,18 +114,9 @@ public class TimeManager : MonoBehaviour
 		
 		currentDate = currentDate.AddSeconds (Time.deltaTime);
 		//checks end of day. 
-		if(currentDate.Day > currentDay.day || currentDate.Day < currentDay.day && currentDay.isEndOfMonth(currentMonth))
-		{
-			PerformDailyActions();
-			currentDay.day = currentDate.Day;
-		}
-		//Checks end of month. 
-		if (currentMonth > month|| currentMonth == 1 && month == 12)
-		{
-			PerformMonthlyActions();
-			month = currentMonth;
-		}
-		currentMonth = currentDate.Month;
+		CheckDay ();
+		CheckMonth();
+		//currentMonth = currentDate.Month;
 		//currentDay.day = currentDate.Day;
 		//print (currentDate.Day);
 		
@@ -142,13 +133,32 @@ public class TimeManager : MonoBehaviour
 		{
 			print (currentDay.day);
 			currentDate = currentDate.AddDays(1);
-			currentDay.day = currentDate.Day;
-			PerformDailyActions();
+			CheckDay ();
+			//currentDay.day = currentDate.Day;
+			//PerformDailyActions();
 		}
 		currentDate = currentDate.AddDays (1);
 	}
 	
-	//Daily Action, 
+	public static void CheckDay()
+	{
+		if(currentDate.Day > currentDay.day || currentDate.Day < currentDay.day && currentDay.isEndOfMonth(currentMonth))
+		{
+			PerformDailyActions();
+			currentDay.day = currentDate.Day;
+		}
+	}
+	
+	public static void CheckMonth()
+	{
+		if (currentDate.Month > currentMonth|| currentDate.Month == 1 && currentMonth == 12)
+		{
+			PerformMonthlyActions();
+			currentMonth = currentDate.Month;
+		}
+	}
+	
+	//Add Day
 	public static void AddDay()
 	{
 		currentDate = currentDate.AddDays (1);
@@ -158,8 +168,13 @@ public class TimeManager : MonoBehaviour
 	public static void PerformMonthlyActions()
 	{
 		DeductCosts();
+		for(int i = currentMonth; i < 12; i++)
+		{MoneyManager.AddPoint (i);}
+		CreateGraph graph = FindObjectOfType(typeof(CreateGraph)) as CreateGraph;
+		graph.CalculatePoints();
 	}
 	
+	//Daily Actions
 	public static void PerformDailyActions()
 	{
 		BasicObject[] items = FindObjectsOfType (typeof(BasicObject)) as BasicObject[];
@@ -170,6 +185,7 @@ public class TimeManager : MonoBehaviour
 		}
 		
 	}
+	
 	private static void DeductCosts()
 	{
 		//print ("hellow :P");

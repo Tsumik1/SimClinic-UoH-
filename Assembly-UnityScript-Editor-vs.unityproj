@@ -64,14 +64,14 @@
  <Reference Include="Assembly-UnityScript">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript.dll</HintPath>
  </Reference>
- <Reference Include="UnityUtilities.Objects">
- <HintPath>Assets\Editor\UnityUtilities.Objects.dll</HintPath>
+ <Reference Include="UnityUtilities.EditorExtensions">
+ <HintPath>Assets\Editor\UnityUtilities.EditorExtensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityUtilities.Extensions">
  <HintPath>Assets\Editor\UnityUtilities.Extensions.dll</HintPath>
  </Reference>
- <Reference Include="UnityUtilities.EditorExtensions">
- <HintPath>Assets\Editor\UnityUtilities.EditorExtensions.dll</HintPath>
+ <Reference Include="UnityUtilities.Objects">
+ <HintPath>Assets\Editor\UnityUtilities.Objects.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
