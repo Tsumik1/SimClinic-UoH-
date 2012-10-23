@@ -58,6 +58,15 @@
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
+ <Reference Include="UnityUtilities.Objects">
+ <HintPath>Assets\Editor\UnityUtilities.Objects.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityUtilities.Extensions">
+ <HintPath>Assets\Editor\UnityUtilities.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityUtilities.EditorExtensions">
+ <HintPath>Assets\Editor\UnityUtilities.EditorExtensions.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">

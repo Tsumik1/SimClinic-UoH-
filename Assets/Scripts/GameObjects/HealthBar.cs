@@ -37,7 +37,7 @@ public class HealthBar : MonoBehaviour {
 	{
 		BasicObject parent = transform.parent.GetComponent(typeof(BasicObject)) as BasicObject;
 		currentLife = parent.life;
-		max = parent.lifeSpanInSeconds;
+		max = (float)parent.lifeSpanInDays;
 		currentLife = (currentLife - min)/(max - min);
 		//print (currentLife);
 		renderer.material.SetFloat ("_Progress", currentLife);

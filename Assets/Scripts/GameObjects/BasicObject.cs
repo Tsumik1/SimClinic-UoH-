@@ -16,8 +16,8 @@ public class BasicObject : MonoBehaviour
 	public bool isOn = false;
 	public bool needsRepair = true;
 	public bool degradable = false;
-	public float lifeSpanInSeconds = 1000f;
-	public float life;
+	public int lifeSpanInDays = 30;
+	public int life;
 	public GameObject buttons;
 	public GameObject healthBar;
 	
@@ -29,7 +29,7 @@ public class BasicObject : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		life = lifeSpanInSeconds;
+		life = lifeSpanInDays;
 
 		//helper.transform.position = new Vector3(transform.position.x,transform.position.y+0.6f,transform.position.z);
 		//helper.transform.parent = transform;
@@ -86,7 +86,7 @@ public class BasicObject : MonoBehaviour
 	{
 		if (isOn) {
 			if (degradable) {
-				life -= Time.deltaTime;
+				//life -= Time.deltaTime;
 				if (life <= 0) {
 					if (destruction) {
 

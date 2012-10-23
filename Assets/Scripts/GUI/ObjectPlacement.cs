@@ -115,12 +115,16 @@ public class ObjectPlacement : MonoBehaviour {
 			if(destinationDistance > .2f){
 				//float temp = 0f + transform.lossyScale.y /2;
 				//destinationPosition.y = temp;
-				myTransform.position = Vector3.MoveTowards(myTransform.position, destinationPosition, (moveSpeed * Time.deltaTime) * 2);
+				myTransform.position = Vector3.MoveTowards(myTransform.position, destinationPosition, (moveSpeed ) * 2);
 			}
 			
 		if(validPlace)
 			{
 			  renderer.material.color = Color.green; 
+				if(renderer.materials.Length > 1)
+				{
+					renderer.materials[1].color = Color.green;
+				}
 
 //			foreach (Transform child in transform) 
 //			{
@@ -131,6 +135,11 @@ public class ObjectPlacement : MonoBehaviour {
 		else
 			{
 				renderer.material.color = Color.red; 
+				if(renderer.materials.Length > 1)
+				{
+					renderer.materials[1].color = Color.red;
+				}
+
 							//transform.Find("Turret").renderer.material.color = Color.red;
 			}
 		}

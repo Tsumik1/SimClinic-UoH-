@@ -5,6 +5,7 @@ public class MoneyManager : MonoBehaviour
 {
 	public int initialMoney; 
 	public GameObject moneyDisplay; 
+	public string currency = "£";
 	
 	public static int money; 
 	// Use this for initialization
@@ -16,7 +17,7 @@ public class MoneyManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		moneyDisplay.GetComponent<TextMesh>().text = "$" + money.ToString();
+		moneyDisplay.GetComponent<TextMesh>().text = currency + money.ToString();
 	}
 	
 	public static bool Purchase(int amount)
