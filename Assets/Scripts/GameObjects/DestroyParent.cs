@@ -16,6 +16,7 @@ public class DestroyParent : MonoBehaviour {
 	void Clicked()
 	{
 		GUIManager.popUpSmall = false; 
+		GUIManager.popUpMain = false;
 		Destroy (transform.parent.gameObject);
 	}
 }

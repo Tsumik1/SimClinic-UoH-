@@ -35,7 +35,8 @@ public class SwitchToFirstPerson : MonoBehaviour {
 			//Camera.main.enabled = false; 
 			firstPersonCamera.enabled = true;
 			firstPersonCamera.GetComponent<MouseLook>().enabled = true;
-			
+			GUIManager.popUpSmall = false;
+			GUIManager.popUpMain = false;
 
 		}
 	}
