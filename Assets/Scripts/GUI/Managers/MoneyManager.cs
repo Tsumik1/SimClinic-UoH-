@@ -6,15 +6,37 @@ public class MoneyManager : MonoBehaviour
 	public int initialMoney; 
 	public GameObject moneyDisplay; 
 	public string currency = "£"; 
+	public double initialInterestRate; 
+	public double initialRent; 
+	public double billCostPerMonth; // This will be determined from the player settings. Not sure how to do this yet...
 	
 	public static double money; 
-	
 	public static double actualMoney;
 	
-	public static double outstandingLoanAmount; 
+	public static double monthlyRent; 
+	public static double bills;
 	
+	public static double monthlyBuildingCost; 
+	
+	public static double monthlyEquipmentCost;
+	
+	public static double monthlyRunningCosts;
+	public static double monthlyRepairCosts; 
+	public static double[] repairCosts;
+	public static double totalRepairCosts;
+	
+	public static double monthlyIncome;
+	public static double[] incomes; 
+	public static double totalIncome; 
+	
+	public static double monthlyStaffCost;
+	public static double[] staffCost;
+	public static double monthlyTraining; 
+	public static double monthlyWages; 
+	public static double totalStaffCost;
+	
+	public static double outstandingLoanAmount; 
 	public static double loanIncremental = 1000; 
-	public double initialInterestRate; 
 	private static double percentage = 6;
 	
 	public static double[] profits;
@@ -22,10 +44,18 @@ public class MoneyManager : MonoBehaviour
 	void Awake () 
 	{
 		profits = new double[12];
+		repairCosts = new double[12];
+		incomes = new double[12];
+		staffCost = new double[12];
 		for(int i = 0; i < 12; i++)
 		{
 			profits[i] = initialMoney;
+			repairCosts[i] = 0;
+			incomes[i] = 0; 
+			staffCost[i] = 0;
 		}
+		monthlyRent = initialRent;
+		bills = billCostPerMonth;
 		money = initialMoney;
 		actualMoney = money; 
 		outstandingLoanAmount = 0; // At least until we sort it out in playerprefs... 
@@ -36,6 +66,8 @@ public class MoneyManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		
+		CalculateAll ();
 		moneyDisplay.GetComponent<TextMesh>().text = currency + money.ToString();
 	}
 	
@@ -56,11 +88,14 @@ public class MoneyManager : MonoBehaviour
 			money -= loanIncremental;
 			outstandingLoanAmount -= loanIncremental;
 		}
-		if(outstandingLoanAmount <loanIncremental && outstandingLoanAmount > 0)
+		else
+		{
+		if(outstandingLoanAmount < loanIncremental && outstandingLoanAmount > 0)
 		{
 			
 			money = money - outstandingLoanAmount;
 			outstandingLoanAmount = 0;
+		}
 		}
 		actualMoney = money - outstandingLoanAmount;
 	}
@@ -86,9 +121,76 @@ public class MoneyManager : MonoBehaviour
 			}
 	}
 	
+	public static double CalculateRunningCosts()
+	{			
+	double monthlyCosts = 0; 
+	  BasicObject[] equipment = FindObjectsOfType(typeof(BasicObject)) as BasicObject[];
+		foreach(BasicObject item in equipment)
+		{
+
+			monthlyCosts += item.costPerMonth;
+		}
+		
+	return monthlyCosts;	
+	}
+	public static void CalculateStaffCost()
+	{
+		monthlyStaffCost = monthlyWages + monthlyTraining; 
+	}
+	
+	public static void CalculateRepairCost()
+	{
+				
+	}
+	
+	public static void CalculateIncome()
+	{
+		
+	}
+	
+	public static void CalculateBuildingCost()
+	{
+		monthlyBuildingCost = monthlyRent + bills; 
+	}
+	public static void CalculateAll()
+	{
+		monthlyRunningCosts = CalculateRunningCosts();
+		CalculateEquipmentCost();
+		CalculateStaffCost ();
+		CalculateBuildingCost();
+	}
+	
+	public static void CalculateEquipmentCost()
+	{
+		monthlyEquipmentCost = monthlyRepairCosts + monthlyRunningCosts;
+	}
+	public static void AddToRepairCost(double price)
+	{
+		monthlyRepairCosts += price;
+	}
 	public static void AddPoint(int month)
 	{
 		profits[month] = money;
+		incomes[month] = monthlyIncome;
+		repairCosts[month] = monthlyRepairCosts;
+		staffCost[month] = monthlyStaffCost;
+	}
+	
+	public static void DeductMonthlyCosts()
+	{
+		CalculateAll ();
+		double amount = (monthlyRepairCosts + monthlyStaffCost + monthlyRent + monthlyEquipmentCost + bills);
+		money -= amount;
+	}
+	
+	public static void AddIncome()
+	{
+		
+	}
+	
+	public static double GetRepairCostAtMonth(int month)
+	{
+		return repairCosts[month];
 	}
 	
 }

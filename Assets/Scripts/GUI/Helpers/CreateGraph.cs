@@ -8,7 +8,8 @@ public class CreateGraph : MonoBehaviour {
 	public float endWidth = 0.5f;
 	public int monthsToShow = 12; 
 	public Material graphColour; 
-	public Transform defaultPositionPoint; 
+	public Transform min; 
+	public Transform max; 
 	private	GameObject dot;
 	public GameObject[] dots; 
 	private LineRenderer line; 
@@ -34,10 +35,10 @@ public class CreateGraph : MonoBehaviour {
 	
 	public void SetDefaultPoints()
 	{
-		float xPos = defaultPositionPoint.position.x;
+		float xPos = min.position.x;
 		for(int i = 0; i<points.Length;i++)
 		{
-			Vector3 position =  new Vector3(xPos, defaultPositionPoint.position.y, defaultPositionPoint.position.z);
+			Vector3 position =  new Vector3(xPos, min.position.y, min.position.z);
 			points[i] = position; 
 			xPos +=0.75f;
 			dots[i] = GameObject.CreatePrimitive (PrimitiveType.Sphere) as GameObject;
@@ -61,9 +62,9 @@ public class CreateGraph : MonoBehaviour {
 		{
 		//print (month);
 			//print(i);
-			float newYPos = (float)MoneyManager.profits[i] * 0.001f;
+			float newYPos = (float)MoneyManager.profits[i] * 0.00001f + 2f;
 			Vector3 newPosition = new Vector3(points[i].x,points[i].y,points[i].z);
-			newPosition.y = defaultPositionPoint.position.y + newYPos;
+			newPosition.y = min.position.y + newYPos;
 			//print (newYPos);
 			points[i].y = newPosition.y;
 			dots[i].transform.position = newPosition;

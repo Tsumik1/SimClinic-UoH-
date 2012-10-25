@@ -264,12 +264,12 @@ public class TimeManager : MonoBehaviour
 	//Monthly Actions
 	public static void PerformMonthlyActions()
 	{
-		DeductCosts();
 		for(int i = currentMonth.month; i <= 12; i++)
 		{MoneyManager.AddPoint (i-1);}
 		CreateGraph graph = FindObjectOfType(typeof(CreateGraph)) as CreateGraph;
 		if(graph)
 		{graph.CalculatePoints(currentMonth.month - 1);}
+		DeductCosts();
 	}
 	
 	//Daily Actions
@@ -286,14 +286,7 @@ public class TimeManager : MonoBehaviour
 	
 	private static void DeductCosts()
 	{
-		//print ("hellow :P");
-		BasicObject[] objects = FindObjectsOfType(typeof(BasicObject)) as BasicObject[];
-		
-		foreach(BasicObject item in objects)
-		{
-			//print(item);
-			MoneyManager.money -= item.costPerMonth;
-		}
+		MoneyManager.DeductMonthlyCosts();
 	}
 	
 	public static string GetMonthName(int i)
