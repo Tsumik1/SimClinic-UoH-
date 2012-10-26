@@ -28,8 +28,10 @@ public class ObjectPlacement : MonoBehaviour {
  	private bool validPlace = true; 
 	private bool isPlaced = false; 
 	private Color defaultColour;
+	private Vector3 defaultPosition;
 	//private Component script;
-	public float moveSpeed = 10000;						// The Speed the character will move
+	public float moveSpeed = 10000;	
+	private float height; 
  	
 	public enum Type
 	{
@@ -50,6 +52,8 @@ public class ObjectPlacement : MonoBehaviour {
 		myTransform = transform;							// sets myTransform to this GameObject.transform
 		destinationPosition = myTransform.position;			// prevents myTransform reset
 		defaultColour = renderer.material.color; 
+				defaultPosition = transform.position;
+		
 	}
 	
 	public void MoveAgain()
@@ -116,6 +120,13 @@ public class ObjectPlacement : MonoBehaviour {
 				//float temp = 0f + transform.lossyScale.y /2;
 				//destinationPosition.y = temp;
 				myTransform.position = Vector3.MoveTowards(myTransform.position, destinationPosition, (moveSpeed ) * 2);
+				if(type == Type.deskTopObject)
+				{
+					Vector3 temps = myTransform.position;
+					temps.y = height;
+					myTransform.position = temps;
+				}
+
 			}
 			
 		if(validPlace)
@@ -149,7 +160,7 @@ public class ObjectPlacement : MonoBehaviour {
 			ObjectPlacementManager.placing = false; 
 			renderer.material.color = defaultColour; 
 			//transform.Find("Turret").renderer.material.color = defaultColour;
-			print (objectCollider.size.y);
+			//print (objectCollider.size.y);
 			//print (temp);
 			isPlaced = true;
 			BasicObject script = GetComponent(typeof(BasicObject)) as BasicObject;
@@ -169,18 +180,80 @@ public class ObjectPlacement : MonoBehaviour {
 		}
 	}
 	
-		void OnCollisionEnter(Collision collision)
+	
+	void CheckValid(Collision collision)
 	{
-			validPlace = false; 
+		
+		ObjectPlacement other = collision.transform.GetComponent<ObjectPlacement>() as ObjectPlacement;
+		if(other)
+		{
+		switch(type)
+		{
+		case Type.furniture:
+			validPlace = false;
+			break;
+		case Type.decoration:
+			validPlace = false;
+			break;
+			
+		case Type.outdoors:
+			validPlace = false;
+			break;
+			
+		case Type.equipment:
+			validPlace = false;
+			break;
+				
+		case Type.desk:
+			validPlace = false;
+			break;
+			
+		case Type.deskTopObject:
+			if(other.type == Type.desk)
+			{
+				//defaultPosition = transform.position;
+				validPlace = true;
+				PlaceToTopOfObject(collision);
+				break;
+			}
+			else
+			{
+				validPlace = false;
+				break;
+			}
+			break;
+		default: 
+			validPlace = false;
+			break;
+		}
+		}
+		else validPlace = false;
+	}
+	
+	void PlaceToTopOfObject(Collision collision)
+	{
+		BoxCollider collider = collision.gameObject.GetComponent<BoxCollider>();
+		Vector3 temp = collision.transform.position;
+		
+		temp.y = collision.transform.position.y + collider.size.z;
+		height = temp.y;
+		//transform.position = temp;
+	}
+	void OnCollisionEnter(Collision collision)
+	{
+			//validPlace = false; 
+		CheckValid (collision);
 	}
 	 
 	void OnCollisionStay(Collision collision)
 	{
-			validPlace = false; 
+			//validPlace = false;
+		CheckValid (collision);
 	}
 	
 	void OnCollisionExit(Collision collision) {
 
+			//transform.position = defaultPosition;
 			validPlace = true;
     }
 	
