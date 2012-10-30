@@ -9,6 +9,7 @@ public class Tab : MonoBehaviour {
 	public GameObject content; 
 	public Material selectedMaterial;
 	public Transform contentArea; 
+	public bool isDefault;
 	private Material defaultMaterial;
 	private Material downMaterial; 
 	private Material upMaterial;
@@ -32,7 +33,7 @@ public class Tab : MonoBehaviour {
 		
 		if(selected)
 		{
-		 renderer.material = downMaterial;
+		    renderer.material = downMaterial;
 			buttonControl.mouseOver = downMaterial;
 		}
 	}
@@ -40,7 +41,7 @@ public class Tab : MonoBehaviour {
 	
 	public void EnableContent()
 	{
-		renderer.material = downMaterial;
+		renderer.material = selectedMaterial;
 		selected = true; 
 		page = Instantiate (content, contentArea.position, content.transform.rotation) as GameObject;
 		page.transform.parent = transform.parent.parent;

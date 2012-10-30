@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+using System.Runtime.Serialization;
 public class Overview : MonoBehaviour {
 
 	
@@ -15,7 +15,9 @@ public class Overview : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
+		moneyText.GetComponent<TextMesh>().text = MoneyManager.money.ToString();
+		actualMoneyText.GetComponent<TextMesh>().text = MoneyManager.actualMoney.ToString();
 	}
 }

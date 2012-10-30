@@ -70,6 +70,7 @@
      <Compile Include="Assets\Scripts\GUI\Helpers\ColorPicker.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\CreateGraph.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\CreateTable.cs" />
+     <Compile Include="Assets\Scripts\GUI\Helpers\DefaultTab.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\GetSelectedObject.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ObjectPlacement.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ObjectSelect.cs" />

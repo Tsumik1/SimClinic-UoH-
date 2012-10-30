@@ -1,18 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\Helpers\ScrollControl.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\FinanceScreen\Overview.cs">
     <Files>
+      <File FileName="Assets\Scripts\GUI\Buttons\Tab.cs" Line="44" Column="31" />
       <File FileName="Assets\Scripts\GameObjects\BasicObject.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\Helpers\CreateTable.cs" Line="54" Column="20" />
+      <File FileName="Assets\Scripts\GUI\Helpers\CreateTable.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\GUI\Managers\TimeManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\Helpers\CreateGraph.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameObjects\HealthBar.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\FinanceScreen\LoanScreen.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\Managers\DegradableManager.cs" Line="35" Column="3" />
-      <File FileName="Assets\Scripts\GUI\Helpers\RepairButtonUI.cs" Line="23" Column="34" />
-      <File FileName="Assets\Scripts\GUI\Displays\DetectClicksAndTouches.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\Helpers\ScrollControl.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Camera\SwitchToFirstPerson.cs" Line="23" Column="1" />
+      <File FileName="Assets\Scripts\GUI\Helpers\DefaultTab.cs" Line="15" Column="26" />
+      <File FileName="Assets\Scripts\GUI\FinanceScreen\Overview.cs" Line="24" Column="1" />
+      <File FileName="Assets\Scripts\GUI\FinanceScreen\Outgoings.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
