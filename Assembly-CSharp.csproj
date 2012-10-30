@@ -69,12 +69,16 @@
      <Compile Include="Assets\Scripts\GUI\GameOver\PlayAgain.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ColorPicker.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\CreateGraph.cs" />
+     <Compile Include="Assets\Scripts\GUI\Helpers\CreateTable.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\GetSelectedObject.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ObjectPlacement.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ObjectSelect.cs" />
+     <Compile Include="Assets\Scripts\GUI\Helpers\RepairButtonUI.cs" />
+     <Compile Include="Assets\Scripts\GUI\Helpers\ScrollControl.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ScrollTexture.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\SelectObjectOnClicked.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ToolTipC.cs" />
+     <Compile Include="Assets\Scripts\GUI\Managers\DegradableManager.cs" />
      <Compile Include="Assets\Scripts\GUI\Managers\GUIManager.cs" />
      <Compile Include="Assets\Scripts\GUI\Managers\HealthManager.cs" />
      <Compile Include="Assets\Scripts\GUI\Managers\MoneyManager.cs" />

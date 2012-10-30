@@ -73,6 +73,15 @@ public class BasicObject : MonoBehaviour
 		}
 	}
 	
+	public GameObject GetHealthBar()
+	{
+		//healthy = healthBar;
+		healthy = Instantiate (healthBar, transform.position, Quaternion.identity) as GameObject;
+		healthy.renderer.enabled = false;
+		healthy.transform.parent = transform; 
+		return healthy; 
+	}
+	
 	public void DisableButtons ()
 	{
 		if (helper) {
@@ -80,6 +89,17 @@ public class BasicObject : MonoBehaviour
 		}
 	}
 	
+	public void DestroyChildren()
+	{
+		if(healthy)
+		{
+			Destroy (healthy);
+		}
+		if(transform.Find("RepairButtonUI").gameObject != null)
+			Destroy(transform.Find("RepairButtonUI").gameObject);
+		if(transform.Find ("HealthBar").gameObject != null)
+			Destroy (transform.Find ("HealthBar").gameObject);
+	}
 	
 	// Update is called once per frame
 	void Update ()
@@ -164,5 +184,12 @@ public class BasicObject : MonoBehaviour
 	{
 
 	}
-
+	
+	void OnDestroy()
+	{
+		if(degradable)
+		{
+			DegradableManager.Remove (this);
+		}
+	}
 }

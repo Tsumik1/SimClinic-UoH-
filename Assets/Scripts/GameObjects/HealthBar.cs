@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 
 public class HealthBar : MonoBehaviour {
-
+	
+	public bool needsPositioning = true; 
 	private Vector3 defaultPosition;
 	private Vector3 defaultScale; 
 	
@@ -14,7 +15,8 @@ public class HealthBar : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		
+		if(needsPositioning)
+		{
 		float colliderScaleY = transform.parent.transform.lossyScale.y/2;
 		float colliderPositionY = transform.parent.transform.position.y; 
 		
@@ -30,6 +32,7 @@ public class HealthBar : MonoBehaviour {
 		
 		transform.position = healthBarPosition;
 		//transform.Rotate(0,90,0, Space.Self);
+		}
 	}
 	
 	// Update is called once per frame
