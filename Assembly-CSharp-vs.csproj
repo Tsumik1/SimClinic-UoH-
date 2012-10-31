@@ -72,6 +72,7 @@
      <Compile Include="Assets\Scripts\GUI\Helpers\CreateTable.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\DefaultTab.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\GetSelectedObject.cs" />
+     <Compile Include="Assets\Scripts\GUI\Helpers\NameGenerator.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ObjectPlacement.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ObjectSelect.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\RepairButtonUI.cs" />
@@ -94,6 +95,8 @@
      <Compile Include="Assets\Scripts\GameObjects\OnObjectButtons\PositionButtons.cs" />
      <Compile Include="Assets\Scripts\GameObjects\OnObjectButtons\RepairButton.cs" />
      <Compile Include="Assets\Scripts\GameObjects\OnObjectButtons\SellButton.cs" />
+     <Compile Include="Assets\Scripts\GameObjects\Patient.cs" />
+     <Compile Include="Assets\Scripts\GameObjects\Staff.cs" />
      <Compile Include="Assets\Scripts\GameObjects\WallsDown.cs" />
      <Compile Include="Assets\Scripts\GameObjects\WallsUp.cs" />
      <Compile Include="Assets\Scripts\Helper\PathThroughObjects.cs" />
