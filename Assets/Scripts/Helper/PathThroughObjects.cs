@@ -4,8 +4,8 @@ using System.Collections;
 public class PathThroughObjects : MonoBehaviour 
 {
 	public GameObject[] pathPoints; 
+	//public Path path; 
 	public float speed = 1.0f; 
-	//public float goalSize = 0.1f;
 	public bool destroyAtEnd = false;
 	
 	private int currentPathIndex = 0; 

@@ -2,15 +2,10 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameObjects\Staff.cs">
     <Files>
-      <File FileName="Assets\Scripts\GUI\Buttons\Tab.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameObjects\BasicObject.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\Helpers\CreateTable.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\Managers\TimeManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\Helpers\DefaultTab.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\FinanceScreen\Overview.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\FinanceScreen\Outgoings.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Camera\Orbit.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameObjects\Staff.cs" Line="16" Column="22" />
+      <File FileName="Assets\Scripts\Helper\PathThroughObjects.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Helper\Route.cs" Line="16" Column="30" />
+      <File FileName="Assets\Scripts\Helper\Waypoint.cs" Line="15" Column="23" />
+      <File FileName="Assets\Scripts\GameObjects\Staff.cs" Line="98" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
