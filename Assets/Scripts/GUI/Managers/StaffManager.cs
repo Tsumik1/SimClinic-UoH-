@@ -9,7 +9,16 @@ public class StaffManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 	
+	}
+	
+	void UpdateStaffActions()
+	{
+		foreach(Staff staff in FindObjectsOfType(typeof(Staff)))
+		{
+			staff.hoursUntilNextAction--;
+		}
 	}
 }

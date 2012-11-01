@@ -10,19 +10,50 @@ public class Waypoint : MonoBehaviour {
 		work, 
 		wait,
 		book,
+		enter,
+		exit,
+		pace,
 	}
 	
-	public Action action;
+	public Action defaultAction;
+	public Action action{get;set;}
+	public bool visited = false; 
+	public int timeToStayAtWaypoint;
 	public GameObject point;
 	
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
-	
+		action = defaultAction;
+		switch(action)
+		{
+		case Action.work:
+			timeToStayAtWaypoint = 4;
+			break;
+		case Action.wait:
+			timeToStayAtWaypoint = 1;
+			break;
+		case Action.book:
+			timeToStayAtWaypoint = 1;
+			break;
+		default:
+			timeToStayAtWaypoint = 0;
+			break;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
+	}
+	
+	public int GetWaitTime()
+	{
+		return timeToStayAtWaypoint;
+	}
+	
+	public void WaypointHit(bool hit)
+	{
+		visited = hit;
 	}
 }

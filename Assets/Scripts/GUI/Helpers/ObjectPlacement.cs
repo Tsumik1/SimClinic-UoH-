@@ -79,15 +79,12 @@ public class ObjectPlacement : MonoBehaviour {
 			// keep track of the distance between this gameObject and destinationPosition
 			destinationDistance = Vector3.Distance(destinationPosition, myTransform.position);
 	 
-			if(destinationDistance < .5f){		// To prevent shakin behavior when near destination
+			if(destinationDistance < .5f){		// To prevent shaking behavior when near destination
 				moveSpeed = 0;
 			}
 			else if(destinationDistance > .5f){			// To Reset Speed to default
 				moveSpeed = 100;
 			}
-	 
-	
-			// Moves the Player if the Left Mouse Button was clicked
 	
 				Plane playerPlane = new Plane(Vector3.up, myTransform.position);
 				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -97,28 +94,8 @@ public class ObjectPlacement : MonoBehaviour {
 					Vector3 targetPoint = ray.GetPoint(hitdist);
 					destinationPosition = ray.GetPoint(hitdist);
 					Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
-					//myTransform.rotation = targetRotation;
 				}
-	//		// Moves the player if the mouse button is hold down
-	//		else if (Input.GetMouseButton(0)&& GUIUtility.hotControl ==0) {
-	// 
-	//			Plane playerPlane = new Plane(Vector3.up, myTransform.position);
-	//			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-	//			float hitdist = 0.0f;
-	// 
-	//			if (playerPlane.Raycast(ray, out hitdist)) {
-	//				Vector3 targetPoint = ray.GetPoint(hitdist);
-	//				destinationPosition = ray.GetPoint(hitdist);
-	//				Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
-	//				myTransform.rotation = targetRotation;
-	//			}
-	//		//	myTransform.position = Vector3.MoveTowards(myTransform.position, destinationPosition, moveSpeed * Time.deltaTime);
-	//		}
-	 
-			// To prevent code from running if not needed
 			if(destinationDistance > .2f){
-				//float temp = 0f + transform.lossyScale.y /2;
-				//destinationPosition.y = temp;
 				myTransform.position = Vector3.MoveTowards(myTransform.position, destinationPosition, (moveSpeed ) * 2);
 				if(type == Type.deskTopObject)
 				{
@@ -136,12 +113,6 @@ public class ObjectPlacement : MonoBehaviour {
 				{
 					renderer.materials[1].color = Color.green;
 				}
-
-//			foreach (Transform child in transform) 
-//			{
-//            	child.renderer.material.color = Color.green; 
-//        	}
-			//transform.Find("Turret").renderer.material.color = Color.green;
 			}
 		else
 			{
@@ -150,8 +121,6 @@ public class ObjectPlacement : MonoBehaviour {
 				{
 					renderer.materials[1].color = Color.red;
 				}
-
-							//transform.Find("Turret").renderer.material.color = Color.red;
 			}
 		}
 		
@@ -159,17 +128,11 @@ public class ObjectPlacement : MonoBehaviour {
 		{
 			ObjectPlacementManager.placing = false; 
 			renderer.material.color = defaultColour; 
-			//transform.Find("Turret").renderer.material.color = defaultColour;
-			//print (objectCollider.size.y);
-			//print (temp);
 			isPlaced = true;
 			BasicObject script = GetComponent(typeof(BasicObject)) as BasicObject;
 			script.EnableObject();
 			script.enabled = true;
-			
-			//SendMessage("EnableObject");
 			this.enabled = false;
-			//Destroy (this);
 		}
 		
 		if(Input.GetMouseButtonDown (1))
@@ -211,7 +174,6 @@ public class ObjectPlacement : MonoBehaviour {
 		case Type.deskTopObject:
 			if(other.type == Type.desk)
 			{
-				//defaultPosition = transform.position;
 				validPlace = true;
 				PlaceToTopOfObject(collision);
 				break;
@@ -237,23 +199,19 @@ public class ObjectPlacement : MonoBehaviour {
 		
 		temp.y = collision.transform.position.y + collider.size.z;
 		height = temp.y;
-		//transform.position = temp;
 	}
 	void OnCollisionEnter(Collision collision)
-	{
-			//validPlace = false; 
+	{ 
 		CheckValid (collision);
 	}
 	 
 	void OnCollisionStay(Collision collision)
 	{
-			//validPlace = false;
 		CheckValid (collision);
 	}
 	
 	void OnCollisionExit(Collision collision) {
 
-			//transform.position = defaultPosition;
 			validPlace = true;
     }
 	

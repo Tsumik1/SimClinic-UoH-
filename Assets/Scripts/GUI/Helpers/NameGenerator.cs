@@ -49,14 +49,14 @@ femaleMidName = new string[8]{"Elisabeth ", "Francis ", "Kerry ", "Carol ", "Pol
 femaleEndName = new string[10]{"Bjerre", "De-Santos", "Taylor", "Smith", "Harvery", "Spence", "Davies", "Porter", "Cobb", "Gooch"};
 }
 
-public void CreateName(bool maleName, int charNameLength)
+public string CreateName(bool maleName, int charNameLength)
 {
 nameLevel = 1;
 
 isMale = maleName;
 nameLength = charNameLength;
 
-GenerateName();
+return GenerateName();
 }
 
 public string GenerateName()
@@ -69,8 +69,8 @@ cName.Append(PickName());
 }
 
 CharName = cName.ToString();
-		return CharName;
 Debug.Log("Name: " + CharName);
+		return CharName;
 }
 
 private string PickName()

@@ -109,6 +109,7 @@
      <Compile Include="Assets\Scripts\Helper\SetTimeScaleOnClick.cs" />
      <Compile Include="Assets\Scripts\Helper\Spawner.cs" />
      <Compile Include="Assets\Scripts\Helper\Waypoint.cs" />
+     <Compile Include="Assets\Scripts\Lib\Mathfx.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />

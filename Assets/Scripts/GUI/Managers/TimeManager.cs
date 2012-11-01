@@ -15,7 +15,7 @@ public class TimeManager : MonoBehaviour
 	public static Day currentDay; 
 	public static Month currentMonth; 
 	public static Year currentYear; 
-	
+	public static Hour currentHour;
 	//private int month; 
 	// Use this for initialization
 	public class Day
@@ -173,6 +173,17 @@ public class TimeManager : MonoBehaviour
 		
 	}
 	
+	public class Hour
+	{
+		public int hour; 
+		
+		public bool endOfDay;
+		
+		public Hour(int theHour)
+		{
+			hour = theHour;
+		}
+	}
 	void Awake() 
 	{
 		//Will use playerprefs here to sort this out but for testing purposes...
@@ -181,9 +192,10 @@ public class TimeManager : MonoBehaviour
 		Time.timeScale = timeSpeed; 
 		//month = currentDate.Month;
 		currentDay = new Day();
-		currentDay.day = currentDate.Day;
 		currentMonth = new Month();
 		currentYear = new Year();
+		currentHour = new Hour(currentDate.Hour);
+		currentDay.day = currentDate.Day;
 		currentYear.year = currentDate.Year;
 		currentMonth.month = currentDate.Month;
 		//PerformMonthlyActions();
@@ -195,7 +207,7 @@ public class TimeManager : MonoBehaviour
 	{
 		//Time.timeScale = timeSpeed;
 		
-		currentDate = currentDate.AddSeconds (Time.deltaTime);
+		currentDate = currentDate.AddSeconds (Time.deltaTime * 2);
 		//checks end of day. 
 		CheckDay ();
 		CheckMonth();
