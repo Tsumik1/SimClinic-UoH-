@@ -40,12 +40,14 @@ public class Staff : MonoBehaviour {
 	private int waypointNumber = 0; 
 	private int nextWayPointNumber = 0;
 	
+	public int waypointTracker;
 	// Use this for initialization
 	void Start () {
 		SetRole(defaultRole);
 		nameGenerator = new NameGenerator();
 		GenerateName();
-		SelectRoute (); //BuildWaypoints ();
+		GetDefaultRoute();
+		//SelectRoute (); //BuildWaypoints ();
 		MoveToStart ();
 		SetState();
 		movementDirection = (transform.position).normalized;
@@ -58,16 +60,24 @@ public class Staff : MonoBehaviour {
 	
 	void NextWaypoint()
 	{
-		if(currentWaypoint.visited && nextWaypoint.visited)
+		if(nextWaypoint.visited)
 		{
 			
 		currentWaypoint = nextWaypoint;
-		waypointNumber++;
+
 		nextWayPointNumber++;
-		if(nextWayPointNumber <= waypoints.Count)
+		if(nextWayPointNumber < waypoints.Count)
 		{
+			waypointNumber++;
 			nextWaypoint = waypoints[nextWayPointNumber];	
 		}
+			else
+			{
+				nextWayPointNumber = waypointNumber;
+				SelectRoute();
+				print ("I have nowhere to go...");
+				//END OF LINE...FOR NOW :). 
+			}
 		hoursUntilNextAction = currentWaypoint.GetWaitTime ();
 		SetState();
 		}
@@ -79,10 +89,19 @@ public class Staff : MonoBehaviour {
 		path = null; 
 	}
 	
-	
 	void BuildWaypoints()
 	{
-		waypoints = new List<Waypoint>();
+		waypointNumber = 0;
+		nextWayPointNumber = 0;
+		if(waypoints != null)
+		{
+			waypoints.Clear ();
+			waypoints.TrimExcess ();
+		}
+		else
+		{
+			waypoints = new List<Waypoint>();
+		}
 		foreach(Waypoint point in path.GetWayPoints ())
 		{
 			waypoints.Add (point);
@@ -124,7 +143,7 @@ public class Staff : MonoBehaviour {
 	
 	void ForceExit()
 	{
-		nextWaypoint = waypoints[waypoints.Count];
+		nextWaypoint = waypoints[waypoints.Count-1];
 	}
 	
 	void MoveToStart()
@@ -140,7 +159,7 @@ public class Staff : MonoBehaviour {
 	{
 		if(staffName == "")
 		{
-			staffName = nameGenerator.CreateName (male,Random.Range (2,6));
+			staffName = nameGenerator.CreateName (male,Random.Range (2,3));
 		}
 		
 	}
@@ -164,6 +183,8 @@ public class Staff : MonoBehaviour {
 			transform.position = destination;//Vector3.Lerp (transform.position, destination, Time.deltaTime * 0.5f);
 			transform.LookAt (nextWaypoint.point.transform);
 		}
+		waypointTracker = nextWayPointNumber;
+		
 		
 	}
 	
@@ -213,11 +234,26 @@ public class Staff : MonoBehaviour {
 		BuildWaypoints ();
 	}
 	
+	void GetDefaultRoute()
+	{
+		Route[] routes = FindObjectsOfType (typeof(Route)) as Route[];
+		foreach(Route route in routes)
+		{
+			if(route.type == Route.Type.entry)
+			{
+				path = route;
+			}
+		}
+		BuildWaypoints();
+	}
 	void OnCollisionEnter(Collision other)
 	{
-		print (other.transform.name);
 		other.transform.SendMessage("WaypointHit", true);
 	}
 	
+	void OnCollisionExit(Collision other)
+	{
+		other.transform.SendMessage ("WaypointHit", false);
+	}
 
 }

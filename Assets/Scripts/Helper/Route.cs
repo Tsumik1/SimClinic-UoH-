@@ -5,6 +5,7 @@ public class Route : MonoBehaviour {
 	
 	public enum Type 
 	{
+		entry,
 		receptionist,
 		practitioner,
 		caretaker,
@@ -16,11 +17,13 @@ public class Route : MonoBehaviour {
 	
 	public Waypoint[] waypoints; // Can be pre-defined
 	public Type type {get; set;} 
+	public Type defaultType; 
 	public bool randomPath = false;
 			public int currentIndex = 0; 
 	// Use this for initialization
 	void Awake () 
 	{
+		type = defaultType;
 		if(randomPath)
 		{
 			CreateRandomPath();
@@ -66,6 +69,7 @@ public class Route : MonoBehaviour {
 	
 	public void CreateRandomPath()
 	{
+		currentIndex = 0;
 		//Path MUST contain at least one enter node and one exit node, minimum of 3 nodes. 
 		Waypoint[] worldPoints = FindObjectsOfType(typeof(Waypoint)) as Waypoint[];
 
@@ -77,7 +81,6 @@ public class Route : MonoBehaviour {
 		{
 			if(IsEntry (point))
 			{
-				print ("GOT FUCKING HERE!");
 				entryPoints.Add (point);
 			}
 			if(IsExit (point))
@@ -94,7 +97,6 @@ public class Route : MonoBehaviour {
 		int other = Random.Range (1, otherPoints.Count-1);
 		int size = entryNodes + exitNodes + other; 
 				waypoints = new Waypoint[size];
-
 			for(int i = 0; i <= entryNodes; i++)
 			{
 				int E = Random.Range (0, entryPoints.Count);
@@ -125,7 +127,7 @@ public class Route : MonoBehaviour {
 	{
 		foreach(Waypoint w in waypoints)
 		{
-			w.transform.parent = transform;
+			//w.transform.parent = transform;
 		}
 	}
 	
@@ -169,14 +171,30 @@ public class Route : MonoBehaviour {
 	
 	void OnDrawGizmos()
 	{
-		if(randomPath)
+		try
 		{
-				Gizmos.DrawLine (transform.position, waypoints[0].point.transform.position);
+			if(randomPath)
+			{
+				//Gizmos.DrawLine (transform.position, waypoints[0].point.transform.position);
 		
-		for(int i = 1; i < waypoints.Length;i++)
+				for(int i = 1; i < waypoints.Length;i++)
+				{
+					Gizmos.DrawLine(waypoints[i-1].point.transform.position, waypoints[i].point.transform.position);
+				}
+			}
+			else
+				if(waypoints != null)
+			{
+				for(int i = 1; i < waypoints.Length;i++)
+				{
+					Gizmos.DrawLine(waypoints[i-1].point.transform.position, waypoints[i].point.transform.position);
+				}
+			}
+		}
+		catch
 		{
-			Gizmos.DrawLine(waypoints[i-1].point.transform.position, waypoints[i].point.transform.position);
+			print ("No Nodes Found");
 		}
-		}
+
 	}
 }
