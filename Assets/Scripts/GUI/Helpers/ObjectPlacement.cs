@@ -28,6 +28,7 @@ public class ObjectPlacement : MonoBehaviour {
  	private bool validPlace = true; 
 	private bool isPlaced = false; 
 	private Color defaultColour;
+	private Material defaultMaterial; 
 	private Vector3 defaultPosition;
 	//private Component script;
 	public float moveSpeed = 10000;	
@@ -52,7 +53,8 @@ public class ObjectPlacement : MonoBehaviour {
 		myTransform = transform;							// sets myTransform to this GameObject.transform
 		destinationPosition = myTransform.position;			// prevents myTransform reset
 		defaultColour = renderer.material.color; 
-				defaultPosition = transform.position;
+		defaultMaterial = renderer.material;
+		defaultPosition = transform.position;
 		
 	}
 	
@@ -108,18 +110,20 @@ public class ObjectPlacement : MonoBehaviour {
 			
 		if(validPlace)
 			{
-			  renderer.material.color = Color.green; 
+			 // renderer.material.color = Color.green; 
+				renderer.material = ObjectColours.valid;
 				if(renderer.materials.Length > 1)
 				{
-					renderer.materials[1].color = Color.green;
+					renderer.materials[1] = ObjectColours.valid;
 				}
 			}
 		else
 			{
-				renderer.material.color = Color.red; 
+				//renderer.material.color = Color.red; 
+				renderer.material = ObjectColours.invalid;
 				if(renderer.materials.Length > 1)
 				{
-					renderer.materials[1].color = Color.red;
+					renderer.materials[1] = ObjectColours.invalid;
 				}
 			}
 		}
@@ -127,7 +131,8 @@ public class ObjectPlacement : MonoBehaviour {
 		if(Input.GetMouseButtonDown(0) && validPlace)
 		{
 			ObjectPlacementManager.placing = false; 
-			renderer.material.color = defaultColour; 
+			//renderer.material.color = defaultColour; 
+			renderer.material = defaultMaterial;
 			isPlaced = true;
 			BasicObject script = GetComponent(typeof(BasicObject)) as BasicObject;
 			script.EnableObject();
@@ -138,8 +143,8 @@ public class ObjectPlacement : MonoBehaviour {
 		if(Input.GetMouseButtonDown (1))
 		{
 			ObjectPlacementManager.placing = false;
+			MoneyManager.money += GetComponent<BasicObject>().cost;
 			Destroy (gameObject);
-			
 		}
 	}
 	
@@ -197,7 +202,7 @@ public class ObjectPlacement : MonoBehaviour {
 		BoxCollider collider = collision.gameObject.GetComponent<BoxCollider>();
 		Vector3 temp = collision.transform.position;
 		
-		temp.y = collision.transform.position.y + collider.size.z;
+		temp.y = collision.gameObject.GetComponent<BoxCollider>().transform.position.y + collider.size.z;
 		height = temp.y;
 	}
 	void OnCollisionEnter(Collision collision)

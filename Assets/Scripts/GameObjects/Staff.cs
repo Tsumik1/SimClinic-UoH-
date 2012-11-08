@@ -161,7 +161,6 @@ public class Staff : MonoBehaviour {
 		{
 			staffName = nameGenerator.CreateName (male,Random.Range (2,3));
 		}
-		
 	}
 	// Update is called once per frame
 	void Update () 

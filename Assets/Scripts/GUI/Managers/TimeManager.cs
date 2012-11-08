@@ -207,7 +207,7 @@ public class TimeManager : MonoBehaviour
 	{
 		//Time.timeScale = timeSpeed;
 		
-		currentDate = currentDate.AddSeconds (Time.deltaTime * 2);
+		currentDate = currentDate.AddSeconds (Time.deltaTime * 4);
 		//checks end of day. 
 		CheckDay ();
 		CheckMonth();

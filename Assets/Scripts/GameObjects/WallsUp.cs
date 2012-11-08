@@ -10,6 +10,7 @@ public class WallsUp : MonoBehaviour {
 	public static bool wallsup = false; 
 	
 	private GameObject wallObject;
+	public Transform defaultTransform; 
 		// Use this for initialization
 	void Start () {
 	
@@ -24,7 +25,7 @@ public class WallsUp : MonoBehaviour {
 	{
 		if(!wallsup)
 		{	
-			wallObject = Instantiate (walls) as GameObject;
+			wallObject = Instantiate (walls, defaultTransform.position, defaultTransform.rotation) as GameObject;
 
 			wallsup = true;
 			GameObject wall = GameObject.FindGameObjectWithTag ("walldown") as GameObject;

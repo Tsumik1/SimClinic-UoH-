@@ -12,7 +12,8 @@ public class Route : MonoBehaviour {
 		cleaner,
 		gardener,
 		patient,
-		patientSpecificNeed
+		patientSpecificNeed,
+		exit
 	}
 	
 	public Waypoint[] waypoints; // Can be pre-defined
@@ -27,7 +28,6 @@ public class Route : MonoBehaviour {
 		if(randomPath)
 		{
 			CreateRandomPath();
-			//DrawGizmos();
 		}
 	}
 	

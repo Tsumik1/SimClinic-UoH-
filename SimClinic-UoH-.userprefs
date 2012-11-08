@@ -1,15 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Helper\Route.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameObjects\WallsUp.cs">
     <Files>
-      <File FileName="Assets\Scripts\GameObjects\Staff.cs" Line="92" Column="23" />
-      <File FileName="Assets\Scripts\Helper\Route.cs" Line="47" Column="3" />
+      <File FileName="Assets\Scripts\GameObjects\WallsUp.cs" Line="13" Column="37" />
+      <File FileName="Assets\Scripts\Helper\Route.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameObjects\Staff.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Helper\PathThroughObjects.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Helper\Waypoint.cs" Line="56" Column="3" />
-      <File FileName="Assets\Scripts\GUI\Helpers\ObjectPlacement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Helper\Waypoint.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\GUI\Managers\StaffManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\Managers\TimeManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Helper\Spawner.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUI\Buttons\SwitchScreen.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Shaders\Glass.shader" Line="45" Column="3" />
+      <File FileName="Assets\Scripts\Helper\ObjectColours.cs" Line="27" Column="2" />
+      <File FileName="Assets\Scripts\GUI\Managers\MoneyManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUI\Helpers\ObjectPlacement.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -3,8 +3,6 @@ using System.Collections;
 
 public class Waypoint : MonoBehaviour {
 	
-	
-	
 	public enum Action
 	{
 		work, 
@@ -13,6 +11,8 @@ public class Waypoint : MonoBehaviour {
 		enter,
 		exit,
 		pace,
+		staff,
+		patient, 
 	}
 	
 	public Action defaultAction;
