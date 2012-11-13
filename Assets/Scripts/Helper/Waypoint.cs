@@ -31,24 +31,6 @@ public class Waypoint : MonoBehaviour {
 	void Awake () 
 	{
 		action = defaultAction;
-		switch(action)
-		{
-		case Action.work:
-			timeToStayAtWaypoint = 4;
-			break;
-		case Action.reception:
-			timeToStayAtWaypoint = 0;
-			break;
-		case Action.wait:
-			timeToStayAtWaypoint = 1;
-			break;
-		case Action.book:
-			timeToStayAtWaypoint = 1;
-			break;
-		default:
-			timeToStayAtWaypoint = 0;
-			break;
-		}
 	}
 	
 	// Update is called once per frame

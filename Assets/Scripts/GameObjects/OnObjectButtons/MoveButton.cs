@@ -17,6 +17,7 @@ public class MoveButton : MonoBehaviour {
 	{
 		BasicObject master = transform.parent.parent.GetComponent (typeof(BasicObject)) as BasicObject;
 		master.isOn = false; 
+		master.DisableHealth();
 		ObjectPlacement movement = transform.parent.parent.GetComponent (typeof(ObjectPlacement)) as ObjectPlacement;
 
 		movement.enabled = true;

@@ -36,6 +36,7 @@ public class Staff : MonoBehaviour {
 	public int hoursUntilNextAction;
 	public int patientIncrease; 
 	public int waypointTracker;
+	public string currentState; 
 	
 	private Waypoint currentWaypoint; 
 	private Waypoint nextWaypoint;
@@ -131,13 +132,34 @@ void TakeReceptionOwnership()
 		}
 			else
 			{
-				nextWayPointNumber = waypointNumber;
-				SelectRoute();
-				print ("I have nowhere to go...");
-				//END OF LINE...FOR NOW :). 
+				if(state == State.entering)
+				{
+					nextWayPointNumber = waypointNumber;
+					SelectRoute();
+					state = State.waiting;
+					hoursUntilNextAction = currentWaypoint.GetWaitTime ();	
+				}
+				if(state == State.leaving)
+				{
+					nextWayPointNumber = waypointNumber;
+					state = State.leaving;
+					hoursUntilNextAction = currentWaypoint.GetWaitTime ();	
+				}
+				if(state == State.working)
+				{
+					nextWayPointNumber = waypointNumber;
+					SelectRoute();
+					state = State.waiting;
+					hoursUntilNextAction = currentWaypoint.GetWaitTime ();	
+				}
+				else
+				{
+					nextWayPointNumber = waypointNumber;
+					print (staffName + ": 'I have nowhere to go...'");
+				}
+
 			}
-		hoursUntilNextAction = currentWaypoint.GetWaitTime ();
-		SetState();
+		//SetState();
 		}
 	}
 	
@@ -193,15 +215,25 @@ void TakeReceptionOwnership()
 		case Waypoint.Action.enter:
 			state = State.entering;
 			break;
+		case Waypoint.Action.exit:
+			state = State.leaving; 
+			break; 
+		case Waypoint.Action.reception:
+			state = State.working;
+			break;
+		case Waypoint.Action.receptionAction:
+			state = State.working;
+			break;
+			
 		default:
 			state = State.entering;
 			break;
 		}
 	}
 	
-	void GetState()
+	public State GetState()
 	{
-		
+		return state; 
 	}
 	
 	void ForceExit()
@@ -230,6 +262,7 @@ void TakeReceptionOwnership()
 	// Update is called once per frame
 	void Update () 
 	{
+		currentState = state.ToString ();
 		TakeOwnership();
 		if(state == State.waiting)
 		{
@@ -261,7 +294,7 @@ void TakeReceptionOwnership()
 	
 	void SelectRoute()
 	{
-		path = new Route();
+		//path = new Route();
 	 	Route[] routes = FindObjectsOfType(typeof(Route)) as Route[];
 		List<Route> avaliableRoutes = new List<Route>();
 		foreach(Route route in routes)
@@ -319,13 +352,17 @@ void TakeReceptionOwnership()
 	}
 	public void GoHome()
 	{
+		state = State.leaving;
 		GetExitRoute(); 
+		hoursUntilNextAction = 0;
+
 	}
 	public void StartWork()
 	{
+		state = State.entering;
 		MoveToStart ();
 		GetDefaultRoute(); 
-		SetState();
+
 	}
 	void GetDefaultRoute()
 	{
@@ -341,12 +378,16 @@ void TakeReceptionOwnership()
 	}
 	void OnCollisionEnter(Collision other)
 	{
-		other.transform.SendMessage("WaypointHit", true);
+		if(other.transform.GetComponent(typeof(Waypoint)))
+			other.transform.SendMessage("WaypointHit", true);
+		//other.transform.SendMessage();
 	}
 	
 	void OnCollisionExit(Collision other)
 	{
-		other.transform.SendMessage ("WaypointHit", false);
+		if(other.transform.GetComponent (typeof(Waypoint)))
+			other.transform.SendMessage("WaypointHit", false);
+		//other.transform.SendMessage ("WaypointHit", false);
 	}
 
 }

@@ -219,7 +219,7 @@ public class TimeManager : MonoBehaviour
 	{
 		//Time.timeScale = timeSpeed;
 		
-		currentDate = currentDate.AddSeconds (Time.deltaTime * 4);
+		currentDate = currentDate.AddSeconds (Time.deltaTime * 10);
 		//checks end of day. 
 		CheckDay ();
 		CheckMonth();
@@ -267,7 +267,8 @@ public class TimeManager : MonoBehaviour
 	}
 	public static void CheckHour()
 	{
-		if(currentDate.Hour > currentHour.hour || currentDate.Hour < currentHour.hour && currentHour.endOfDay)
+		//print(currentDate.Hour);
+		if(currentDate.Hour > currentHour.hour || currentDate.Hour == 0 && currentHour.hour == 23)
 		{
 			PerformHourlyActions();
 			currentHour.hour = currentDate.Hour;
@@ -312,6 +313,7 @@ public class TimeManager : MonoBehaviour
 			StaffManager.GoHome();	
 		}
 		StaffManager.UpdateStaffActions();
+		//print(currentHour.hour);
 	}
 	
 	//Yearly Actions
@@ -355,20 +357,53 @@ public class TimeManager : MonoBehaviour
 	
 	public static int HoursUntilOpeningTime()
 	{
+		int hoursRemaining; 
 		switch(currentHour.hour)
 		{
 		case 0:
-			return 9;
+			hoursRemaining = openingTime;
+			break;
 		case 1:
-			return 8; 
+			hoursRemaining = openingTime -1;
+			break;
 		case 2: 
-			return 7;
-		case 3:
-			return 6;
+			hoursRemaining = openingTime -2; 
+			break;
+		case 3: 
+			hoursRemaining = openingTime -3; 
+			break;
 		case 4: 
-			return 5;
+			hoursRemaining = openingTime -4; 
+			break;
 		case 5: 
-			return 4;
+			hoursRemaining = openingTime -5;
+			break;
+		case 6: 
+			hoursRemaining = openingTime - 6; 
+			break; 
+		case 7: 
+			hoursRemaining = openingTime -7;
+			break;
+		case 8: 
+			hoursRemaining = openingTime -8; 
+			break;
+		case 9: 
+			hoursRemaining = openingTime -9; 
+			break;
+		default: 
+			hoursRemaining = 9; 
+			break;
 		}
+		if (currentHour.hour == openingTime)
+		{
+			hoursRemaining = 0; 
+		}
+		if(currentHour.hour == closingTime)
+		{
+			hoursRemaining = 24 - (closingTime - openingTime);
+		}
+		if(hoursRemaining < 0)
+			hoursRemaining = 0; 
+	return hoursRemaining;
 	}
 }

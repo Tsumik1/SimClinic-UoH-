@@ -51,7 +51,7 @@ public class Route : MonoBehaviour {
 			//If the staff member owns the waypoint(i.e the desk)
 			if(point.owner == staffMember)
 			{
-				avaliablePoints.Add (point);	
+				avaliablePoints.Add (point);
 			}
 			if(point.action == Waypoint.Action.receptionAction)
 			{
@@ -214,7 +214,7 @@ public class Route : MonoBehaviour {
 				}
 			}
 			else
-				if(waypoints != null)
+			if(waypoints != null)
 			{
 				for(int i = 1; i < waypoints.Length;i++)
 				{
