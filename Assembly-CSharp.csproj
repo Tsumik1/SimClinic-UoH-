@@ -150,6 +150,7 @@
      <Compile Include="Assets\Scripts\GUI\Helpers\CreateTable.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\DefaultTab.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\GetSelectedObject.cs" />
+     <Compile Include="Assets\Scripts\GUI\Helpers\LookAtMouse.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\NameGenerator.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ObjectPlacement.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ObjectSelect.cs" />
@@ -190,6 +191,9 @@
      <Compile Include="Assets\Scripts\Helper\Spawner.cs" />
      <Compile Include="Assets\Scripts\Helper\Waypoint.cs" />
      <Compile Include="Assets\Scripts\Lib\Mathfx.cs" />
+     <Compile Include="Assets\Scripts\Menu\Exit.cs" />
+     <Compile Include="Assets\Scripts\Menu\LoadScene.cs" />
+     <Compile Include="Assets\Scripts\Menu\SplashScreen.cs" />
      <None Include="Assets\NGUI\Resources\Shaders\Depth.shader" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />

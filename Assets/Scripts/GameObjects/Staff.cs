@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 public class Staff : MonoBehaviour {
+	
 	public enum Role
 	{
 		receptionist,
@@ -28,10 +29,13 @@ public class Staff : MonoBehaviour {
 	public Role role{get;set;}
 	public State state{get;set;} 
 	public Route path;
+	public Route blankRoute; 
 	public List<Waypoint>waypoints;
 	public string staffName;
 	public int salary;
 	public int hoursUntilNextAction;
+	public int patientIncrease; 
+	public int waypointTracker;
 	
 	private Waypoint currentWaypoint; 
 	private Waypoint nextWaypoint;
@@ -39,25 +43,79 @@ public class Staff : MonoBehaviour {
 	private NameGenerator nameGenerator;
 	private int waypointNumber = 0; 
 	private int nextWayPointNumber = 0;
-	
-	public int waypointTracker;
+	private bool assignedWorkplace = false; 
+
 	// Use this for initialization
 	void Start () {
 		SetRole(defaultRole);
 		nameGenerator = new NameGenerator();
 		GenerateName();
+		TakeOwnership(); 
 		GetDefaultRoute();
 		//SelectRoute (); //BuildWaypoints ();
-		MoveToStart ();
-		SetState();
+		hoursUntilNextAction = TimeManager.HoursUntilOpeningTime();
 		movementDirection = (transform.position).normalized;
+	}
+	
+void TakeReceptionOwnership()
+	{
+		foreach(Waypoint point in FindObjectsOfType(typeof(Waypoint)))
+		{
+			if(point.action == Waypoint.Action.reception)
+			{
+				if(point.owner == null)
+				{
+					point.owner = this;
+					assignedWorkplace = true; 
+				}
+				else
+				{
+					print ("No Objects To Own :(. Staff without purpose!");
+				}
+			}
+		}
+	}
+	
+	void TakeOwnership()
+	{
+		if(!assignedWorkplace)
+		{
+			switch(role)
+			{
+			case Role.receptionist:
+				TakeReceptionOwnership();
+				break;
+			default:
+				break;
+			}
+		}
+
+	}
+	void FindWorkPlace()
+	{
 		
 	}
 	void SetRole(Role newRole)
 	{
 		role = newRole;
 	}
-	
+	void FindWorkplace()
+	{
+		switch(role)
+			{
+			case Role.receptionist:
+				break;
+			case Role.caretaker:
+				break;
+			case Role.cleaner:
+				break;
+			case Role.gardener:
+				break;
+			case Role.practitioner:
+				break;
+			}
+		
+	}
 	void NextWaypoint()
 	{
 		if(nextWaypoint.visited)
@@ -91,6 +149,10 @@ public class Staff : MonoBehaviour {
 	
 	void BuildWaypoints()
 	{
+		if(state == State.waiting)
+		{
+			return;
+		}
 		waypointNumber = 0;
 		nextWayPointNumber = 0;
 		if(waypoints != null)
@@ -108,9 +170,10 @@ public class Staff : MonoBehaviour {
 		}
 		currentWaypoint = waypoints[waypointNumber];
 		nextWayPointNumber = waypointNumber + 1; 
-		if(waypoints[nextWayPointNumber] != null)
+		if(nextWayPointNumber < waypoints.Count)
 		{
-			nextWaypoint = waypoints[nextWayPointNumber];
+			if(waypoints[nextWayPointNumber] != null)
+				nextWaypoint = waypoints[nextWayPointNumber];
 		}
 	}
 	
@@ -153,6 +216,8 @@ public class Staff : MonoBehaviour {
 	public void HourPassed()
 	{
 		hoursUntilNextAction--;
+		if(hoursUntilNextAction < 0)
+			hoursUntilNextAction = 0;
 	}
 	
 	void GenerateName()
@@ -165,30 +230,38 @@ public class Staff : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if(hoursUntilNextAction == 0)
+		TakeOwnership();
+		if(state == State.waiting)
 		{
-			NextWaypoint ();
-		}
-		if(hoursUntilNextAction > 0)
-		{
-			transform.position = Vector3.Lerp (transform.position, currentWaypoint.transform.position, Time.deltaTime);
+			SelectRoute ();
 		}
 		else
 		{
-			Vector3 destination = transform.position; 
-			destination.x = Mathfx.Berp(transform.position.x, nextWaypoint.transform.position.x, Time.deltaTime * 0.5f);
-			destination.y = 0.5f;
-			destination.z = Mathfx.Berp(transform.position.z, nextWaypoint.transform.position.z, Time.deltaTime * 0.5f);
-			transform.position = destination;//Vector3.Lerp (transform.position, destination, Time.deltaTime * 0.5f);
-			transform.LookAt (nextWaypoint.point.transform);
+			if(hoursUntilNextAction == 0)
+			{
+				NextWaypoint ();
+			}
+			if(hoursUntilNextAction > 0)
+			{
+				transform.position = Vector3.Lerp (transform.position, currentWaypoint.transform.position, Time.deltaTime);
+			}
+			else
+			{
+				Vector3 destination = transform.position; 
+				destination.x = Mathfx.Berp(transform.position.x, nextWaypoint.transform.position.x, Time.deltaTime * 0.5f);
+				destination.y = 0.5f;
+				destination.z = Mathfx.Berp(transform.position.z, nextWaypoint.transform.position.z, Time.deltaTime * 0.5f);
+				transform.position = destination;//Vector3.Lerp (transform.position, destination, Time.deltaTime * 0.5f);
+				transform.LookAt (nextWaypoint.point.transform);
+			}
+			waypointTracker = nextWayPointNumber;
 		}
-		waypointTracker = nextWayPointNumber;
-		
-		
 	}
+	
 	
 	void SelectRoute()
 	{
+		path = new Route();
 	 	Route[] routes = FindObjectsOfType(typeof(Route)) as Route[];
 		List<Route> avaliableRoutes = new List<Route>();
 		foreach(Route route in routes)
@@ -196,9 +269,10 @@ public class Staff : MonoBehaviour {
 			switch(role)
 			{
 			case Role.receptionist:
+				
 				if(route.type == Route.Type.receptionist)
 				{
-					avaliableRoutes.Add (route);
+					path.CreateReceptionPath(this);
 				}
 				break;
 			case Role.caretaker:
@@ -228,11 +302,31 @@ public class Staff : MonoBehaviour {
 			}
 		}
 		
-		int routeIndex = Random.Range (0, avaliableRoutes.Count);
-		path = avaliableRoutes[routeIndex];
 		BuildWaypoints ();
 	}
 	
+	void GetExitRoute()
+	{
+		Route[] routes = FindObjectsOfType (typeof(Route)) as Route[];
+		foreach(Route route in routes)
+		{
+			if(route.type == Route.Type.exit)
+			{
+				path = route;
+			}
+		}
+		BuildWaypoints();
+	}
+	public void GoHome()
+	{
+		GetExitRoute(); 
+	}
+	public void StartWork()
+	{
+		MoveToStart ();
+		GetDefaultRoute(); 
+		SetState();
+	}
 	void GetDefaultRoute()
 	{
 		Route[] routes = FindObjectsOfType (typeof(Route)) as Route[];

@@ -7,7 +7,8 @@ public class TimeManager : MonoBehaviour
 	public GameObject timeDisplay; 
 	public GameObject dateDisplay;
 	public float timeSpeed = 1f; 
-
+	public static int openingTime = 9; 
+	public static int closingTime = 17; 
 	public static DateTime currentDate;
 	public static DateTime endDate;
 	
@@ -16,14 +17,17 @@ public class TimeManager : MonoBehaviour
 	public static Month currentMonth; 
 	public static Year currentYear; 
 	public static Hour currentHour;
+	
 	//private int month; 
 	// Use this for initialization
+	
+	//These are a bunch of helper support classes to better manage the time of day to be able to 
+	//effectivly perform actions when needed in specific time frames.
 	public class Day
 	{
 		//Simple class to help manage days. 
 		public int day; 
 		public bool endOfMonth;  
-		
 		
 		public Day()
 		{
@@ -183,12 +187,19 @@ public class TimeManager : MonoBehaviour
 		{
 			hour = theHour;
 		}
+		
+		public bool IsPM()
+		{
+			if(hour > 11)
+				return true;
+			else
+				return false;
+		}
 	}
 	void Awake() 
 	{
 		//Will use playerprefs here to sort this out but for testing purposes...
 		currentDate = new DateTime(2012,10,18);
-		endDate = new DateTime(2012,10,20);
 		Time.timeScale = timeSpeed; 
 		//month = currentDate.Month;
 		currentDay = new Day();
@@ -198,6 +209,7 @@ public class TimeManager : MonoBehaviour
 		currentDay.day = currentDate.Day;
 		currentYear.year = currentDate.Year;
 		currentMonth.month = currentDate.Month;
+		currentHour.hour = currentDate.Hour;
 		//PerformMonthlyActions();
 	}
 	
@@ -212,13 +224,16 @@ public class TimeManager : MonoBehaviour
 		CheckDay ();
 		CheckMonth();
 		CheckYear();
+		CheckHour();
+		
 		//currentMonth = currentDate.Month;
 		//currentDay.day = currentDate.Day;
 		//print (currentDate.Day);
 		
 		
 		//Output to Display
-		timeDisplay.GetComponent<TextMesh>().text = currentDate.ToString();
+		dateDisplay.GetComponent<TextMesh>().text = currentDate.ToShortDateString();
+		timeDisplay.GetComponent<TextMesh>().text = currentDate.ToShortTimeString ();
 		
 	}
 	
@@ -228,12 +243,35 @@ public class TimeManager : MonoBehaviour
 		while(!currentDay.isEndOfMonth(currentDate.Month))
 		{
 			//print (currentDay.day);
-			currentDate = currentDate.AddDays(1);
+			AddDay ();
 			CheckDay ();
 			//currentDay.day = currentDate.Day;
 			//PerformDailyActions();
 		}
 		currentDate = currentDate.AddDays (1);
+	}
+	
+	public static void AddDay()
+	{
+		for(int i = 0; i < 24; i++)
+		{
+			AddHour ();
+			CheckHour ();
+		}
+	}
+	
+	public static void AddHour()
+	{
+
+		currentDate = currentDate.AddHours (1);
+	}
+	public static void CheckHour()
+	{
+		if(currentDate.Hour > currentHour.hour || currentDate.Hour < currentHour.hour && currentHour.endOfDay)
+		{
+			PerformHourlyActions();
+			currentHour.hour = currentDate.Hour;
+		}
 	}
 	
 	public static void CheckDay()
@@ -262,17 +300,26 @@ public class TimeManager : MonoBehaviour
 		}
 	}
 	//Add Day
-	public static void AddDay()
+
+	public static void PerformHourlyActions()
 	{
-		currentDate = currentDate.AddDays (1);
+		if(currentHour.hour == openingTime)
+		{
+			StaffManager.StartWork();
+		}
+		if(currentHour.hour == closingTime)
+		{
+			StaffManager.GoHome();	
+		}
+		StaffManager.UpdateStaffActions();
 	}
-	
 	
 	//Yearly Actions
 	public static void PerformYearlyActions()
 	{
 		
 	}
+	
 	//Monthly Actions
 	public static void PerformMonthlyActions()
 	{
@@ -304,5 +351,24 @@ public class TimeManager : MonoBehaviour
 	public static string GetMonthName(int i)
 	{
 		return currentMonth.getMonthName(i);
+	}
+	
+	public static int HoursUntilOpeningTime()
+	{
+		switch(currentHour.hour)
+		{
+		case 0:
+			return 9;
+		case 1:
+			return 8; 
+		case 2: 
+			return 7;
+		case 3:
+			return 6;
+		case 4: 
+			return 5;
+		case 5: 
+			return 4;
+		}
 	}
 }

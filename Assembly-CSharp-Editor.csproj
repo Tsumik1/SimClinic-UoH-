@@ -46,6 +46,8 @@
   <ItemGroup>
      <Compile Include="Assets\Editor\CreatePlane.cs" />
      <Compile Include="Assets\Editor\FBXScaleFix.cs" />
+     <Compile Include="Assets\Editor\PivotManager.cs" />
+     <Compile Include="Assets\Editor\SetPivot.cs" />
      <Compile Include="Assets\NGUI\Scripts\Editor\ComponentSelector.cs" />
      <Compile Include="Assets\NGUI\Scripts\Editor\NGUIMenu.cs" />
      <Compile Include="Assets\NGUI\Scripts\Editor\NGUISelectionTools.cs" />

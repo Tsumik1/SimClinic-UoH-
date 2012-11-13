@@ -13,6 +13,11 @@ public class Waypoint : MonoBehaviour {
 		pace,
 		staff,
 		patient, 
+		reception, 
+		plant, 
+		fire, 
+		receptionAction,
+		
 	}
 	
 	public Action defaultAction;
@@ -20,7 +25,8 @@ public class Waypoint : MonoBehaviour {
 	public bool visited = false; 
 	public int timeToStayAtWaypoint;
 	public GameObject point;
-	
+	public Staff owner; 
+	public string ownerName; 
 	// Use this for initialization
 	void Awake () 
 	{
@@ -29,6 +35,9 @@ public class Waypoint : MonoBehaviour {
 		{
 		case Action.work:
 			timeToStayAtWaypoint = 4;
+			break;
+		case Action.reception:
+			timeToStayAtWaypoint = 0;
 			break;
 		case Action.wait:
 			timeToStayAtWaypoint = 1;
@@ -43,8 +52,12 @@ public class Waypoint : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
+		if(owner)
+		{
+			ownerName = owner.staffName;
+		}
 	}
 	
 	public int GetWaitTime()

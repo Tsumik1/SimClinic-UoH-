@@ -42,9 +42,40 @@ public class Route : MonoBehaviour {
 		return waypoints; 
 	}
 	//Methods to create paths per type.
-	public void CreateReceptionPath()
+	public void CreateReceptionPath(Staff staffMember)
 	{
-		
+	   Waypoint[] worldPoints = FindObjectsOfType(typeof(Waypoint)) as Waypoint[];
+		List<Waypoint> avaliablePoints = new List<Waypoint>();
+	   foreach(Waypoint point in worldPoints)
+		{
+			//If the staff member owns the waypoint(i.e the desk)
+			if(point.owner == staffMember)
+			{
+				avaliablePoints.Add (point);	
+			}
+			if(point.action == Waypoint.Action.receptionAction)
+			{
+				avaliablePoints.Add (point);
+			}
+		}
+		if(avaliablePoints.Count == 1)
+		{
+			avaliablePoints[0].timeToStayAtWaypoint = 8;
+		}
+		if(avaliablePoints.Count >= 1)
+		{
+			waypoints = new Waypoint[avaliablePoints.Count];
+			for(int i = 0; i  < avaliablePoints.Count; i++)
+			{
+				waypoints[i] = avaliablePoints[i];
+			}
+			staffMember.state = Staff.State.working;
+			type = Type.receptionist;
+		}
+		else
+		{
+			staffMember.state = Staff.State.waiting;
+		}
 	}
 	
 	public void CreateGardenPath()

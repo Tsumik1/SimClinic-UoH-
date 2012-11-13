@@ -20,7 +20,8 @@ public class BasicObject : MonoBehaviour
 	public int life;
 	public GameObject buttons;
 	public GameObject healthBar;
-	
+
+	private Staff owner; 
 	private GameObject helper;
 	private GameObject healthy;
 	private Transform[] children;
@@ -45,6 +46,18 @@ public class BasicObject : MonoBehaviour
 			
 		} else if (!isOn) {
 			//Might need this some time. 
+		}
+	}
+	
+	public bool HasOwner()
+	{
+		if(owner == null)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
 		}
 	}
 	

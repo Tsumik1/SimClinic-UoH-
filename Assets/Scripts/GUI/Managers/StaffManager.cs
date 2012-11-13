@@ -14,11 +14,27 @@ public class StaffManager : MonoBehaviour {
 	
 	}
 	
-	void UpdateStaffActions()
+	public static void UpdateStaffActions()
 	{
 		foreach(Staff staff in FindObjectsOfType(typeof(Staff)))
 		{
-			staff.hoursUntilNextAction--;
+			staff.HourPassed();
+		}
+	}
+	
+	public static void GoHome()
+	{
+		foreach(Staff staff in FindObjectsOfType(typeof(Staff)))
+		{
+			staff.GoHome();
+		}
+	}
+	
+		public static void StartWork()
+	{
+		foreach(Staff staff in FindObjectsOfType(typeof(Staff)))
+		{
+			staff.StartWork();
 		}
 	}
 }
