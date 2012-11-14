@@ -9,6 +9,8 @@ public class Popup : MonoBehaviour {
 	public GameObject descriptionDisplay;
 	public GameObject lifeDisplay;
 	public GameObject sellValueDisplay;
+	public HealthBar healthbar; 
+	
 	// Use this for initialization
 	void Start () 
 	{
@@ -26,13 +28,13 @@ public class Popup : MonoBehaviour {
 			descriptionDisplay.GetComponent<TextMesh>().text = description;
 			if(current.degradable)
 			{
-			lifeDisplay.GetComponent<TextMesh>().text = current.life.ToString ("f0");
-				
+			//lifeDisplay.GetComponent<TextMesh>().text = current.life.ToString ("f0");
+				healthbar.renderer.enabled = true;
 			}
 			else
 			{
-			lifeDisplay.GetComponent<TextMesh>().text = "N/A";
-				
+			//lifeDisplay.GetComponent<TextMesh>().text = "N/A";
+				healthbar.renderer.enabled = false; 
 			}
 			sellValueDisplay.GetComponent<TextMesh>().text = current.sellValue.ToString ("f0");
 			

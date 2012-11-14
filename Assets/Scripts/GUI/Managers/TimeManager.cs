@@ -199,7 +199,7 @@ public class TimeManager : MonoBehaviour
 	void Awake() 
 	{
 		//Will use playerprefs here to sort this out but for testing purposes...
-		currentDate = new DateTime(2012,10,18);
+		currentDate = new DateTime(2012,10,18,8,0,0);
 		Time.timeScale = timeSpeed; 
 		//month = currentDate.Month;
 		currentDay = new Day();
@@ -221,10 +221,14 @@ public class TimeManager : MonoBehaviour
 		
 		currentDate = currentDate.AddSeconds (Time.deltaTime * 10);
 		//checks end of day. 
+		if(currentDate != null)
+		{
 		CheckDay ();
 		CheckMonth();
 		CheckYear();
 		CheckHour();
+		}
+
 		
 		//currentMonth = currentDate.Month;
 		//currentDay.day = currentDate.Day;

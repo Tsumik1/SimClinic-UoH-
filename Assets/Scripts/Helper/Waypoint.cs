@@ -50,5 +50,6 @@ public class Waypoint : MonoBehaviour {
 	public void WaypointHit(bool hit)
 	{
 		visited = hit;
+		//Debug.Log ("I'm Hit");
 	}
 }

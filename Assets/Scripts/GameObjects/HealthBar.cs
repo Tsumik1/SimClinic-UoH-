@@ -38,11 +38,15 @@ public class HealthBar : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		BasicObject parent = transform.parent.GetComponent(typeof(BasicObject)) as BasicObject;
-		currentLife = parent.life;
-		max = (float)parent.lifeSpanInDays;
+		BasicObject theMaster = ObjectManager.GetSelectedObject ();
+		if(theMaster)
+		{
+		currentLife = theMaster.life;
+		max = (float)theMaster.lifeSpanInDays;
 		currentLife = (currentLife - min)/(max - min);
 		//print (currentLife);
 		renderer.material.SetFloat ("_Progress", currentLife);
+		}
+
 	}
 }

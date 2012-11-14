@@ -39,7 +39,10 @@ public class Route : MonoBehaviour {
 	
 	public Waypoint[] GetWayPoints()
 	{
-		return waypoints; 
+		if(waypoints  != null)
+			return waypoints;
+		else
+			return null;
 	}
 	//Methods to create paths per type.
 	public void CreateReceptionPath(Staff staffMember)
@@ -65,10 +68,7 @@ public class Route : MonoBehaviour {
 		if(avaliablePoints.Count >= 1)
 		{
 			waypoints = new Waypoint[avaliablePoints.Count];
-			for(int i = 0; i  < avaliablePoints.Count; i++)
-			{
-				waypoints[i] = avaliablePoints[i];
-			}
+			waypoints = avaliablePoints.ToArray();
 			staffMember.state = Staff.State.working;
 			type = Type.receptionist;
 		}

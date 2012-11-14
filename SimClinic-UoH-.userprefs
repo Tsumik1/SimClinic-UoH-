@@ -1,16 +1,15 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\Helpers\NameGenerator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\Managers\MoneyManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\GUI\Managers\StaffManager.cs" Line="10" Column="2" />
-      <File FileName="Assets\Scripts\GameObjects\Staff.cs" Line="252" Column="29" />
-      <File FileName="Assets\Scripts\Helper\Route.cs" Line="54" Column="33" />
-      <File FileName="Assets\Scripts\GameObjects\BasicObject.cs" Line="40" Column="36" />
-      <File FileName="Assets\Scripts\Helper\Waypoint.cs" Line="33" Column="26" />
-      <File FileName="Assets\Scripts\GUI\Managers\TimeManager.cs" Line="280" Column="1" />
-      <File FileName="Assets\Scripts\GUI\Helpers\NameGenerator.cs" Line="38" Column="2" />
-      <File FileName="Assets\Scripts\GUI\Helpers\LookAtMouse.cs" Line="20" Column="61" />
-      <File FileName="Assets\Scripts\GameObjects\OnObjectButtons\MoveButton.cs" Line="28" Column="3" />
+      <File FileName="Assets\Scripts\GameObjects\Staff.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUI\Managers\TimeManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Helper\Route.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Helper\Waypoint.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUI\Managers\StaffManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameObjects\HealthBar.cs" Line="45" Column="3" />
+      <File FileName="Assets\Scripts\GUI\Dialogs\Popup.cs" Line="32" Column="5" />
+      <File FileName="Assets\Scripts\GUI\Managers\MoneyManager.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
