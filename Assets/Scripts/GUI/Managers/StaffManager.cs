@@ -30,11 +30,21 @@ public class StaffManager : MonoBehaviour {
 		}
 	}
 	
-		public static void StartWork()
+	public static void StartWork()
 	{
 		foreach(Staff staff in FindObjectsOfType(typeof(Staff)))
 		{
 			staff.StartWork();
 		}
+	}
+	
+	public static int StaffWage()
+	{
+		int total = 0; 
+		foreach(Staff staff in FindObjectsOfType(typeof(Staff)))
+		{
+			total += staff.salary;
+		}
+		return total;
 	}
 }

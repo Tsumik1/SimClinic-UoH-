@@ -60,7 +60,7 @@ public class MoneyManager : MonoBehaviour
 		actualMoney = money; 
 		outstandingLoanAmount = 0; // At least until we sort it out in playerprefs... 
 		percentage = initialInterestRate / 100;
-		print("PER : " + percentage);
+		//print("PER : " + percentage);
 	}
 	
 	// Update is called once per frame
@@ -106,7 +106,6 @@ public class MoneyManager : MonoBehaviour
 		print (amount);
 		print (percent);
 		double interest = amount * percent;
-		//print (interest);
 		return interest;
 	}
 	
@@ -135,7 +134,13 @@ public class MoneyManager : MonoBehaviour
 	}
 	public static void CalculateStaffCost()
 	{
+		CalculateWages ();
 		monthlyStaffCost = monthlyWages + monthlyTraining; 
+	}
+	
+	public static void CalculateWages()
+	{
+		monthlyWages = StaffManager.StaffWage(); 
 	}
 	
 	public static void CalculateRepairCost()
@@ -164,10 +169,12 @@ public class MoneyManager : MonoBehaviour
 	{
 		monthlyEquipmentCost = monthlyRepairCosts + monthlyRunningCosts;
 	}
+	
 	public static void AddToRepairCost(double price)
 	{
 		monthlyRepairCosts += price;
 	}
+	
 	public static void AddPoint(int month)
 	{
 		profits[month] = money;

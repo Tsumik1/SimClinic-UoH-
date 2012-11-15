@@ -17,6 +17,30 @@ public class ObjectManager : MonoBehaviour {
 	{
 		return selectedObject;
 	}
+	
+	public static int numberOfItems()
+	{
+		int total = 0; 
+		foreach(BasicObject item in FindObjectsOfType(typeof(BasicObject)))
+		{
+			total++; 
+		}
+		return total;
+	}
+	
+	public static int numberOfDegradableItems()
+	{
+		int total = 0 ; 
+		foreach(BasicObject item in FindObjectsOfType(typeof(BasicObject)))
+		{
+			if(item.degradable)
+			{
+				total++; 
+			}
+		}
+		return total;
+	}
+	
 	// Use this for initialization
 	void Start () {
 	
