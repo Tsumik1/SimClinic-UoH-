@@ -17,7 +17,7 @@ public class TimeManager : MonoBehaviour
 	public static Month currentMonth; 
 	public static Year currentYear; 
 	public static Hour currentHour;
-	
+	public static Minute currentMinute;
 	//private int month; 
 	// Use this for initialization
 	
@@ -196,6 +196,16 @@ public class TimeManager : MonoBehaviour
 				return false;
 		}
 	}
+	
+	public class Minute
+	{
+		public int minute; 
+		
+		public Minute(int theMinute)
+		{
+			minute = theMinute;
+		}
+	}
 	void Awake() 
 	{
 		//Will use playerprefs here to sort this out but for testing purposes...
@@ -206,10 +216,10 @@ public class TimeManager : MonoBehaviour
 		currentMonth = new Month();
 		currentYear = new Year();
 		currentHour = new Hour(currentDate.Hour);
+		currentMinute = new Minute(currentDate.Minute);
 		currentDay.day = currentDate.Day;
 		currentYear.year = currentDate.Year;
 		currentMonth.month = currentDate.Month;
-		currentHour.hour = currentDate.Hour;
 		//PerformMonthlyActions();
 	}
 	
@@ -223,10 +233,11 @@ public class TimeManager : MonoBehaviour
 		//checks end of day. 
 		if(currentDate != null)
 		{
-		CheckDay ();
-		CheckMonth();
-		CheckYear();
-		CheckHour();
+			CheckDay ();
+			CheckMonth();
+			CheckYear();
+			CheckHour();
+			CheckMinute();
 		}
 
 		
@@ -266,16 +277,22 @@ public class TimeManager : MonoBehaviour
 	
 	public static void AddHour()
 	{
-
-		currentDate = currentDate.AddHours (1);
+		currentDate.AddHours(1);
 	}
+	
+	public static void AddMinute()
+	{
+		currentDate.AddMinutes (1);
+	}
+	
 	public static void CheckHour()
 	{
 		//print(currentDate.Hour);
 		if(currentDate.Hour > currentHour.hour || currentDate.Hour == 0 && currentHour.hour == 23)
 		{
-			PerformHourlyActions();
 			currentHour.hour = currentDate.Hour;
+			
+			PerformHourlyActions();
 		}
 	}
 	
@@ -283,8 +300,9 @@ public class TimeManager : MonoBehaviour
 	{
 		if(currentDate.Day > currentDay.day || currentDate.Day < currentDay.day && currentDay.isEndOfMonth(currentMonth.month))
 		{
-			PerformDailyActions();
 			currentDay.day = currentDate.Day;
+			
+			PerformDailyActions();
 		}
 	}
 	
@@ -292,8 +310,9 @@ public class TimeManager : MonoBehaviour
 	{
 		if (currentDate.Month > currentMonth.month|| currentDate.Month == 1 && currentMonth.month == 12)
 		{
-			PerformMonthlyActions();
 			currentMonth.month = currentDate.Month;
+			
+			PerformMonthlyActions();
 		}
 	}
 	
@@ -304,19 +323,35 @@ public class TimeManager : MonoBehaviour
 			
 		}
 	}
+	
+	public static void CheckMinute()
+	{
+	  if(currentDate.Minute > currentMinute.minute || currentDate.Minute == 0 && currentMinute.minute == 59)
+		{
+			currentMinute.minute = currentDate.Minute;
+			PerformMinuteActions();
+		}
+	}
 	//Add Day
-
+	
+	public static void PerformMinuteActions()
+	{
+		StaffManager.UpdateStaffTimeToNextWaypoint();
+	}
+	
 	public static void PerformHourlyActions()
 	{
 		if(currentHour.hour == openingTime)
 		{
 			StaffManager.StartWork();
+			return;
 		}
 		if(currentHour.hour == closingTime)
 		{
 			StaffManager.GoHome();	
+			return;
 		}
-		StaffManager.UpdateStaffActions();
+		//StaffManager.UpdateStaffActions();
 		//print(currentHour.hour);
 	}
 	
@@ -409,5 +444,14 @@ public class TimeManager : MonoBehaviour
 		if(hoursRemaining < 0)
 			hoursRemaining = 0; 
 	return hoursRemaining;
+	}
+	
+	public static int TimeTillClosingTimeInMinutes()
+	{
+		int closingTimeInMinutes = closingTime * 60;
+		int currentTimeInMinutes = currentHour.hour * 60;
+		closingTimeInMinutes -= currentTimeInMinutes; 
+		print(closingTimeInMinutes);
+		return closingTimeInMinutes;
 	}
 }

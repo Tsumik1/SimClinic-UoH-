@@ -13,7 +13,13 @@ public class StaffManager : MonoBehaviour {
 	{
 	
 	}
-	
+	public static void UpdateStaffTimeToNextWaypoint()
+	{
+		foreach(Staff staff in FindObjectsOfType(typeof(Staff)))
+		{
+			staff.MinutePassed();
+		}
+	}
 	public static void UpdateStaffActions()
 	{
 		foreach(Staff staff in FindObjectsOfType(typeof(Staff)))

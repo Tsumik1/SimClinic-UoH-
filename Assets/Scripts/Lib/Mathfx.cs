@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
  
-public class Mathfx
+public class Mathfx2
 {
     public static float Hermite(float start, float end, float value)
     {

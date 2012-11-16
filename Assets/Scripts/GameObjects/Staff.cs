@@ -1,7 +1,10 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-public class Staff : MonoBehaviour {
+using Pathfinding;
+
+public class Staff : MonoBehaviour
+{
 	
 	public enum Role
 	{
@@ -12,7 +15,7 @@ public class Staff : MonoBehaviour {
 		gardener
 	}
 	
-	public enum State 
+	public enum State
 	{
 		entering, 
 		talking, 
@@ -26,355 +29,138 @@ public class Staff : MonoBehaviour {
 	
 	public bool male = true;
 	public Role defaultRole;
-	public Role role{get;set;}
-	public State state{get;set;} 
-	public Route path;
-	public Route blankRoute; 
-	public List<Waypoint>waypoints;
+
+	public Role role{ get; set; }
+
+	public State state{ get; set; }
+
 	public string staffName;
 	public int salary;
-	public int hoursUntilNextAction;
-	public int patientIncrease; 
-	public int waypointTracker;
-	public string currentState; 
+	public int patientIncrease;
+	public int timeToStayAtWaypoint; 
+	public int waypointNumber; 
+	public string currentState;
+	public Waypoint[] waypoints;
 	
-	public Waypoint currentWaypoint; 
-	public Waypoint nextWaypoint;
-	private Vector3 movementDirection ;
 	private NameGenerator nameGenerator;
-	public int waypointNumber = 0; 
-	public int nextWayPointNumber = 0;
-	private bool assignedWorkplace = false; 
-
+	private bool assignedWorkplace = false;
+	private AIPath myPath; 
+	 
 	// Use this for initialization
-	void Start () {
-		SetRole(defaultRole);
-		nameGenerator = new NameGenerator();
-		GenerateName();
-		TakeOwnership(); 
-		GetDefaultRoute();
-		//SelectRoute (); //BuildWaypoints ();
-		hoursUntilNextAction = TimeManager.HoursUntilOpeningTime();
-		movementDirection = (transform.position).normalized;
-		path = gameObject.AddComponent<Route>();
-	}
-	
-void TakeReceptionOwnership()
+	public void Start ()
 	{
-		foreach(Waypoint point in FindObjectsOfType(typeof(Waypoint)))
-		{
-			if(point.action == Waypoint.Action.reception)
-			{
-				if(point.owner == null)
-				{
+		SetRole (defaultRole);
+		nameGenerator = new NameGenerator ();
+		GenerateName ();
+		TakeOwnership (); 
+		myPath = GetComponent<AIPath>();
+	}
+	void TakeReceptionOwnership ()
+	{
+		foreach (Waypoint point in FindObjectsOfType(typeof(Waypoint))) {
+			if (point.action == Waypoint.Action.reception) {
+				if (point.owner == null) {
 					point.owner = this;
 					assignedWorkplace = true; 
-				}
-				else
-				{
+				} else {
 					print ("No Objects To Own :(. Staff without purpose!");
 				}
 			}
 		}
 	}
 	
-	void TakeOwnership()
+	void TakeOwnership ()
 	{
 
-			switch(role)
-			{
-			case Role.receptionist:
-				TakeReceptionOwnership();
-				break;
-			default:
-				break;
-			}
+		switch (role) {
+		case Role.receptionist:
+			TakeReceptionOwnership ();
+			break;
+		default:
+			break;
+		}
 
 	}
-	void FindWorkPlace()
+
+	public void Update()
 	{
-		
+		if(!assignedWorkplace)
+		{
+			TakeOwnership ();
+		}
 	}
-	void SetRole(Role newRole)
+	void SetRole (Role newRole)
 	{
 		role = newRole;
 	}
-	void FindWorkplace()
-	{
-		switch(role)
-			{
-			case Role.receptionist:
-				break;
-			case Role.caretaker:
-				break;
-			case Role.cleaner:
-				break;
-			case Role.gardener:
-				break;
-			case Role.practitioner:
-				break;
-			}
-		
-	}
-	void NextWaypoint()
-	{
-		if(nextWaypoint.visited)
-		{
-			
-		currentWaypoint = nextWaypoint;
-		
-
-		nextWayPointNumber++;
-		waypointNumber = nextWayPointNumber -1;
-		if(waypoints.Count == 1)
-		{
-			waypointNumber = 0;
-			nextWayPointNumber =0;
-		}
-		if(nextWayPointNumber < waypoints.Count)
-		{
-
-			nextWaypoint = waypoints[nextWayPointNumber];	
-		}
-		else
-			{
-			hoursUntilNextAction = currentWaypoint.GetWaitTime ();
-			if(waypointNumber == waypoints.Count - 1)
-					{
-						CheckIfNewRouteNeeded ();
-					}
-
-			}
-		//SetState();
-		}
-
-	}
 	
-	void CheckIfNewRouteNeeded()
-	{
-		if(currentWaypoint.action == Waypoint.Action.enter)
-		{
-				SelectRoute();
-		}
-		else
-		{
-			
-		}
-			//Do Nothing for now.
-
-	}
-	void BreakPath()
-	{
-		path = null; 
-	}
-	
-	void BuildWaypoints()
-	{if(path != null)
-		{
-			
-		
-		if(state == State.waiting)
-		{
-			return;
-		}
-		waypointNumber = 0;
-		nextWayPointNumber = 0;
-		if(waypoints != null)
-		{
-			waypoints.Clear ();
-			waypoints.TrimExcess ();
-			waypoints = new List<Waypoint>();
-		}
-		else
-		{
-			waypoints = new List<Waypoint>();
-		}
-		if(currentWaypoint != null)
-			waypoints.Add(currentWaypoint);
-		foreach(Waypoint point in path.GetWayPoints ())
-		{
-			waypoints.Add (point);
-		}
-		currentWaypoint = waypoints[waypointNumber];
-		nextWayPointNumber = waypointNumber + 1; 
-		if(nextWayPointNumber < waypoints.Count)
-		{
-			if(waypoints[nextWayPointNumber] != null)
-				nextWaypoint = waypoints[nextWayPointNumber];
-		}
-			hoursUntilNextAction = nextWaypoint.timeToStayAtWaypoint;
-		}
-		else
-			Debug.Log ("NoPATH!");
-		
-	}
-	
-	void SetState()
-	{
-		switch(currentWaypoint.action)
-		{
-		case Waypoint.Action.work:
-			state = State.working;
-			break;
-		case Waypoint.Action.book:
-			state = State.booking;
-			break;
-		case Waypoint.Action.wait:
-			state = State.waiting;
-			break;
-		case Waypoint.Action.enter:
-			state = State.entering;
-			break;
-		case Waypoint.Action.exit:
-			state = State.leaving; 
-			break; 
-		case Waypoint.Action.reception:
-			state = State.working;
-			break;
-		case Waypoint.Action.receptionAction:
-			state = State.working;
-			break;
-			
-		default:
-			state = State.entering;
-			break;
-		}
-	}
-	
-	public State GetState()
-	{
-		return state; 
-	}
-	
-	void MoveToStart()
-	{
-		transform.position = currentWaypoint.point.transform.position;
-	}
 	public void HourPassed()
 	{
-		hoursUntilNextAction--;
-		if(hoursUntilNextAction < 0)
-			hoursUntilNextAction = 0;
+		//For now do nothing, but i'm sure I will find a use for this. 
 	}
-	
-	void GenerateName()
+	public void MinutePassed ()
 	{
-		if(staffName == "")
+		timeToStayAtWaypoint--;
+		if(TimeManager.currentHour.hour >= TimeManager.openingTime && TimeManager.currentHour.hour <= TimeManager.closingTime)
 		{
-			staffName = nameGenerator.CreateName (male,Random.Range (2,3));
+			if(timeToStayAtWaypoint <= 0)
+			{
+				NextWaypoint();
+			}
 		}
 	}
-	// Update is called once per frame
-	void Update () 
+	
+	public void NextWaypoint()
 	{
-		
-		currentState = state.ToString ();
-		
-		if(!assignedWorkplace)
+		if(waypoints.Length >= 1)
 		{
-			TakeOwnership();
+			Waypoint point = waypoints[waypointNumber];
+			myPath.target = point.transform;
+			timeToStayAtWaypoint = point.timeToStayAtWaypoint;
+			waypointNumber++; 
+			if(waypointNumber >= waypoints.Length)
+			{
+				ReturnToDesk();
+				waypointNumber = waypoints.Length - 1;
+			}
 		}
-			if(hoursUntilNextAction == 0)
-			{
-				NextWaypoint ();
-			}
-			if(hoursUntilNextAction > 0)
-			{
-				transform.position = Vector3.Lerp (transform.position, currentWaypoint.transform.position, Time.deltaTime);
-			}
-			else
-			{
-				Vector3 destination = transform.position; 
-				destination.x = Mathfx.Berp(transform.position.x, nextWaypoint.transform.position.x, Time.deltaTime * 0.5f);
-				destination.y = 0.5f;
-				destination.z = Mathfx.Berp(transform.position.z, nextWaypoint.transform.position.z, Time.deltaTime * 0.5f);
-				transform.position = destination;//Vector3.Lerp (transform.position, destination, Time.deltaTime * 0.5f);
-				transform.LookAt (nextWaypoint.point.transform);
-			}
-			waypointTracker = nextWayPointNumber;
-	}
-	
-	
-	void SelectRoute()
-	{
-		//path = new Route();
-		hoursUntilNextAction = 0;
-		
-	 	Route[] routes = FindObjectsOfType(typeof(Route)) as Route[];
-		List<Route> avaliableRoutes = new List<Route>();
-			switch(role)
-			{
-			case Role.receptionist:
-					path.CreateReceptionPath(this);
-						BuildWaypoints ();
-				break;
-			case Role.caretaker:
-				break;
-			case Role.cleaner:
-				break;
-			case Role.gardener:
-				break;
-			case Role.practitioner:
-				break;
-			}
-		
-		
+		else
+		{
+			waypoints = WaypointManager.FindStaffWaypoints(this);
+		}
 
 	}
 	
-	void GetExitRoute()
+	public void ReturnToDesk()
 	{
-		Route[] routes = FindObjectsOfType (typeof(Route)) as Route[];
-		foreach(Route route in routes)
+		if(waypoints != null || waypoints.Length >=1)
 		{
-			if(route.type == Route.Type.exit)
-			{
-				path = route;
-			}
+			myPath.target = waypoints[0].transform;
+			timeToStayAtWaypoint = TimeManager.TimeTillClosingTimeInMinutes();
 		}
-		BuildWaypoints();
 	}
+	void GenerateName ()
+	{
+		if (staffName == "") {
+			staffName = nameGenerator.CreateName (male, Random.Range (2, 3));
+		}
+	}
+	
 	public void GoHome()
 	{
-		state = State.leaving;
-		GetExitRoute(); 
-		hoursUntilNextAction = 0;
-
+		Waypoint point = WaypointManager.FindExitWaypoint();
+		myPath.target = point.transform;
+		timeToStayAtWaypoint = point.timeToStayAtWaypoint;
 	}
+
 	public void StartWork()
 	{
-		state = State.entering;
-		MoveToStart ();
-		GetDefaultRoute(); 
-		hoursUntilNextAction = 0;
-		
-	}
-	void GetDefaultRoute()
-	{
-		Route[] routes = FindObjectsOfType (typeof(Route)) as Route[];
-		foreach(Route route in routes)
-		{
-			if(route.type == Route.Type.entry)
-			{
-				path = route;
-			}
-		}
-		BuildWaypoints();
-	}
-	void OnCollisionEnter(Collision other)
-	{
-		if(other.transform.GetComponent(typeof(Waypoint)))
-		{
-			other.transform.GetComponent<Waypoint>().WaypointHit(true);
-		}
+		Waypoint point = WaypointManager.FindStartWaypoint();
+		myPath.target = point.transform;
+		timeToStayAtWaypoint = point.timeToStayAtWaypoint;
+		waypoints = WaypointManager.FindStaffWaypoints(this);
+		waypointNumber = 0; 
 	}
 	
-	void OnCollisionExit(Collision other)
-	{
-		if(other.transform.GetComponent(typeof(Waypoint)))
-		{
-			other.transform.GetComponent<Waypoint>().WaypointHit(false);
-		}
-	}
 
 }
