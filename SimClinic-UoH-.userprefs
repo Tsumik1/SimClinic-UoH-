@@ -1,27 +1,22 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="c:\Users\shumbk\Desktop\GitHub\SimClinic-UoH-\SimClinic-UoH-\Assets\AstarPathfindingProject\Editor\AstarPathEditor.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameObjects\Patient.cs">
     <Files>
+      <File FileName="Assets\Scripts\GUI\Helpers\Helper.cs" Line="27" Column="17" />
+      <File FileName="Assets\AstarPathfindingProject\Core\AstarPath.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\GUI\Managers\MoneyManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameObjects\Staff.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\Managers\ObjectManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameObjects\Staff.cs" Line="65" Column="6" />
       <File FileName="Assets\Scripts\GUI\Managers\PatientManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\AstarPathfindingProject\Core\AI\AIPath.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Lib\Mathfx.cs" Line="1" Column="1" />
-      <File FileName="Assets\AstarPathfindingProject\Modifiers\Modifiers.cs" Line="229" Column="1" />
-      <File FileName="Assets\Scripts\GUI\Managers\WaypointManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\AstarPathfindingProject\Modifiers\Modifiers.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUI\Managers\WaypointManager.cs" Line="44" Column="2" />
       <File FileName="Assets\Scripts\GUI\Managers\TimeManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\Managers\StaffManager.cs" Line="1" Column="1" />
-      <File FileName="c:\Users\shumbk\Desktop\GitHub\SimClinic-UoH-\SimClinic-UoH-\Assets\AstarPathfindingProject\Core\AI\Seeker.cs" Line="349" Column="42" />
-      <File FileName="c:\Users\shumbk\Desktop\GitHub\SimClinic-UoH-\SimClinic-UoH-\Assets\AstarPathfindingProject\Core\GraphLoaderHistory\AstarSerialize.cs" Line="1048" Column="84" />
-      <File FileName="c:\Users\shumbk\Desktop\GitHub\SimClinic-UoH-\SimClinic-UoH-\Assets\AstarPathfindingProject\Core\GraphLoaderHistory\AstarSerializer3_07.cs" Line="67" Column="116" />
-      <File FileName="c:\Users\shumbk\Desktop\GitHub\SimClinic-UoH-\SimClinic-UoH-\Assets\AstarPathfindingProject\Editor\AstarPathEditor.cs" Line="1714" Column="51" />
+      <File FileName="Assets\Scripts\GUI\Managers\StaffManager.cs" Line="56" Column="2" />
+      <File FileName="Assets\Scripts\Helper\Waypoint.cs" Line="35" Column="2" />
+      <File FileName="Assets\Scripts\GameObjects\Patient.cs" Line="39" Column="39" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="C:\Users\shumbk\Desktop\GitHub\SimClinic-UoH-\SimClinic-UoH-\Assets\Scripts\GameObjects\Staff.cs" line="106" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

@@ -42,6 +42,35 @@ public class WaypointManager : MonoBehaviour {
 		return null;
 	}
 	
+	public static Waypoint FindReceptionist()
+	{
+		Waypoint point = new Waypoint();
+		bool destroy = false; 
+		foreach(Staff staff in FindObjectsOfType(typeof(Staff)))
+		{
+			if(staff.role == Staff.Role.receptionist)
+			{
+				point.transform.position = staff.transform.position + Vector3.one;
+			}
+			else
+			{
+				destroy = true; 
+			}
+		}
+		if(destroy)
+		{
+			Destroy(point);
+			return null;
+		}
+		else
+		{
+			if(point != null)
+				return point;
+			else
+				return null;
+		}
+	}
+	
 	public static Waypoint[] FindStaffWaypoints(Staff staff)
 	{
 		switch(staff.role)

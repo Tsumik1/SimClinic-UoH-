@@ -207,6 +207,7 @@
      <Compile Include="Assets\Scripts\GUI\Helpers\CreateTable.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\DefaultTab.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\GetSelectedObject.cs" />
+     <Compile Include="Assets\Scripts\GUI\Helpers\Helper.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\LookAtMouse.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\NameGenerator.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ObjectPlacement.cs" />

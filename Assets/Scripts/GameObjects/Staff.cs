@@ -51,7 +51,7 @@ public class Staff : MonoBehaviour
 	{
 		SetRole (defaultRole);
 		nameGenerator = new NameGenerator ();
-		GenerateName ();
+		staffName = Helper.GenerateName (male, Random.Range (2,3));
 		TakeOwnership (); 
 		myPath = GetComponent<AIPath>();
 	}
@@ -139,13 +139,7 @@ public class Staff : MonoBehaviour
 			timeToStayAtWaypoint = TimeManager.TimeTillClosingTimeInMinutes();
 		}
 	}
-	void GenerateName ()
-	{
-		if (staffName == "") {
-			staffName = nameGenerator.CreateName (male, Random.Range (2, 3));
-		}
-	}
-	
+
 	public void GoHome()
 	{
 		Waypoint point = WaypointManager.FindExitWaypoint();

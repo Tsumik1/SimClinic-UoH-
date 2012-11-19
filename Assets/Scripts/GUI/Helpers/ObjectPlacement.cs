@@ -55,7 +55,6 @@ public class ObjectPlacement : MonoBehaviour {
 		defaultColour = renderer.material.color; 
 		defaultMaterial = renderer.material;
 		defaultPosition = transform.position;
-		
 	}
 	
 	public void MoveAgain()
@@ -136,6 +135,8 @@ public class ObjectPlacement : MonoBehaviour {
 			isPlaced = true;
 			BasicObject script = GetComponent(typeof(BasicObject)) as BasicObject;
 			script.EnableObject();
+			AstarPath path = FindObjectOfType (typeof(AstarPath)) as AstarPath;
+			path.Scan();
 			script.enabled = true;
 			this.enabled = false;
 		}
