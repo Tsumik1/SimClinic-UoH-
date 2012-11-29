@@ -4,6 +4,7 @@ using System.Collections;
 public class HealthBar : MonoBehaviour {
 	
 	public bool needsPositioning = true; 
+	public bool satisfaction= false;
 	private Vector3 defaultPosition;
 	private Vector3 defaultScale; 
 	
@@ -38,14 +39,22 @@ public class HealthBar : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		BasicObject theMaster = ObjectManager.GetSelectedObject ();
-		if(theMaster)
+		if(!satisfaction)
 		{
-		currentLife = theMaster.life;
-		max = (float)theMaster.lifeSpanInDays;
-		currentLife = (currentLife - min)/(max - min);
-		//print (currentLife);
-		renderer.material.SetFloat ("_Progress", currentLife);
+			BasicObject theMaster = ObjectManager.GetSelectedObject ();
+			if(theMaster)
+			{
+				currentLife = theMaster.life;
+				max = (float)theMaster.lifeSpanInDays;
+				currentLife = (currentLife - min)/(max - min);
+				//print(currentLife);
+				//print (currentLife);
+				renderer.material.SetFloat ("_Progress", currentLife);
+			}
+		}
+		else
+		{
+			renderer.material.SetFloat ("_Progress", (PatientManager.patientSatisfaction - min)/(100-0));
 		}
 
 	}

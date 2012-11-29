@@ -15,8 +15,16 @@ public class SellButton : MonoBehaviour {
 	
 	void Clicked()
 	{
-		BasicObject master = transform.parent.parent.GetComponent (typeof(BasicObject)) as BasicObject;
-		MoneyManager.money += master.sellValue;
-		Destroy(transform.parent.parent.gameObject);
+		if(ObjectManager.selectedObject)
+			
+		{ObjectManager.selectedObject.DisableHealth ();
+		ObjectManager.selectedObject.DisableButtons();}
+		if(GUIManager.popUpSmall == false)
+		{
+			Instantiate(PopupManager.sellConfirmer);
+		  GUIManager.popUpSmall = true;
+		}
+
+		//Destroy(transform.parent.parent.gameObject);
 	}
 }

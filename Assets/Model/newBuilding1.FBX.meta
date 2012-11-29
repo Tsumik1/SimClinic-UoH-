@@ -1,7 +1,694 @@
 fileFormatVersion: 2
 guid: ec83039bb5f4cfd4889a23f06d299d59
 ModelImporter:
+  serializedVersion: 15
   fileIDToRecycleName:
+    100000: Box037
+    100002: //RootNode
+    100004: Box022
+    100006: Box012
+    100008: Box053
+    100010: Box032
+    100012: Box036
+    100014: Box055
+    100016: Box054
+    100018: Box039
+    100020: Box052
+    100022: Box043
+    100024: Box056
+    100026: Plane003
+    100028: Box011
+    100030: wallsDown
+    100032: Box005
+    100034: Box028
+    100036: Box027
+    100038: Object003
+    100040: Object002
+    100042: Box038
+    100044: Box010
+    100046: Box026
+    100048: Box025
+    100050: Box049
+    100052: Box051
+    100054: Box008
+    100056: Box024
+    100058: Box023
+    100060: Box034
+    100062: Box045
+    100064: Box020
+    100066: Box019
+    100068: Box050
+    100070: Box048
+    100072: Box007
+    100074: Box033
+    100076: Object004
+    100078: Box031
+    100080: Box046
+    100082: Box040
+    100084: Box030
+    100086: Box029
+    100088: Box006
+    100090: Box047
+    100092: Box044
+    100094: Box014
+    100096: Box009
+    100098: Box041
+    100100: Box042
+    100102: Box021
+    100104: Plane002
+    100106: Plane001
+    100108: 'Doors <Double-Panel 1 : 72" x 84"__72x4x84>'
+    100110: 'Doors <Double-Panel 1 : 72" x 84"__72x4x84> Frame/Mullion'
+    100112: 'Doors <Double-Panel 1 : 72" x 84"__72x4x84> Panel'
+    100114: 'Doors <Double-Panel 1 : 72" x 84"__72x4x84> Panel 1'
+    100116: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81>'
+    100118: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> 1'
+    100120: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> 2'
+    100122: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> 3'
+    100124: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> 4'
+    100126: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> 5'
+    100128: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> 6'
+    100130: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> 7'
+    100132: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> 8'
+    100134: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> 9'
+    100136: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion'
+    100138: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 1'
+    100140: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 10'
+    100142: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 11'
+    100144: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 12'
+    100146: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 13'
+    100148: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 14'
+    100150: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 15'
+    100152: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 16'
+    100154: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 17'
+    100156: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 18'
+    100158: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 19'
+    100160: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 2'
+    100162: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 3'
+    100164: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 4'
+    100166: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 5'
+    100168: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 6'
+    100170: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 7'
+    100172: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 8'
+    100174: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 9'
+    100176: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel'
+    100178: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 1'
+    100180: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 2'
+    100182: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 3'
+    100184: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 4'
+    100186: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 5'
+    100188: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 6'
+    100190: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 7'
+    100192: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 8'
+    100194: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 9'
+    100196: 'Floors <Floor : Floor 1>'
+    100198: 'Floors <Floor : Floor 1> 1'
+    100200: 'Floors <Floor : Floor 1> 10'
+    100202: 'Floors <Floor : Floor 1> 11'
+    100204: 'Floors <Floor : Floor 1> 12'
+    100206: 'Floors <Floor : Floor 1> 13'
+    100208: 'Floors <Floor : Floor 1> 14'
+    100210: 'Floors <Floor : Floor 1> 15'
+    100212: 'Floors <Floor : Floor 1> 16'
+    100214: 'Floors <Floor : Floor 1> 17'
+    100216: 'Floors <Floor : Floor 1> 18'
+    100218: 'Floors <Floor : Floor 1> 19'
+    100220: 'Floors <Floor : Floor 1> 2'
+    100222: 'Floors <Floor : Floor 1> 20'
+    100224: 'Floors <Floor : Floor 1> 21'
+    100226: 'Floors <Floor : Floor 1> 3'
+    100228: 'Floors <Floor : Floor 1> 4'
+    100230: 'Floors <Floor : Floor 1> 5'
+    100232: 'Floors <Floor : Floor 1> 6'
+    100234: 'Floors <Floor : Floor 1> 7'
+    100236: 'Floors <Floor : Floor 1> 8'
+    100238: 'Floors <Floor : Floor 1> 9'
+    100240: 'Walls <Basic Wall : Wall 1 : >'
+    100242: 'Walls <Basic Wall : Wall 1 : > 1'
+    100244: 'Walls <Basic Wall : Wall 1 : > 10'
+    100246: 'Walls <Basic Wall : Wall 1 : > 11'
+    100248: 'Walls <Basic Wall : Wall 1 : > 12'
+    100250: 'Walls <Basic Wall : Wall 1 : > 13'
+    100252: 'Walls <Basic Wall : Wall 1 : > 14'
+    100254: 'Walls <Basic Wall : Wall 1 : > 15'
+    100256: 'Walls <Basic Wall : Wall 1 : > 16'
+    100258: 'Walls <Basic Wall : Wall 1 : > 17'
+    100260: 'Walls <Basic Wall : Wall 1 : > 18'
+    100262: 'Walls <Basic Wall : Wall 1 : > 19'
+    100264: 'Walls <Basic Wall : Wall 1 : > 2'
+    100266: 'Walls <Basic Wall : Wall 1 : > 20'
+    100268: 'Walls <Basic Wall : Wall 1 : > 21'
+    100270: 'Walls <Basic Wall : Wall 1 : > 22'
+    100272: 'Walls <Basic Wall : Wall 1 : > 23'
+    100274: 'Walls <Basic Wall : Wall 1 : > 24'
+    100276: 'Walls <Basic Wall : Wall 1 : > 25'
+    100278: 'Walls <Basic Wall : Wall 1 : > 26'
+    100280: 'Walls <Basic Wall : Wall 1 : > 27'
+    100282: 'Walls <Basic Wall : Wall 1 : > 28'
+    100284: 'Walls <Basic Wall : Wall 1 : > 29'
+    100286: 'Walls <Basic Wall : Wall 1 : > 3'
+    100288: 'Walls <Basic Wall : Wall 1 : > 30'
+    100290: 'Walls <Basic Wall : Wall 1 : > 31'
+    100292: 'Walls <Basic Wall : Wall 1 : > 32'
+    100294: 'Walls <Basic Wall : Wall 1 : > 33'
+    100296: 'Walls <Basic Wall : Wall 1 : > 34'
+    100298: 'Walls <Basic Wall : Wall 1 : > 35'
+    100300: 'Walls <Basic Wall : Wall 1 : > 36'
+    100302: 'Walls <Basic Wall : Wall 1 : > 37'
+    100304: 'Walls <Basic Wall : Wall 1 : > 38'
+    100306: 'Walls <Basic Wall : Wall 1 : > 39'
+    100308: 'Walls <Basic Wall : Wall 1 : > 4'
+    100310: 'Walls <Basic Wall : Wall 1 : > 40'
+    100312: 'Walls <Basic Wall : Wall 1 : > 41'
+    100314: 'Walls <Basic Wall : Wall 1 : > 42'
+    100316: 'Walls <Basic Wall : Wall 1 : > 43'
+    100318: 'Walls <Basic Wall : Wall 1 : > 44'
+    100320: 'Walls <Basic Wall : Wall 1 : > 45'
+    100322: 'Walls <Basic Wall : Wall 1 : > 46'
+    100324: 'Walls <Basic Wall : Wall 1 : > 47'
+    100326: 'Walls <Basic Wall : Wall 1 : > 48'
+    100328: 'Walls <Basic Wall : Wall 1 : > 49'
+    100330: 'Walls <Basic Wall : Wall 1 : > 5'
+    100332: 'Walls <Basic Wall : Wall 1 : > 50'
+    100334: 'Walls <Basic Wall : Wall 1 : > 51'
+    100336: 'Walls <Basic Wall : Wall 1 : > 52'
+    100338: 'Walls <Basic Wall : Wall 1 : > 53'
+    100340: 'Walls <Basic Wall : Wall 1 : > 54'
+    100342: 'Walls <Basic Wall : Wall 1 : > 55'
+    100344: 'Walls <Basic Wall : Wall 1 : > 56'
+    100346: 'Walls <Basic Wall : Wall 1 : > 57'
+    100348: 'Walls <Basic Wall : Wall 1 : > 58'
+    100350: 'Walls <Basic Wall : Wall 1 : > 59'
+    100352: 'Walls <Basic Wall : Wall 1 : > 6'
+    100354: 'Walls <Basic Wall : Wall 1 : > 60'
+    100356: 'Walls <Basic Wall : Wall 1 : > 61'
+    100358: 'Walls <Basic Wall : Wall 1 : > 62'
+    100360: 'Walls <Basic Wall : Wall 1 : > 63'
+    100362: 'Walls <Basic Wall : Wall 1 : > 64'
+    100364: 'Walls <Basic Wall : Wall 1 : > 65'
+    100366: 'Walls <Basic Wall : Wall 1 : > 66'
+    100368: 'Walls <Basic Wall : Wall 1 : > 67'
+    100370: 'Walls <Basic Wall : Wall 1 : > 68'
+    100372: 'Walls <Basic Wall : Wall 1 : > 69'
+    100374: 'Walls <Basic Wall : Wall 1 : > 7'
+    100376: 'Walls <Basic Wall : Wall 1 : > 70'
+    100378: 'Walls <Basic Wall : Wall 1 : > 71'
+    100380: 'Walls <Basic Wall : Wall 1 : > 72'
+    100382: 'Walls <Basic Wall : Wall 1 : > 73'
+    100384: 'Walls <Basic Wall : Wall 1 : > 74'
+    100386: 'Walls <Basic Wall : Wall 1 : > 75'
+    100388: 'Walls <Basic Wall : Wall 1 : > 76'
+    100390: 'Walls <Basic Wall : Wall 1 : > 77'
+    100392: 'Walls <Basic Wall : Wall 1 : > 78'
+    100394: 'Walls <Basic Wall : Wall 1 : > 79'
+    100396: 'Walls <Basic Wall : Wall 1 : > 8'
+    100398: 'Walls <Basic Wall : Wall 1 : > 80'
+    100400: 'Walls <Basic Wall : Wall 1 : > 81'
+    100402: 'Walls <Basic Wall : Wall 1 : > 82'
+    100404: 'Walls <Basic Wall : Wall 1 : > 83'
+    100406: 'Walls <Basic Wall : Wall 1 : > 84'
+    100408: 'Walls <Basic Wall : Wall 1 : > 85'
+    100410: 'Walls <Basic Wall : Wall 1 : > 86'
+    100412: 'Walls <Basic Wall : Wall 1 : > 87'
+    100414: 'Walls <Basic Wall : Wall 1 : > 88'
+    100416: 'Walls <Basic Wall : Wall 1 : > 89'
+    100418: 'Walls <Basic Wall : Wall 1 : > 9'
+    100420: 'Walls <Basic Wall : Wall 1 : > 90'
+    400000: Box037
+    400002: //RootNode
+    400004: Box022
+    400006: Box012
+    400008: Box053
+    400010: Box032
+    400012: Box036
+    400014: Box055
+    400016: Box054
+    400018: Box039
+    400020: Box052
+    400022: Box043
+    400024: Box056
+    400026: Plane003
+    400028: Box011
+    400030: wallsDown
+    400032: Box005
+    400034: Box028
+    400036: Box027
+    400038: Object003
+    400040: Object002
+    400042: Box038
+    400044: Box010
+    400046: Box026
+    400048: Box025
+    400050: Box049
+    400052: Box051
+    400054: Box008
+    400056: Box024
+    400058: Box023
+    400060: Box034
+    400062: Box045
+    400064: Box020
+    400066: Box019
+    400068: Box050
+    400070: Box048
+    400072: Box007
+    400074: Box033
+    400076: Object004
+    400078: Box031
+    400080: Box046
+    400082: Box040
+    400084: Box030
+    400086: Box029
+    400088: Box006
+    400090: Box047
+    400092: Box044
+    400094: Box014
+    400096: Box009
+    400098: Box041
+    400100: Box042
+    400102: Box021
+    400104: Plane002
+    400106: Plane001
+    400108: 'Doors <Double-Panel 1 : 72" x 84"__72x4x84>'
+    400110: 'Doors <Double-Panel 1 : 72" x 84"__72x4x84> Frame/Mullion'
+    400112: 'Doors <Double-Panel 1 : 72" x 84"__72x4x84> Panel'
+    400114: 'Doors <Double-Panel 1 : 72" x 84"__72x4x84> Panel 1'
+    400116: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81>'
+    400118: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> 1'
+    400120: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> 2'
+    400122: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> 3'
+    400124: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> 4'
+    400126: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> 5'
+    400128: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> 6'
+    400130: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> 7'
+    400132: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> 8'
+    400134: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> 9'
+    400136: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion'
+    400138: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 1'
+    400140: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 10'
+    400142: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 11'
+    400144: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 12'
+    400146: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 13'
+    400148: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 14'
+    400150: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 15'
+    400152: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 16'
+    400154: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 17'
+    400156: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 18'
+    400158: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 19'
+    400160: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 2'
+    400162: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 3'
+    400164: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 4'
+    400166: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 5'
+    400168: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 6'
+    400170: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 7'
+    400172: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 8'
+    400174: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 9'
+    400176: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel'
+    400178: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 1'
+    400180: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 2'
+    400182: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 3'
+    400184: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 4'
+    400186: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 5'
+    400188: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 6'
+    400190: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 7'
+    400192: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 8'
+    400194: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 9'
+    400196: 'Floors <Floor : Floor 1>'
+    400198: 'Floors <Floor : Floor 1> 1'
+    400200: 'Floors <Floor : Floor 1> 10'
+    400202: 'Floors <Floor : Floor 1> 11'
+    400204: 'Floors <Floor : Floor 1> 12'
+    400206: 'Floors <Floor : Floor 1> 13'
+    400208: 'Floors <Floor : Floor 1> 14'
+    400210: 'Floors <Floor : Floor 1> 15'
+    400212: 'Floors <Floor : Floor 1> 16'
+    400214: 'Floors <Floor : Floor 1> 17'
+    400216: 'Floors <Floor : Floor 1> 18'
+    400218: 'Floors <Floor : Floor 1> 19'
+    400220: 'Floors <Floor : Floor 1> 2'
+    400222: 'Floors <Floor : Floor 1> 20'
+    400224: 'Floors <Floor : Floor 1> 21'
+    400226: 'Floors <Floor : Floor 1> 3'
+    400228: 'Floors <Floor : Floor 1> 4'
+    400230: 'Floors <Floor : Floor 1> 5'
+    400232: 'Floors <Floor : Floor 1> 6'
+    400234: 'Floors <Floor : Floor 1> 7'
+    400236: 'Floors <Floor : Floor 1> 8'
+    400238: 'Floors <Floor : Floor 1> 9'
+    400240: 'Walls <Basic Wall : Wall 1 : >'
+    400242: 'Walls <Basic Wall : Wall 1 : > 1'
+    400244: 'Walls <Basic Wall : Wall 1 : > 10'
+    400246: 'Walls <Basic Wall : Wall 1 : > 11'
+    400248: 'Walls <Basic Wall : Wall 1 : > 12'
+    400250: 'Walls <Basic Wall : Wall 1 : > 13'
+    400252: 'Walls <Basic Wall : Wall 1 : > 14'
+    400254: 'Walls <Basic Wall : Wall 1 : > 15'
+    400256: 'Walls <Basic Wall : Wall 1 : > 16'
+    400258: 'Walls <Basic Wall : Wall 1 : > 17'
+    400260: 'Walls <Basic Wall : Wall 1 : > 18'
+    400262: 'Walls <Basic Wall : Wall 1 : > 19'
+    400264: 'Walls <Basic Wall : Wall 1 : > 2'
+    400266: 'Walls <Basic Wall : Wall 1 : > 20'
+    400268: 'Walls <Basic Wall : Wall 1 : > 21'
+    400270: 'Walls <Basic Wall : Wall 1 : > 22'
+    400272: 'Walls <Basic Wall : Wall 1 : > 23'
+    400274: 'Walls <Basic Wall : Wall 1 : > 24'
+    400276: 'Walls <Basic Wall : Wall 1 : > 25'
+    400278: 'Walls <Basic Wall : Wall 1 : > 26'
+    400280: 'Walls <Basic Wall : Wall 1 : > 27'
+    400282: 'Walls <Basic Wall : Wall 1 : > 28'
+    400284: 'Walls <Basic Wall : Wall 1 : > 29'
+    400286: 'Walls <Basic Wall : Wall 1 : > 3'
+    400288: 'Walls <Basic Wall : Wall 1 : > 30'
+    400290: 'Walls <Basic Wall : Wall 1 : > 31'
+    400292: 'Walls <Basic Wall : Wall 1 : > 32'
+    400294: 'Walls <Basic Wall : Wall 1 : > 33'
+    400296: 'Walls <Basic Wall : Wall 1 : > 34'
+    400298: 'Walls <Basic Wall : Wall 1 : > 35'
+    400300: 'Walls <Basic Wall : Wall 1 : > 36'
+    400302: 'Walls <Basic Wall : Wall 1 : > 37'
+    400304: 'Walls <Basic Wall : Wall 1 : > 38'
+    400306: 'Walls <Basic Wall : Wall 1 : > 39'
+    400308: 'Walls <Basic Wall : Wall 1 : > 4'
+    400310: 'Walls <Basic Wall : Wall 1 : > 40'
+    400312: 'Walls <Basic Wall : Wall 1 : > 41'
+    400314: 'Walls <Basic Wall : Wall 1 : > 42'
+    400316: 'Walls <Basic Wall : Wall 1 : > 43'
+    400318: 'Walls <Basic Wall : Wall 1 : > 44'
+    400320: 'Walls <Basic Wall : Wall 1 : > 45'
+    400322: 'Walls <Basic Wall : Wall 1 : > 46'
+    400324: 'Walls <Basic Wall : Wall 1 : > 47'
+    400326: 'Walls <Basic Wall : Wall 1 : > 48'
+    400328: 'Walls <Basic Wall : Wall 1 : > 49'
+    400330: 'Walls <Basic Wall : Wall 1 : > 5'
+    400332: 'Walls <Basic Wall : Wall 1 : > 50'
+    400334: 'Walls <Basic Wall : Wall 1 : > 51'
+    400336: 'Walls <Basic Wall : Wall 1 : > 52'
+    400338: 'Walls <Basic Wall : Wall 1 : > 53'
+    400340: 'Walls <Basic Wall : Wall 1 : > 54'
+    400342: 'Walls <Basic Wall : Wall 1 : > 55'
+    400344: 'Walls <Basic Wall : Wall 1 : > 56'
+    400346: 'Walls <Basic Wall : Wall 1 : > 57'
+    400348: 'Walls <Basic Wall : Wall 1 : > 58'
+    400350: 'Walls <Basic Wall : Wall 1 : > 59'
+    400352: 'Walls <Basic Wall : Wall 1 : > 6'
+    400354: 'Walls <Basic Wall : Wall 1 : > 60'
+    400356: 'Walls <Basic Wall : Wall 1 : > 61'
+    400358: 'Walls <Basic Wall : Wall 1 : > 62'
+    400360: 'Walls <Basic Wall : Wall 1 : > 63'
+    400362: 'Walls <Basic Wall : Wall 1 : > 64'
+    400364: 'Walls <Basic Wall : Wall 1 : > 65'
+    400366: 'Walls <Basic Wall : Wall 1 : > 66'
+    400368: 'Walls <Basic Wall : Wall 1 : > 67'
+    400370: 'Walls <Basic Wall : Wall 1 : > 68'
+    400372: 'Walls <Basic Wall : Wall 1 : > 69'
+    400374: 'Walls <Basic Wall : Wall 1 : > 7'
+    400376: 'Walls <Basic Wall : Wall 1 : > 70'
+    400378: 'Walls <Basic Wall : Wall 1 : > 71'
+    400380: 'Walls <Basic Wall : Wall 1 : > 72'
+    400382: 'Walls <Basic Wall : Wall 1 : > 73'
+    400384: 'Walls <Basic Wall : Wall 1 : > 74'
+    400386: 'Walls <Basic Wall : Wall 1 : > 75'
+    400388: 'Walls <Basic Wall : Wall 1 : > 76'
+    400390: 'Walls <Basic Wall : Wall 1 : > 77'
+    400392: 'Walls <Basic Wall : Wall 1 : > 78'
+    400394: 'Walls <Basic Wall : Wall 1 : > 79'
+    400396: 'Walls <Basic Wall : Wall 1 : > 8'
+    400398: 'Walls <Basic Wall : Wall 1 : > 80'
+    400400: 'Walls <Basic Wall : Wall 1 : > 81'
+    400402: 'Walls <Basic Wall : Wall 1 : > 82'
+    400404: 'Walls <Basic Wall : Wall 1 : > 83'
+    400406: 'Walls <Basic Wall : Wall 1 : > 84'
+    400408: 'Walls <Basic Wall : Wall 1 : > 85'
+    400410: 'Walls <Basic Wall : Wall 1 : > 86'
+    400412: 'Walls <Basic Wall : Wall 1 : > 87'
+    400414: 'Walls <Basic Wall : Wall 1 : > 88'
+    400416: 'Walls <Basic Wall : Wall 1 : > 89'
+    400418: 'Walls <Basic Wall : Wall 1 : > 9'
+    400420: 'Walls <Basic Wall : Wall 1 : > 90'
+    2300000: Box037
+    2300002: Box022
+    2300004: Box012
+    2300006: Box053
+    2300008: Box032
+    2300010: Box036
+    2300012: Box055
+    2300014: Box054
+    2300016: Box039
+    2300018: Box052
+    2300020: Box043
+    2300022: Box056
+    2300024: Plane003
+    2300026: Box011
+    2300028: wallsDown
+    2300030: Box005
+    2300032: Box028
+    2300034: Box027
+    2300036: Object003
+    2300038: Object002
+    2300040: Box038
+    2300042: Box010
+    2300044: Box026
+    2300046: Box025
+    2300048: Box049
+    2300050: Box051
+    2300052: Box008
+    2300054: Box024
+    2300056: Box023
+    2300058: Box034
+    2300060: Box045
+    2300062: Box050
+    2300064: Box048
+    2300066: Box007
+    2300068: Box033
+    2300070: Object004
+    2300072: Box031
+    2300074: Box046
+    2300076: Box040
+    2300078: Box030
+    2300080: Box029
+    2300082: Box006
+    2300084: Box047
+    2300086: Box044
+    2300088: Box009
+    2300090: Box041
+    2300092: Box042
+    2300094: Plane002
+    2300096: Plane001
+    2300098: 'Doors <Double-Panel 1 : 72" x 84"__72x4x84> Frame/Mullion'
+    2300100: 'Doors <Double-Panel 1 : 72" x 84"__72x4x84> Panel 1'
+    2300102: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion'
+    2300104: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 11'
+    2300106: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 12'
+    2300108: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 14'
+    2300110: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 16'
+    2300112: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 17'
+    2300114: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 19'
+    2300116: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 4'
+    2300118: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 8'
+    2300120: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 9'
+    2300122: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel'
+    2300124: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 1'
+    2300126: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 2'
+    2300128: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 3'
+    2300130: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 4'
+    2300132: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 5'
+    2300134: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 6'
+    2300136: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 7'
+    2300138: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 8'
+    2300140: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 9'
+    2300142: 'Floors <Floor : Floor 1> 11'
+    2300144: 'Floors <Floor : Floor 1> 12'
+    2300146: 'Floors <Floor : Floor 1> 13'
+    2300148: 'Floors <Floor : Floor 1> 14'
+    2300150: 'Floors <Floor : Floor 1> 15'
+    2300152: 'Floors <Floor : Floor 1> 16'
+    2300154: 'Floors <Floor : Floor 1> 17'
+    2300156: 'Floors <Floor : Floor 1> 18'
+    2300158: 'Floors <Floor : Floor 1> 19'
+    2300160: 'Floors <Floor : Floor 1> 20'
+    2300162: 'Floors <Floor : Floor 1> 21'
+    2300164: 'Walls <Basic Wall : Wall 1 : > 46'
+    2300166: 'Walls <Basic Wall : Wall 1 : > 47'
+    2300168: 'Walls <Basic Wall : Wall 1 : > 48'
+    2300170: 'Walls <Basic Wall : Wall 1 : > 49'
+    2300172: 'Walls <Basic Wall : Wall 1 : > 50'
+    2300174: 'Walls <Basic Wall : Wall 1 : > 51'
+    2300176: 'Walls <Basic Wall : Wall 1 : > 52'
+    2300178: 'Walls <Basic Wall : Wall 1 : > 53'
+    2300180: 'Walls <Basic Wall : Wall 1 : > 54'
+    2300182: 'Walls <Basic Wall : Wall 1 : > 55'
+    2300184: 'Walls <Basic Wall : Wall 1 : > 56'
+    2300186: 'Walls <Basic Wall : Wall 1 : > 57'
+    2300188: 'Walls <Basic Wall : Wall 1 : > 58'
+    2300190: 'Walls <Basic Wall : Wall 1 : > 59'
+    2300192: 'Walls <Basic Wall : Wall 1 : > 60'
+    2300194: 'Walls <Basic Wall : Wall 1 : > 61'
+    2300196: 'Walls <Basic Wall : Wall 1 : > 62'
+    2300198: 'Walls <Basic Wall : Wall 1 : > 63'
+    2300200: 'Walls <Basic Wall : Wall 1 : > 64'
+    2300202: 'Walls <Basic Wall : Wall 1 : > 65'
+    2300204: 'Walls <Basic Wall : Wall 1 : > 66'
+    2300206: 'Walls <Basic Wall : Wall 1 : > 67'
+    2300208: 'Walls <Basic Wall : Wall 1 : > 68'
+    2300210: 'Walls <Basic Wall : Wall 1 : > 69'
+    2300212: 'Walls <Basic Wall : Wall 1 : > 70'
+    2300214: 'Walls <Basic Wall : Wall 1 : > 71'
+    2300216: 'Walls <Basic Wall : Wall 1 : > 72'
+    2300218: 'Walls <Basic Wall : Wall 1 : > 73'
+    2300220: 'Walls <Basic Wall : Wall 1 : > 74'
+    2300222: 'Walls <Basic Wall : Wall 1 : > 75'
+    2300224: 'Walls <Basic Wall : Wall 1 : > 76'
+    2300226: 'Walls <Basic Wall : Wall 1 : > 77'
+    2300228: 'Walls <Basic Wall : Wall 1 : > 78'
+    2300230: 'Walls <Basic Wall : Wall 1 : > 79'
+    2300232: 'Walls <Basic Wall : Wall 1 : > 80'
+    2300234: 'Walls <Basic Wall : Wall 1 : > 81'
+    2300236: 'Walls <Basic Wall : Wall 1 : > 82'
+    2300238: 'Walls <Basic Wall : Wall 1 : > 83'
+    2300240: 'Walls <Basic Wall : Wall 1 : > 84'
+    2300242: 'Walls <Basic Wall : Wall 1 : > 85'
+    2300244: 'Walls <Basic Wall : Wall 1 : > 86'
+    2300246: 'Walls <Basic Wall : Wall 1 : > 87'
+    2300248: 'Walls <Basic Wall : Wall 1 : > 88'
+    2300250: 'Walls <Basic Wall : Wall 1 : > 89'
+    2300252: 'Walls <Basic Wall : Wall 1 : > 90'
+    2300254: 'Doors <Double-Panel 1 : 72" x 84"__72x4x84> Panel'
+    2300256: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 18'
+    2300258: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 2'
+    2300260: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 7'
+    2300262: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 15'
+    3300000: Box037
+    3300002: Box022
+    3300004: Box012
+    3300006: Box053
+    3300008: Box032
+    3300010: Box036
+    3300012: Box055
+    3300014: Box054
+    3300016: Box039
+    3300018: Box052
+    3300020: Box043
+    3300022: Box056
+    3300024: Plane003
+    3300026: Box011
+    3300028: wallsDown
+    3300030: Box005
+    3300032: Box028
+    3300034: Box027
+    3300036: Object003
+    3300038: Object002
+    3300040: Box038
+    3300042: Box010
+    3300044: Box026
+    3300046: Box025
+    3300048: Box049
+    3300050: Box051
+    3300052: Box008
+    3300054: Box024
+    3300056: Box023
+    3300058: Box034
+    3300060: Box045
+    3300062: Box050
+    3300064: Box048
+    3300066: Box007
+    3300068: Box033
+    3300070: Object004
+    3300072: Box031
+    3300074: Box046
+    3300076: Box040
+    3300078: Box030
+    3300080: Box029
+    3300082: Box006
+    3300084: Box047
+    3300086: Box044
+    3300088: Box009
+    3300090: Box041
+    3300092: Box042
+    3300094: Plane002
+    3300096: Plane001
+    3300098: 'Doors <Double-Panel 1 : 72" x 84"__72x4x84> Frame/Mullion'
+    3300100: 'Doors <Double-Panel 1 : 72" x 84"__72x4x84> Panel 1'
+    3300102: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion'
+    3300104: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 11'
+    3300106: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 12'
+    3300108: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 14'
+    3300110: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 16'
+    3300112: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 17'
+    3300114: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 19'
+    3300116: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 4'
+    3300118: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 8'
+    3300120: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 9'
+    3300122: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel'
+    3300124: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 1'
+    3300126: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 2'
+    3300128: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 3'
+    3300130: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 4'
+    3300132: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 5'
+    3300134: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 6'
+    3300136: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 7'
+    3300138: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 8'
+    3300140: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel 9'
+    3300142: 'Floors <Floor : Floor 1> 11'
+    3300144: 'Floors <Floor : Floor 1> 12'
+    3300146: 'Floors <Floor : Floor 1> 13'
+    3300148: 'Floors <Floor : Floor 1> 14'
+    3300150: 'Floors <Floor : Floor 1> 15'
+    3300152: 'Floors <Floor : Floor 1> 16'
+    3300154: 'Floors <Floor : Floor 1> 17'
+    3300156: 'Floors <Floor : Floor 1> 18'
+    3300158: 'Floors <Floor : Floor 1> 19'
+    3300160: 'Floors <Floor : Floor 1> 20'
+    3300162: 'Floors <Floor : Floor 1> 21'
+    3300164: 'Walls <Basic Wall : Wall 1 : > 46'
+    3300166: 'Walls <Basic Wall : Wall 1 : > 47'
+    3300168: 'Walls <Basic Wall : Wall 1 : > 48'
+    3300170: 'Walls <Basic Wall : Wall 1 : > 49'
+    3300172: 'Walls <Basic Wall : Wall 1 : > 50'
+    3300174: 'Walls <Basic Wall : Wall 1 : > 51'
+    3300176: 'Walls <Basic Wall : Wall 1 : > 52'
+    3300178: 'Walls <Basic Wall : Wall 1 : > 53'
+    3300180: 'Walls <Basic Wall : Wall 1 : > 54'
+    3300182: 'Walls <Basic Wall : Wall 1 : > 55'
+    3300184: 'Walls <Basic Wall : Wall 1 : > 56'
+    3300186: 'Walls <Basic Wall : Wall 1 : > 57'
+    3300188: 'Walls <Basic Wall : Wall 1 : > 58'
+    3300190: 'Walls <Basic Wall : Wall 1 : > 59'
+    3300192: 'Walls <Basic Wall : Wall 1 : > 60'
+    3300194: 'Walls <Basic Wall : Wall 1 : > 61'
+    3300196: 'Walls <Basic Wall : Wall 1 : > 62'
+    3300198: 'Walls <Basic Wall : Wall 1 : > 63'
+    3300200: 'Walls <Basic Wall : Wall 1 : > 64'
+    3300202: 'Walls <Basic Wall : Wall 1 : > 65'
+    3300204: 'Walls <Basic Wall : Wall 1 : > 66'
+    3300206: 'Walls <Basic Wall : Wall 1 : > 67'
+    3300208: 'Walls <Basic Wall : Wall 1 : > 68'
+    3300210: 'Walls <Basic Wall : Wall 1 : > 69'
+    3300212: 'Walls <Basic Wall : Wall 1 : > 70'
+    3300214: 'Walls <Basic Wall : Wall 1 : > 71'
+    3300216: 'Walls <Basic Wall : Wall 1 : > 72'
+    3300218: 'Walls <Basic Wall : Wall 1 : > 73'
+    3300220: 'Walls <Basic Wall : Wall 1 : > 74'
+    3300222: 'Walls <Basic Wall : Wall 1 : > 75'
+    3300224: 'Walls <Basic Wall : Wall 1 : > 76'
+    3300226: 'Walls <Basic Wall : Wall 1 : > 77'
+    3300228: 'Walls <Basic Wall : Wall 1 : > 78'
+    3300230: 'Walls <Basic Wall : Wall 1 : > 79'
+    3300232: 'Walls <Basic Wall : Wall 1 : > 80'
+    3300234: 'Walls <Basic Wall : Wall 1 : > 81'
+    3300236: 'Walls <Basic Wall : Wall 1 : > 82'
+    3300238: 'Walls <Basic Wall : Wall 1 : > 83'
+    3300240: 'Walls <Basic Wall : Wall 1 : > 84'
+    3300242: 'Walls <Basic Wall : Wall 1 : > 85'
+    3300244: 'Walls <Basic Wall : Wall 1 : > 86'
+    3300246: 'Walls <Basic Wall : Wall 1 : > 87'
+    3300248: 'Walls <Basic Wall : Wall 1 : > 88'
+    3300250: 'Walls <Basic Wall : Wall 1 : > 89'
+    3300252: 'Walls <Basic Wall : Wall 1 : > 90'
+    3300254: 'Doors <Double-Panel 1 : 72" x 84"__72x4x84> Panel'
+    3300256: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 18'
+    3300258: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 2'
+    3300260: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 7'
+    3300262: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion 15'
     4300000: Plane003
     4300002: wallsDown
     4300004: Box005
@@ -51,21 +738,99 @@ ModelImporter:
     4300092: Box056
     4300094: Plane001
     4300096: Plane002
-  serializedVersion: 10
+    4300098: 'Walls <Basic Wall : Wall 1 : >'
+    4300100: 'Walls <Basic Wall : Wall 1 : >'
+    4300102: 'Walls <Basic Wall : Wall 1 : >'
+    4300104: 'Walls <Basic Wall : Wall 1 : >'
+    4300106: 'Walls <Basic Wall : Wall 1 : >'
+    4300108: 'Walls <Basic Wall : Wall 1 : >'
+    4300110: 'Walls <Basic Wall : Wall 1 : >'
+    4300112: 'Walls <Basic Wall : Wall 1 : >'
+    4300114: 'Walls <Basic Wall : Wall 1 : >'
+    4300116: 'Walls <Basic Wall : Wall 1 : >'
+    4300118: 'Walls <Basic Wall : Wall 1 : >'
+    4300120: 'Walls <Basic Wall : Wall 1 : >'
+    4300122: 'Walls <Basic Wall : Wall 1 : >'
+    4300124: 'Walls <Basic Wall : Wall 1 : >'
+    4300126: 'Walls <Basic Wall : Wall 1 : >'
+    4300128: 'Walls <Basic Wall : Wall 1 : >'
+    4300130: 'Walls <Basic Wall : Wall 1 : >'
+    4300132: 'Walls <Basic Wall : Wall 1 : >'
+    4300134: 'Walls <Basic Wall : Wall 1 : >'
+    4300136: 'Walls <Basic Wall : Wall 1 : >'
+    4300138: 'Walls <Basic Wall : Wall 1 : >'
+    4300140: 'Walls <Basic Wall : Wall 1 : >'
+    4300142: 'Walls <Basic Wall : Wall 1 : >'
+    4300144: 'Walls <Basic Wall : Wall 1 : >'
+    4300146: 'Walls <Basic Wall : Wall 1 : >'
+    4300148: 'Walls <Basic Wall : Wall 1 : >'
+    4300150: 'Walls <Basic Wall : Wall 1 : >'
+    4300152: 'Walls <Basic Wall : Wall 1 : >'
+    4300154: 'Walls <Basic Wall : Wall 1 : >'
+    4300156: 'Walls <Basic Wall : Wall 1 : >'
+    4300158: 'Walls <Basic Wall : Wall 1 : >'
+    4300160: 'Walls <Basic Wall : Wall 1 : >'
+    4300162: 'Walls <Basic Wall : Wall 1 : >'
+    4300164: 'Walls <Basic Wall : Wall 1 : >'
+    4300166: 'Walls <Basic Wall : Wall 1 : >'
+    4300168: 'Walls <Basic Wall : Wall 1 : >'
+    4300170: 'Walls <Basic Wall : Wall 1 : >'
+    4300172: 'Walls <Basic Wall : Wall 1 : >'
+    4300174: 'Walls <Basic Wall : Wall 1 : >'
+    4300176: 'Walls <Basic Wall : Wall 1 : >'
+    4300178: 'Walls <Basic Wall : Wall 1 : >'
+    4300180: 'Walls <Basic Wall : Wall 1 : >'
+    4300182: 'Walls <Basic Wall : Wall 1 : >'
+    4300184: 'Walls <Basic Wall : Wall 1 : >'
+    4300186: 'Walls <Basic Wall : Wall 1 : >'
+    4300188: 'Floors <Floor : Floor 1>'
+    4300190: 'Floors <Floor : Floor 1>'
+    4300192: 'Floors <Floor : Floor 1>'
+    4300194: 'Floors <Floor : Floor 1>'
+    4300196: 'Floors <Floor : Floor 1>'
+    4300198: 'Floors <Floor : Floor 1>'
+    4300200: 'Floors <Floor : Floor 1>'
+    4300202: 'Floors <Floor : Floor 1>'
+    4300204: 'Floors <Floor : Floor 1>'
+    4300206: 'Floors <Floor : Floor 1>'
+    4300208: 'Floors <Floor : Floor 1>'
+    4300210: 'Doors <Double-Panel 1 : 72" x 84"__72x4x84> Frame/Mullion'
+    4300212: 'Doors <Double-Panel 1 : 72" x 84"__72x4x84> Panel'
+    4300214: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion'
+    4300216: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel'
+    4300218: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion'
+    4300220: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel'
+    4300222: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion'
+    4300224: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel'
+    4300226: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion'
+    4300228: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel'
+    4300230: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion'
+    4300232: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel'
+    4300234: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion'
+    4300236: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel'
+    4300238: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion'
+    4300240: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel'
+    4300242: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion'
+    4300244: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel'
+    4300246: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion'
+    4300248: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel'
+    4300250: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Frame/Mullion'
+    4300252: 'Doors <Single-Panel 4 : 36" x 84"__35x4x81> Panel'
+    11100000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
-    generateAnimations: 3
+    legacyGenerateAnimations: 3
     bakeSimulation: 0
-    splitAnimations: 1
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
     animationWrapMode: 0
     clipAnimations: []
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -74,7 +839,7 @@ ModelImporter:
     swapUVChannels: 1
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMesh: 0
+    optimizeMeshForGPU: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -84,679 +849,21 @@ ModelImporter:
     splitTangentsAcrossUV: 1
     normalImportMode: 0
     tangentImportMode: 1
-  textMetaNamesToFileIDs:
-    //RootNode:
-      data:
-        first: 1
-        second: a2860100
-      data:
-        first: 4
-        second: 821a0600
-      data:
-        first: 111
-        second: 605fa900
-    Box005:
-      data:
-        first: 1
-        second: c0860100
-      data:
-        first: 4
-        second: a01a0600
-      data:
-        first: 23
-        second: 7e182300
-      data:
-        first: 33
-        second: be5a3200
-    Box006:
-      data:
-        first: 1
-        second: f8860100
-      data:
-        first: 4
-        second: d81a0600
-      data:
-        first: 23
-        second: b2182300
-      data:
-        first: 33
-        second: f25a3200
-    Box007:
-      data:
-        first: 1
-        second: e8860100
-      data:
-        first: 4
-        second: c81a0600
-      data:
-        first: 23
-        second: a2182300
-      data:
-        first: 33
-        second: e25a3200
-    Box008:
-      data:
-        first: 1
-        second: d6860100
-      data:
-        first: 4
-        second: b61a0600
-      data:
-        first: 23
-        second: 94182300
-      data:
-        first: 33
-        second: d45a3200
-    Box009:
-      data:
-        first: 1
-        second: 00870100
-      data:
-        first: 4
-        second: e01a0600
-      data:
-        first: 23
-        second: b8182300
-      data:
-        first: 33
-        second: f85a3200
-    Box010:
-      data:
-        first: 1
-        second: cc860100
-      data:
-        first: 4
-        second: ac1a0600
-      data:
-        first: 23
-        second: 8a182300
-      data:
-        first: 33
-        second: ca5a3200
-    Box011:
-      data:
-        first: 1
-        second: bc860100
-      data:
-        first: 4
-        second: 9c1a0600
-      data:
-        first: 23
-        second: 7a182300
-      data:
-        first: 33
-        second: ba5a3200
-    Box012:
-      data:
-        first: 1
-        second: a6860100
-      data:
-        first: 4
-        second: 861a0600
-      data:
-        first: 23
-        second: 64182300
-      data:
-        first: 33
-        second: a45a3200
-    Box014:
-      data:
-        first: 1
-        second: fe860100
-      data:
-        first: 4
-        second: de1a0600
-    Box019:
-      data:
-        first: 1
-        second: e2860100
-      data:
-        first: 4
-        second: c21a0600
-    Box020:
-      data:
-        first: 1
-        second: e0860100
-      data:
-        first: 4
-        second: c01a0600
-    Box021:
-      data:
-        first: 1
-        second: 06870100
-      data:
-        first: 4
-        second: e61a0600
-    Box022:
-      data:
-        first: 1
-        second: a4860100
-      data:
-        first: 4
-        second: 841a0600
-      data:
-        first: 23
-        second: 62182300
-      data:
-        first: 33
-        second: a25a3200
-    Box023:
-      data:
-        first: 1
-        second: da860100
-      data:
-        first: 4
-        second: ba1a0600
-      data:
-        first: 23
-        second: 98182300
-      data:
-        first: 33
-        second: d85a3200
-    Box024:
-      data:
-        first: 1
-        second: d8860100
-      data:
-        first: 4
-        second: b81a0600
-      data:
-        first: 23
-        second: 96182300
-      data:
-        first: 33
-        second: d65a3200
-    Box025:
-      data:
-        first: 1
-        second: d0860100
-      data:
-        first: 4
-        second: b01a0600
-      data:
-        first: 23
-        second: 8e182300
-      data:
-        first: 33
-        second: ce5a3200
-    Box026:
-      data:
-        first: 1
-        second: ce860100
-      data:
-        first: 4
-        second: ae1a0600
-      data:
-        first: 23
-        second: 8c182300
-      data:
-        first: 33
-        second: cc5a3200
-    Box027:
-      data:
-        first: 1
-        second: c4860100
-      data:
-        first: 4
-        second: a41a0600
-      data:
-        first: 23
-        second: 82182300
-      data:
-        first: 33
-        second: c25a3200
-    Box028:
-      data:
-        first: 1
-        second: c2860100
-      data:
-        first: 4
-        second: a21a0600
-      data:
-        first: 23
-        second: 80182300
-      data:
-        first: 33
-        second: c05a3200
-    Box029:
-      data:
-        first: 1
-        second: f6860100
-      data:
-        first: 4
-        second: d61a0600
-      data:
-        first: 23
-        second: b0182300
-      data:
-        first: 33
-        second: f05a3200
-    Box030:
-      data:
-        first: 1
-        second: f4860100
-      data:
-        first: 4
-        second: d41a0600
-      data:
-        first: 23
-        second: ae182300
-      data:
-        first: 33
-        second: ee5a3200
-    Box031:
-      data:
-        first: 1
-        second: ee860100
-      data:
-        first: 4
-        second: ce1a0600
-      data:
-        first: 23
-        second: a8182300
-      data:
-        first: 33
-        second: e85a3200
-    Box032:
-      data:
-        first: 1
-        second: aa860100
-      data:
-        first: 4
-        second: 8a1a0600
-      data:
-        first: 23
-        second: 68182300
-      data:
-        first: 33
-        second: a85a3200
-    Box033:
-      data:
-        first: 1
-        second: ea860100
-      data:
-        first: 4
-        second: ca1a0600
-      data:
-        first: 23
-        second: a4182300
-      data:
-        first: 33
-        second: e45a3200
-    Box034:
-      data:
-        first: 1
-        second: dc860100
-      data:
-        first: 4
-        second: bc1a0600
-      data:
-        first: 23
-        second: 9a182300
-      data:
-        first: 33
-        second: da5a3200
-    Box036:
-      data:
-        first: 1
-        second: ac860100
-      data:
-        first: 4
-        second: 8c1a0600
-      data:
-        first: 23
-        second: 6a182300
-      data:
-        first: 33
-        second: aa5a3200
-    Box037:
-      data:
-        first: 1
-        second: a0860100
-      data:
-        first: 4
-        second: 801a0600
-      data:
-        first: 23
-        second: 60182300
-      data:
-        first: 33
-        second: a05a3200
-    Box038:
-      data:
-        first: 1
-        second: ca860100
-      data:
-        first: 4
-        second: aa1a0600
-      data:
-        first: 23
-        second: 88182300
-      data:
-        first: 33
-        second: c85a3200
-    Box039:
-      data:
-        first: 1
-        second: b2860100
-      data:
-        first: 4
-        second: 921a0600
-      data:
-        first: 23
-        second: 70182300
-      data:
-        first: 33
-        second: b05a3200
-    Box040:
-      data:
-        first: 1
-        second: f2860100
-      data:
-        first: 4
-        second: d21a0600
-      data:
-        first: 23
-        second: ac182300
-      data:
-        first: 33
-        second: ec5a3200
-    Box041:
-      data:
-        first: 1
-        second: 02870100
-      data:
-        first: 4
-        second: e21a0600
-      data:
-        first: 23
-        second: ba182300
-      data:
-        first: 33
-        second: fa5a3200
-    Box042:
-      data:
-        first: 1
-        second: 04870100
-      data:
-        first: 4
-        second: e41a0600
-      data:
-        first: 23
-        second: bc182300
-      data:
-        first: 33
-        second: fc5a3200
-    Box043:
-      data:
-        first: 1
-        second: b6860100
-      data:
-        first: 4
-        second: 961a0600
-      data:
-        first: 23
-        second: 74182300
-      data:
-        first: 33
-        second: b45a3200
-    Box044:
-      data:
-        first: 1
-        second: fc860100
-      data:
-        first: 4
-        second: dc1a0600
-      data:
-        first: 23
-        second: b6182300
-      data:
-        first: 33
-        second: f65a3200
-    Box045:
-      data:
-        first: 1
-        second: de860100
-      data:
-        first: 4
-        second: be1a0600
-      data:
-        first: 23
-        second: 9c182300
-      data:
-        first: 33
-        second: dc5a3200
-    Box046:
-      data:
-        first: 1
-        second: f0860100
-      data:
-        first: 4
-        second: d01a0600
-      data:
-        first: 23
-        second: aa182300
-      data:
-        first: 33
-        second: ea5a3200
-    Box047:
-      data:
-        first: 1
-        second: fa860100
-      data:
-        first: 4
-        second: da1a0600
-      data:
-        first: 23
-        second: b4182300
-      data:
-        first: 33
-        second: f45a3200
-    Box048:
-      data:
-        first: 1
-        second: e6860100
-      data:
-        first: 4
-        second: c61a0600
-      data:
-        first: 23
-        second: a0182300
-      data:
-        first: 33
-        second: e05a3200
-    Box049:
-      data:
-        first: 1
-        second: d2860100
-      data:
-        first: 4
-        second: b21a0600
-      data:
-        first: 23
-        second: 90182300
-      data:
-        first: 33
-        second: d05a3200
-    Box050:
-      data:
-        first: 1
-        second: e4860100
-      data:
-        first: 4
-        second: c41a0600
-      data:
-        first: 23
-        second: 9e182300
-      data:
-        first: 33
-        second: de5a3200
-    Box051:
-      data:
-        first: 1
-        second: d4860100
-      data:
-        first: 4
-        second: b41a0600
-      data:
-        first: 23
-        second: 92182300
-      data:
-        first: 33
-        second: d25a3200
-    Box052:
-      data:
-        first: 1
-        second: b4860100
-      data:
-        first: 4
-        second: 941a0600
-      data:
-        first: 23
-        second: 72182300
-      data:
-        first: 33
-        second: b25a3200
-    Box053:
-      data:
-        first: 1
-        second: a8860100
-      data:
-        first: 4
-        second: 881a0600
-      data:
-        first: 23
-        second: 66182300
-      data:
-        first: 33
-        second: a65a3200
-    Box054:
-      data:
-        first: 1
-        second: b0860100
-      data:
-        first: 4
-        second: 901a0600
-      data:
-        first: 23
-        second: 6e182300
-      data:
-        first: 33
-        second: ae5a3200
-    Box055:
-      data:
-        first: 1
-        second: ae860100
-      data:
-        first: 4
-        second: 8e1a0600
-      data:
-        first: 23
-        second: 6c182300
-      data:
-        first: 33
-        second: ac5a3200
-    Box056:
-      data:
-        first: 1
-        second: b8860100
-      data:
-        first: 4
-        second: 981a0600
-      data:
-        first: 23
-        second: 76182300
-      data:
-        first: 33
-        second: b65a3200
-    Object002:
-      data:
-        first: 1
-        second: c8860100
-      data:
-        first: 4
-        second: a81a0600
-      data:
-        first: 23
-        second: 86182300
-      data:
-        first: 33
-        second: c65a3200
-    Object003:
-      data:
-        first: 1
-        second: c6860100
-      data:
-        first: 4
-        second: a61a0600
-      data:
-        first: 23
-        second: 84182300
-      data:
-        first: 33
-        second: c45a3200
-    Object004:
-      data:
-        first: 1
-        second: ec860100
-      data:
-        first: 4
-        second: cc1a0600
-      data:
-        first: 23
-        second: a6182300
-      data:
-        first: 33
-        second: e65a3200
-    Plane001:
-      data:
-        first: 1
-        second: 0a870100
-      data:
-        first: 4
-        second: ea1a0600
-      data:
-        first: 23
-        second: c0182300
-      data:
-        first: 33
-        second: 005b3200
-    Plane002:
-      data:
-        first: 1
-        second: 08870100
-      data:
-        first: 4
-        second: e81a0600
-      data:
-        first: 23
-        second: be182300
-      data:
-        first: 33
-        second: fe5a3200
-    Plane003:
-      data:
-        first: 1
-        second: ba860100
-      data:
-        first: 4
-        second: 9a1a0600
-      data:
-        first: 23
-        second: 78182300
-      data:
-        first: 33
-        second: b85a3200
-    wallsDown:
-      data:
-        first: 1
-        second: be860100
-      data:
-        first: 4
-        second: 9e1a0600
-      data:
-        first: 23
-        second: 7c182300
-      data:
-        first: 33
-        second: bc5a3200
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 1
+  userData: 

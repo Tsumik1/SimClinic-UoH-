@@ -17,6 +17,11 @@ public class Waypoint : MonoBehaviour {
 		plant, 
 		fire, 
 		receptionAction,
+		practice,
+		practiceAction,
+		sit, 
+		queue,
+		clinic,
 		
 	}
 	
@@ -24,7 +29,8 @@ public class Waypoint : MonoBehaviour {
 	public Action action{get;set;}
 	public bool visited = false; 
 	public int timeToStayAtWaypoint;
-	public GameObject point;
+	public bool occupied = false; 
+	//public GameObject point;
 	public Staff owner; 
 	public string ownerName; 
 	// Use this for initialization
@@ -51,5 +57,21 @@ public class Waypoint : MonoBehaviour {
 	{
 		visited = hit;
 		//Debug.Log ("I'm Hit");
+	}
+	
+	public void OnCollisionEnter(Collision col)
+	{
+		if(col.gameObject.tag == "patient")
+		{
+			occupied = true; 
+		}
+	}
+	
+	public void OnCollisionExit(Collision col)
+	{
+		if(col.gameObject.tag == "patient")
+		{
+			occupied = false; 
+		}
 	}
 }

@@ -41,9 +41,13 @@ public class CreateTable : MonoBehaviour
 			name = Instantiate (textStart, panel.transform.position, Quaternion.identity) as GameObject;
 			name.GetComponent<TextMesh> ().text = newName;
 			name.transform.parent = panel.transform;
-			life = Instantiate(health, panel.transform.position, Quaternion.identity) as GameObject;
-			life.GetComponent<HealthBar> ().needsPositioning = false;
-			life.name = "HealthBar";
+			if(health)
+			{
+				life = Instantiate(health, panel.transform.position, Quaternion.identity) as GameObject;
+				life.GetComponent<HealthBar> ().needsPositioning = false;
+				life.name = "HealthBar";
+				life.layer = 10;
+			}
 			repairCost = Instantiate (textStart, panel.transform.position, Quaternion.identity) as GameObject;
 			repairCost.GetComponent<TextMesh> ().text = cost; 
 			repairCost.gameObject.transform.parent = panel.transform;
@@ -51,24 +55,40 @@ public class CreateTable : MonoBehaviour
 			repairButton.gameObject.transform.parent = panel.transform;
 			repairButton.name = "RepairButtonUI";
 			actualObject = theObject;
-			life.layer = 10;
 			repairButton.layer = 10;
 		}
 		
 		public void PlaceRow (Vector3 position, float columnSize)
 		{
+
 			name.transform.position = position; 
 			name.renderer.enabled = true; 
-			life.transform.position = new Vector3 (name.transform.position.x + columnSize, name.transform.position.y, name.transform.position.z);
-			life.renderer.enabled = true; 
-			repairCost.transform.position = new Vector3 (life.transform.position.x + columnSize, name.transform.position.y, name.transform.position.z);
+						float nextX = name.transform.position.x;
+			print(nextX);
+			if(life)
+			{
+				life.transform.position = new Vector3 (nextX + columnSize, name.transform.position.y, name.transform.position.z);
+				life.renderer.enabled = true; 
+				nextX = life.transform.position.x;
+			}
+			else
+			{
+				nextX += columnSize;
+				print(nextX);
+			}
+			repairCost.transform.position = new Vector3 (nextX + columnSize, name.transform.position.y, name.transform.position.z);
+			nextX = repairCost.transform.position.x;
+			print(nextX);
 			repairCost.renderer.enabled = true; 
-			repairButton.transform.position = new Vector3 (repairCost.transform.position.x + columnSize, name.transform.position.y, name.transform.position.z);
+			repairButton.transform.position = new Vector3 (nextX + columnSize, name.transform.position.y, name.transform.position.z);
 			Vector3 temp = new Vector3 (panel.transform.position.x, panel.transform.position.y, panel.transform.position.z);
 			panel.transform.position = temp;
 			repairButton.transform.parent = actualObject.transform;
-			life.transform.parent = actualObject.transform;
+			if(life)
+			{
+				life.transform.parent = actualObject.transform;
 			life.transform.Rotate(new Vector3(-90,0,0));
+			}
 			repairButton.transform.Rotate (new Vector3(-90,0,0));
 		}
 		public void DestroyAssets ()
@@ -76,7 +96,10 @@ public class CreateTable : MonoBehaviour
 			if(actualObject != null)
 			{actualObject.DestroyChildren();}
 			Destroy (name);
-			Destroy (life);
+			if(life)
+			{
+				Destroy (life);
+			}
 			Destroy (repairCost);
 			Destroy (repairButton);
 		}

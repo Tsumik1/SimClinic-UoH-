@@ -42,6 +42,8 @@ Shader "Outlined Diffuse"
          Blend SrcAlpha OneMinusSrcAlpha
 
          CGPROGRAM 
+// Upgrade NOTE: excluded shader from DX11 and Xbox360; has structs without semantics (struct appdata members vertex,normal)
+#pragma exclude_renderers d3d11 xbox360
 #pragma exclude_renderers gles
 #pragma exclude_renderers xbox360
          #pragma vertex vert 

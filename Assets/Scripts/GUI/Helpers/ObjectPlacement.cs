@@ -48,7 +48,6 @@ public class ObjectPlacement : MonoBehaviour {
 	public Type type;
 	
  
- 
 	void Start () {
 		myTransform = transform;							// sets myTransform to this GameObject.transform
 		destinationPosition = myTransform.position;			// prevents myTransform reset

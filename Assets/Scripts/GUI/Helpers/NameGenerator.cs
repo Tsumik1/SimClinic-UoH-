@@ -13,6 +13,7 @@ private string[] femaleFirstName;
 private string[] femaleMidName;
 private string[] femaleEndName;
 
+private string[] conditionName;
 private bool isMale;
 
 private int minRange = 0;
@@ -81,8 +82,19 @@ femaleMidName = new string[8]
 		};
 
 femaleEndName = maleEndName;
-}
 
+conditionName = new string[8]
+		{
+			"Bonitis ", "Bloaty Head ", "Veruca ", "Yellow Nail Syndrome ", 
+			"Holy Shit ", "Onychia Punctata ", "Leukonychia ", "Parrot Beak Nail "
+		};
+
+		
+}
+public string CreateCondition()
+	{
+		return conditionName[Random.Range(0,conditionName.Length - 1)];
+	}
 public string CreateName(bool maleName, int charNameLength)
 {
 nameLevel = 1;

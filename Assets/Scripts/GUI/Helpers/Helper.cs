@@ -36,7 +36,31 @@ public class Helper : MonoBehaviour {
 	}
 	// Use this for initialization
 
+	public static string GenerateConditionName()
+	{
+		nameGen = new NameGenerator();
+		return nameGen.CreateCondition();
+	}
 	
+	public static void DisableGraphics()
+	{
+		MeshRenderer[] meshes = FindObjectsOfType(typeof(MeshRenderer)) as MeshRenderer[];
+		foreach(MeshRenderer m in meshes)
+		{
+			m.enabled = false;
+		}
+	}
+	
+	public static void SimulateMonth()
+	{
+		PatientManager.DestroyPatients();
+		PatientManager.SimulateMonth ();
+		StaffManager.ResetStaff();
+		MoneyManager.SimulateMonthlyIncome();
+		ObjectManager.SimulateWearAndTear(28);
+	}
+	
+
 	// Update is called once per frame
 	void Update () {
 	

@@ -163,6 +163,12 @@ public class MoneyManager : MonoBehaviour
 		CalculateEquipmentCost();
 		CalculateStaffCost ();
 		CalculateBuildingCost();
+		actualMoney = money - outstandingLoanAmount;
+	}
+	
+	public static void ReceivePayment(double amount)
+	{
+		money += amount;
 	}
 	
 	public static void CalculateEquipmentCost()
@@ -187,6 +193,7 @@ public class MoneyManager : MonoBehaviour
 	{
 		CalculateAll ();
 		double amount = (monthlyRepairCosts + monthlyStaffCost + monthlyRent + monthlyEquipmentCost + bills);
+		print (amount);
 		money -= amount;
 	}
 	
@@ -194,7 +201,21 @@ public class MoneyManager : MonoBehaviour
 	{
 		
 	}
-	
+	public static void SimulateMonthlyIncome()
+	{
+		int noOfPatients = PatientManager.GetMonthlyPatients();
+		double min = ConditionManager.minCost * noOfPatients;
+		double max = ConditionManager.maxCost * noOfPatients;
+		double income = (double)Random.Range ((float)min,(float)max);
+		if(ObjectManager.HasShop())
+		{
+			double extraCash = Random.Range((float)ProductManager.min, (float)ProductManager.max);
+			extraCash *= (noOfPatients / 2);
+		}
+		income = System.Math.Truncate(income);
+		print (income);
+		money += income;
+	}
 	public static double GetRepairCostAtMonth(int month)
 	{
 		return repairCosts[month];

@@ -11,6 +11,7 @@ public class TimeManager : MonoBehaviour
 	public static int closingTime = 17; 
 	public static DateTime currentDate;
 	public static DateTime endDate;
+	public static int multiplyValue = 10;
 	
 	//public static int currentMonth; 
 	public static Day currentDay; 
@@ -18,6 +19,10 @@ public class TimeManager : MonoBehaviour
 	public static Year currentYear; 
 	public static Hour currentHour;
 	public static Minute currentMinute;
+	public static int randomMinute;
+	public static bool skip = false;
+	
+	public int randMin; 
 	//private int month; 
 	// Use this for initialization
 	
@@ -220,16 +225,20 @@ public class TimeManager : MonoBehaviour
 		currentDay.day = currentDate.Day;
 		currentYear.year = currentDate.Year;
 		currentMonth.month = currentDate.Month;
+		RandomMinute ();
 		//PerformMonthlyActions();
 	}
 	
-
+	static void RandomMinute()
+	{
+		randomMinute = UnityEngine.Random.Range (0,59);
+	}
 	// Update is called once per frame
 	void Update () 
 	{
 		//Time.timeScale = timeSpeed;
 		
-		currentDate = currentDate.AddSeconds (Time.deltaTime * 10);
+		currentDate = currentDate.AddSeconds (Time.deltaTime  * multiplyValue);
 		//checks end of day. 
 		if(currentDate != null)
 		{
@@ -239,7 +248,7 @@ public class TimeManager : MonoBehaviour
 			CheckHour();
 			CheckMinute();
 		}
-
+		randMin = randomMinute;
 		
 		//currentMonth = currentDate.Month;
 		//currentDay.day = currentDate.Day;
@@ -254,22 +263,16 @@ public class TimeManager : MonoBehaviour
 	
 	public static void AddMonth()
 	{
-		
-		while(!currentDay.isEndOfMonth(currentDate.Month))
-		{
-			//print (currentDay.day);
-			AddDay ();
-			CheckDay ();
-			//currentDay.day = currentDate.Day;
-			//PerformDailyActions();
-		}
-		currentDate = currentDate.AddDays (1);
+		currentDate = currentDate.AddMonths (1);
+		Helper.SimulateMonth();
+		CheckMonth ();
 	}
 	
 	public static void AddDay()
 	{
 		for(int i = 0; i < 24; i++)
 		{
+			
 			AddHour ();
 			CheckHour ();
 		}
@@ -277,12 +280,18 @@ public class TimeManager : MonoBehaviour
 	
 	public static void AddHour()
 	{
-		currentDate.AddHours(1);
+		//currentDate = currentDate.AddHours(1);
+		for(int i = 0; i < 60; i++)
+		{
+			AddMinute ();
+			CheckMinute ();
+		}
+
 	}
 	
 	public static void AddMinute()
 	{
-		currentDate.AddMinutes (1);
+		currentDate = currentDate.AddMinutes (1);
 	}
 	
 	public static void CheckHour()
@@ -336,7 +345,13 @@ public class TimeManager : MonoBehaviour
 	
 	public static void PerformMinuteActions()
 	{
+		if(currentMinute.minute == randomMinute)
+		{
+			Spawner.SpawnPatient ();
+			RandomMinute();
+		}
 		StaffManager.UpdateStaffTimeToNextWaypoint();
+		PatientManager.MinutePassed();
 	}
 	
 	public static void PerformHourlyActions()
@@ -349,6 +364,7 @@ public class TimeManager : MonoBehaviour
 		if(currentHour.hour == closingTime)
 		{
 			StaffManager.GoHome();	
+			PatientManager.AllGoHome();
 			return;
 		}
 		//StaffManager.UpdateStaffActions();
@@ -370,6 +386,8 @@ public class TimeManager : MonoBehaviour
 		if(graph)
 		{graph.CalculatePoints(currentMonth.month - 1);}
 		DeductCosts();
+		PatientManager.AddPatientTotal (currentMonth.month-1);
+		PatientManager.monthlyPatients = 0;
 	}
 	
 	//Daily Actions
@@ -453,5 +471,13 @@ public class TimeManager : MonoBehaviour
 		closingTimeInMinutes -= currentTimeInMinutes; 
 		print(closingTimeInMinutes);
 		return closingTimeInMinutes;
+	}
+	
+	public static bool IsOpen()
+	{
+		if(currentHour.hour >= openingTime && currentHour.hour <= closingTime)
+			return true;
+		else
+			return false;
 	}
 }

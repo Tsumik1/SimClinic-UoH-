@@ -24,6 +24,7 @@ public class Staff : MonoBehaviour
 		fired,
 		onBreak,
 		working,
+		waitingAtDesk,
 		leaving
 	}
 	
@@ -40,12 +41,17 @@ public class Staff : MonoBehaviour
 	public int timeToStayAtWaypoint; 
 	public int waypointNumber; 
 	public string currentState;
+	public int bookingTime = 5;
+	public int timeToNextPatient = 5;
+	public int cooldownTime = 5;
 	public Waypoint[] waypoints;
 	
 	private NameGenerator nameGenerator;
 	private bool assignedWorkplace = false;
 	private AIPath myPath; 
-	 
+	private StaffWaypoint myWaypoint;
+	private Patient currentPatient; 
+	
 	// Use this for initialization
 	public void Start ()
 	{
@@ -54,27 +60,37 @@ public class Staff : MonoBehaviour
 		staffName = Helper.GenerateName (male, Random.Range (2,3));
 		TakeOwnership (); 
 		myPath = GetComponent<AIPath>();
+		myWaypoint = GetComponentInChildren<StaffWaypoint>();
 	}
-	void TakeReceptionOwnership ()
+	
+	
+	void TakeDesk(Waypoint.Action action)
 	{
-		foreach (Waypoint point in FindObjectsOfType(typeof(Waypoint))) {
-			if (point.action == Waypoint.Action.reception) {
+			foreach (Waypoint point in FindObjectsOfType(typeof(Waypoint))) {
+			if (point.action == action) {
 				if (point.owner == null) {
 					point.owner = this;
 					assignedWorkplace = true; 
+					if(TimeManager.IsOpen())
+					{
+						myPath.target = point.transform;
+						timeToStayAtWaypoint = point.timeToStayAtWaypoint;
+					}
 				} else {
-					print ("No Objects To Own :(. Staff without purpose!");
+					print ("No Objects To Own :(. Staff without purpose!"); // needs to add random message system here.
 				}
 			}
 		}
 	}
-	
 	void TakeOwnership ()
 	{
 
 		switch (role) {
 		case Role.receptionist:
-			TakeReceptionOwnership ();
+			TakeDesk(Waypoint.Action.reception);
+			break;
+		case Role.practitioner:
+			TakeDesk(Waypoint.Action.practice);
 			break;
 		default:
 			break;
@@ -84,11 +100,13 @@ public class Staff : MonoBehaviour
 
 	public void Update()
 	{
+		currentState = state.ToString();
 		if(!assignedWorkplace)
 		{
 			TakeOwnership ();
 		}
 	}
+	
 	void SetRole (Role newRole)
 	{
 		role = newRole;
@@ -101,13 +119,49 @@ public class Staff : MonoBehaviour
 	public void MinutePassed ()
 	{
 		timeToStayAtWaypoint--;
-		if(TimeManager.currentHour.hour >= TimeManager.openingTime && TimeManager.currentHour.hour <= TimeManager.closingTime)
+
+		if(timeToStayAtWaypoint < 0)
 		{
-			if(timeToStayAtWaypoint <= 0)
+			timeToStayAtWaypoint = 0;
+		}
+		if(TimeManager.IsOpen ())
+		{
+			if(timeToStayAtWaypoint == 0)
 			{
 				NextWaypoint();
 			}
+		if(role == Role.practitioner)
+		{
+				if(PatientManager.PatientsWaiting())
+				{
+					timeToNextPatient--; 	
+					if(timeToNextPatient == 0)
+					{
+						CallNextPatient();
+					}
+				}
+				else
+				{
+					NoPatients();
+				}
 		}
+		
+		}
+		else
+		{
+			GoHome();
+		}
+		if(timeToNextPatient < 0)
+		{
+			timeToNextPatient = 0;
+		}
+
+	}
+	
+	public void NoPatients()
+	{
+		print (staffName + ": No patients"); // need to add random messages. 
+		timeToNextPatient = cooldownTime;
 	}
 	
 	public void NextWaypoint()
@@ -126,7 +180,8 @@ public class Staff : MonoBehaviour
 		}
 		else
 		{
-			waypoints = WaypointManager.FindStaffWaypoints(this);
+			timeToStayAtWaypoint = 0;
+			//waypoints = WaypointManager.FindStaffWaypoints(this);
 		}
 
 	}
@@ -137,16 +192,94 @@ public class Staff : MonoBehaviour
 		{
 			myPath.target = waypoints[0].transform;
 			timeToStayAtWaypoint = TimeManager.TimeTillClosingTimeInMinutes();
+			state = State.waitingAtDesk;
 		}
 	}
-
+	
+	public void SetState(Waypoint point)
+	{
+		switch(point.action)
+		{
+		case Waypoint.Action.book:
+			state = State.booking;
+			break;
+		case Waypoint.Action.enter:
+			state = State.entering;
+			break;
+		case Waypoint.Action.exit:
+			state = State.leaving;
+			break;
+		case Waypoint.Action.fire:
+			state = State.leaving;
+			break;
+		case Waypoint.Action.reception:
+			state = State.waitingAtDesk;
+			break;
+		case Waypoint.Action.receptionAction:
+			state = State.working;
+			break;
+		case Waypoint.Action.wait:
+			state = State.waiting;
+			break;
+		case Waypoint.Action.work:
+			state = State.working;
+			break;
+		}
+	}
+	
 	public void GoHome()
 	{
 		Waypoint point = WaypointManager.FindExitWaypoint();
 		myPath.target = point.transform;
 		timeToStayAtWaypoint = point.timeToStayAtWaypoint;
+		//SetState (point);
+		state= State.leaving;
 	}
+	
+	public void MakeBooking(Patient patient)
+	{
+		if(StaffManager.CheckForStaff(Role.practitioner))
+		{
+			if(!PatientManager.PatientsWaiting())
+			{
+				
+			}
+			state = State.booking;
+			patient.state = Patient.State.booking;
+			PatientManager.AddPatientToWaiting (patient);
+			patient.timeToStayAtWaypoint = bookingTime;
+			patient.SetStaffTarget(StaffManager.AssignPractitioner());
+			
+		}
+		else
+		{
+			print (staffName + ": Sorry, for some reason we don't have a practitioner in the building."); // Need to add random messages here.
+			state = State.waitingAtDesk;
+			patient.GoHomePissed(RandomMessages.GetAngryHomeMessage()); //Need to add Random Messages for no practitioner.
+		}
 
+	}
+	
+	public void CallNextPatient()
+	{
+		currentPatient = PatientManager.GetNextWaiting();
+		PatientManager.RemovePatientFromWaiting(currentPatient);
+		currentPatient.state = Patient.State.inAppointment;
+		state = State.working;
+		if(WaypointManager.IsClinicSeat())
+		{
+			currentPatient.SetWaypoint(WaypointManager.GetClinicWaypoint(),currentPatient.conditionTime + 1);
+		}
+		else
+		{
+			currentPatient.SetWaypoint(WaypointManager.GetPracticeWaypoint(),currentPatient.conditionTime + 1);
+			currentPatient.Speak ("No Clinic Seating..."); // needs random messaging system. 
+			currentPatient.patientSatisfaction -= 5;
+		}
+		timeToStayAtWaypoint = currentPatient.conditionTime + cooldownTime;
+		timeToNextPatient = currentPatient.conditionTime + cooldownTime;
+	}
+	
 	public void StartWork()
 	{
 		Waypoint point = WaypointManager.FindStartWaypoint();
@@ -154,7 +287,19 @@ public class Staff : MonoBehaviour
 		timeToStayAtWaypoint = point.timeToStayAtWaypoint;
 		waypoints = WaypointManager.FindStaffWaypoints(this);
 		waypointNumber = 0; 
+		SetState (point);
+		timeToNextPatient = cooldownTime;
+		currentPatient = null;
 	}
 	
-
+	public void Reset()
+	{
+		StartWork ();
+	}
+	
+	public void HurryTask ()
+	{
+		timeToStayAtWaypoint = timeToStayAtWaypoint/2;
+	}
+	
 }

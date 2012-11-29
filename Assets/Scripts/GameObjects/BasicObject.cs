@@ -16,11 +16,12 @@ public class BasicObject : MonoBehaviour
 	public bool isOn = false;
 	public bool needsRepair = true;
 	public bool degradable = false;
-	public int lifeSpanInDays = 30;
+	public int lifeSpanInDays;
 	public int life;
 	public GameObject buttons;
 	public GameObject healthBar;
-
+	public bool stockable = false;
+	public bool shop = false;
 	private Staff owner; 
 	private GameObject helper;
 	private GameObject healthy;
@@ -28,10 +29,14 @@ public class BasicObject : MonoBehaviour
 	private bool selected = false;
 	
 	// Use this for initialization
-	void Start ()
+	void Awake ()
 	{
 		life = lifeSpanInDays;
-
+		if(!destruction)
+		{
+			destruction = EffectsManager.degradedExplosion;
+		}
+		
 		//helper.transform.position = new Vector3(transform.position.x,transform.position.y+0.6f,transform.position.z);
 		//helper.transform.parent = transform;
 		//children = helper.GetComponentsInChildren (typeof(Transform)) as Transform[];
@@ -89,9 +94,17 @@ public class BasicObject : MonoBehaviour
 	public GameObject GetHealthBar()
 	{
 		//healthy = healthBar;
-		healthy = Instantiate (healthBar, transform.position, Quaternion.identity) as GameObject;
-		healthy.renderer.enabled = false;
-		healthy.transform.parent = transform; 
+		if(healthBar)
+		{
+			healthy = Instantiate (healthBar, transform.position, Quaternion.identity) as GameObject;
+			healthy.renderer.enabled = false;
+			healthy.transform.parent = transform; 
+		}
+		else
+		{
+			healthy = null;
+		}
+
 		return healthy; 
 	}
 	
@@ -122,7 +135,6 @@ public class BasicObject : MonoBehaviour
 				//life -= Time.deltaTime;
 				if (life <= 0) {
 					if (destruction) {
-
 						Instantiate (destruction, transform.position, Quaternion.identity);
 						Destroy (gameObject);
 					}
@@ -137,7 +149,6 @@ public class BasicObject : MonoBehaviour
 		Destroy (helper);
 		Destroy (healthy);
 		selected = false;
-	
 	}
 
 	public bool GetSelected ()
