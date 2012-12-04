@@ -1,8 +1,7 @@
 using UnityEngine;
 using System.Collections;
-
 public class PopupManager : MonoBehaviour {
-	
+
 	public GameObject sellConfirm; 
 	public GameObject infoPop; 
 	public GameObject stockPop;
@@ -10,7 +9,7 @@ public class PopupManager : MonoBehaviour {
 	public GameObject overPop;
 	public GameObject leftButton;
 	public GameObject rightButton; 
-	
+	public GameObject restockPop;
 	
 	public static GameObject sellConfirmer;
 	public static GameObject infoPopper;
@@ -19,6 +18,7 @@ public class PopupManager : MonoBehaviour {
 	public static GameObject rButton;
 	public static GameObject financePopup;
 	public static GameObject overPopup;
+	public static GameObject restockPopup;
 	
 	// Use this for initialization
 	void Awake() 
@@ -28,6 +28,7 @@ public class PopupManager : MonoBehaviour {
 		stockPopup = stockPop;
 		overPopup = overPop;
 		financePopup= financePop;
+		restockPopup = restockPop;
 	}
 	
 	// Update is called once per frame

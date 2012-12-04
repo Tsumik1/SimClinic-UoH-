@@ -1,33 +1,45 @@
+
 using UnityEngine;
 using System.Collections;
-
+		[SerializeAll]
 public class BasicObject : MonoBehaviour
 {
-		
+
+	public enum Quality
+	{
+		high,
+		standard,
+		low
+	}
+
+	//Public Variables
 	public string objectName;
 	public string objectDescription;
+	public Quality quality;
 	public int cost;
 	public int sellValue;
 	public int costPerDay;
 	public int costPerMonth;
 	public int repairCost;
 	public int patientIncrease;
-	public GameObject destruction;
+	public int lifeSpanInDays;
+	public int life;
 	public bool isOn = false;
 	public bool needsRepair = true;
 	public bool degradable = false;
-	public int lifeSpanInDays;
-	public int life;
-	public GameObject buttons;
-	public GameObject healthBar;
 	public bool stockable = false;
 	public bool shop = false;
+	public bool restockable = false;
+	public GameObject buttons;
+	public GameObject healthBar;
+	public GameObject destruction;
+	//Private Variables
+	private bool selected = false;
 	private Staff owner; 
+	private Transform[] children;
 	private GameObject helper;
 	private GameObject healthy;
-	private Transform[] children;
-	private bool selected = false;
-	
+
 	// Use this for initialization
 	void Awake ()
 	{
@@ -74,6 +86,21 @@ public class BasicObject : MonoBehaviour
 		}
 	}
 	
+	public void TakeLife(int days)
+	{
+		switch(quality)
+		{
+		case Quality.high:
+			life -= days;
+			break;
+		case Quality.standard:
+			life -= (days * 2);
+			break;
+		case Quality.low:
+			life -= (days * 3);
+			break;
+		}
+	}
 	public void EnableHealth ()
 	{
 		if (degradable) {

@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-
 public class RandomMessages : MonoBehaviour {
 	
 	public static string[] goingHome;
@@ -102,7 +101,7 @@ public class RandomMessages : MonoBehaviour {
 	}
 	public static string GetFirstMessage()
 	{
-		int i = Random.Range (0,clinicClosed.Length - 1);
+		int i = Random.Range (0,first.Length - 1);
 		return first[i];
 	}
 	

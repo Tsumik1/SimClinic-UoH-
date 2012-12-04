@@ -21,7 +21,8 @@
 using UnityEngine;
 using System.Collections;
  
-public class ObjectPlacement : MonoBehaviour {
+public class ObjectPlacement : MonoBehaviour 
+{	
 	private Transform myTransform;				// this transform
 	private Vector3 destinationPosition;		// The destination Point
 	private float destinationDistance;			// The distance between myTransform and destinationPosition
@@ -42,12 +43,10 @@ public class ObjectPlacement : MonoBehaviour {
 		desk = 3,
 		deskTopObject = 4,
 		outdoors = 5,
-		
 	}
 	
 	public Type type;
 	
- 
 	void Start () {
 		myTransform = transform;							// sets myTransform to this GameObject.transform
 		destinationPosition = myTransform.position;			// prevents myTransform reset
@@ -103,26 +102,15 @@ public class ObjectPlacement : MonoBehaviour {
 					temps.y = height;
 					myTransform.position = temps;
 				}
-
 			}
 			
 		if(validPlace)
 			{
-			 // renderer.material.color = Color.green; 
-				renderer.material = ObjectColours.valid;
-				if(renderer.materials.Length > 1)
-				{
-					renderer.materials[1] = ObjectColours.valid;
-				}
+				ChangeColour(Color.green);
 			}
 		else
 			{
-				//renderer.material.color = Color.red; 
-				renderer.material = ObjectColours.invalid;
-				if(renderer.materials.Length > 1)
-				{
-					renderer.materials[1] = ObjectColours.invalid;
-				}
+				ChangeColour(Color.red);
 			}
 		}
 		
@@ -130,7 +118,8 @@ public class ObjectPlacement : MonoBehaviour {
 		{
 			ObjectPlacementManager.placing = false; 
 			//renderer.material.color = defaultColour; 
-			renderer.material = defaultMaterial;
+			//renderer.material = defaultMaterial;
+			ChangeColour(Color.white);
 			isPlaced = true;
 			BasicObject script = GetComponent(typeof(BasicObject)) as BasicObject;
 			script.EnableObject();
@@ -148,6 +137,25 @@ public class ObjectPlacement : MonoBehaviour {
 		}
 	}
 	
+	void ChangeColour(Color col)
+	{
+		foreach(Transform child in transform)
+		{
+			if(child.renderer)
+			{
+							foreach(Material mat in child.renderer.materials)
+			{
+				mat.color = col;
+			}
+			}
+
+					//child.renderer.material.color = green; 
+		}
+		foreach(Material mat in renderer.materials)
+		{
+			mat.color = col;
+		}
+	}
 	
 	void CheckValid(Collision collision)
 	{

@@ -221,6 +221,7 @@ public class Patient : MonoBehaviour {
 		{
 			Pay();
 			GoHomeHappy(RandomMessages.GetHappyHomeMessage());
+			PatientManager.DecreaseInClinicCount();
 		}
 	}
 	public void Pay()
@@ -258,13 +259,13 @@ public class Patient : MonoBehaviour {
 		if(targetPoint && myPath)
 		{
 			myPath.target = targetPoint.transform;
+			timeToStayAtWaypoint = 1;
 			state = State.leaving;
 		}
 		else 
 		{
 			Debug.Log ("Can't find anywhere to go!");
 		}
-		PatientManager.DecreaseInClinicCount();
 		PatientManager.AddPatient();
 	}
 	

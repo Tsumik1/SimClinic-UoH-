@@ -1,55 +1,53 @@
 using UnityEngine;
 using System.Collections;
+	[SerializeAll]
+public class InfoButton : MonoBehaviour
+{
+	
 
-public class InfoButton : MonoBehaviour {
-	
-	
 	public bool info;
 	public bool finance;
-	
-	
 	private GameObject pop; 
 	// Use this for initialization
-	void Start () 
+	void Start ()
 	{
 		pop = PopupManager.infoPopper;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 	
 	}
 	
-	void Clicked()
+	void Clicked ()
 	{
-		if(finance && GUIManager.popUpSmall == false)
-		{
+		if (finance && GUIManager.popUpSmall == false) {
 			Instantiate (PopupManager.financePopup);
-					  GUIManager.popUpSmall = true;
+			GUIManager.popUpSmall = true;
 		}
-		if(info && GUIManager.popUpSmall == false)
-		{
-			Instantiate(PopupManager.overPopup);
-					  GUIManager.popUpSmall = true;
+		if (info && GUIManager.popUpSmall == false) {
+			Instantiate (PopupManager.overPopup);
+			GUIManager.popUpSmall = true;
 		}
-		if(!finance && !info)
-		{
-		if(ObjectManager.selectedObject)
-			
-		{ObjectManager.selectedObject.DisableHealth ();
-		ObjectManager.selectedObject.DisableButtons();}
-		if(GUIManager.popUpSmall == false)
-		{
-		  if(ObjectManager.selectedObject.stockable)
-			{
-				Instantiate (PopupManager.stockPopup);
+		if (!finance && !info) {
+			if (ObjectManager.selectedObject) {
+				ObjectManager.selectedObject.DisableHealth ();
+				ObjectManager.selectedObject.DisableButtons ();
 			}
-			else
-			{
-		 	 Instantiate (pop);	
+			if (GUIManager.popUpSmall == false) {
+				if (ObjectManager.selectedObject.stockable) {
+					Instantiate (PopupManager.stockPopup);
+				} else {
+					if (ObjectManager.selectedObject.restockable) {
+						Instantiate (PopupManager.restockPopup);
+					} else {
+						Instantiate (pop);	
+						
+					}
+				}
+				GUIManager.popUpSmall = true;
 			}
-		  GUIManager.popUpSmall = true;
-		}
 		}
 	}
 }

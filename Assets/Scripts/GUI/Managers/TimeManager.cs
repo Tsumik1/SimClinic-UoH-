@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
-
+	[SerializeAll]
 public class TimeManager : MonoBehaviour 
 {
 	public GameObject timeDisplay; 
@@ -28,7 +28,7 @@ public class TimeManager : MonoBehaviour
 	
 	//These are a bunch of helper support classes to better manage the time of day to be able to 
 	//effectivly perform actions when needed in specific time frames.
-	public class Day
+	public class Day : MonoBehaviourEx
 	{
 		//Simple class to help manage days. 
 		public int day; 
@@ -105,7 +105,7 @@ public class TimeManager : MonoBehaviour
 		}
 	}
 	
-	public class Month
+	public class Month : MonoBehaviourEx
 	{
 		public int month; 
 		public string monthName; 
@@ -171,7 +171,7 @@ public class TimeManager : MonoBehaviour
 		}
 	}
 	
-	public class Year
+	public class Year : MonoBehaviourEx
 	{
 		public int year; 
 		
@@ -182,7 +182,7 @@ public class TimeManager : MonoBehaviour
 		
 	}
 	
-	public class Hour
+	public class Hour : MonoBehaviourEx
 	{
 		public int hour; 
 		
@@ -202,7 +202,7 @@ public class TimeManager : MonoBehaviour
 		}
 	}
 	
-	public class Minute
+	public class Minute : MonoBehaviourEx
 	{
 		public int minute; 
 		
@@ -213,6 +213,10 @@ public class TimeManager : MonoBehaviour
 	}
 	void Awake() 
 	{
+		if(LevelSerializer.IsDeserializing)
+		{
+			return;
+		}
 		//Will use playerprefs here to sort this out but for testing purposes...
 		currentDate = new DateTime(2012,10,18,8,0,0);
 		Time.timeScale = timeSpeed; 
@@ -270,12 +274,15 @@ public class TimeManager : MonoBehaviour
 	
 	public static void AddDay()
 	{
-		for(int i = 0; i < 24; i++)
-		{
-			
-			AddHour ();
-			CheckHour ();
-		}
+		Helper.SimulateDay();
+		currentDate = currentDate.AddDays (1);
+		CheckDay();
+//		for(int i = 0; i < 24; i++)
+//		{
+//			
+//			AddHour ();
+//			CheckHour ();
+//		}
 	}
 	
 	public static void AddHour()
@@ -393,13 +400,7 @@ public class TimeManager : MonoBehaviour
 	//Daily Actions
 	public static void PerformDailyActions()
 	{
-		BasicObject[] items = FindObjectsOfType (typeof(BasicObject)) as BasicObject[];
-		
-		foreach(BasicObject item in items)
-		{
-			item.life -= 1;
-		}
-		
+		ObjectManager.SimulateWearAndTear(1);
 	}
 	
 	private static void DeductCosts()

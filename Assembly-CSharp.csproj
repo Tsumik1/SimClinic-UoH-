@@ -107,12 +107,13 @@
      <Compile Include="Assets\Scripts\Camera\MouseCameraControl.cs" />
      <Compile Include="Assets\Scripts\Camera\Orbit.cs" />
      <Compile Include="Assets\Scripts\Camera\ResetCamera.cs" />
+     <Compile Include="Assets\Scripts\Camera\RevertToMainCamera.cs" />
      <Compile Include="Assets\Scripts\Camera\SwitchToFirstPerson.cs" />
      <Compile Include="Assets\Scripts\GUI\Buttons\AmendLoan.cs" />
      <Compile Include="Assets\Scripts\GUI\Buttons\ButtonBehaviour.cs" />
      <Compile Include="Assets\Scripts\GUI\Buttons\ButtonMove.cs" />
      <Compile Include="Assets\Scripts\GUI\Buttons\CreateObjectOnClicked.cs" />
-     <Compile Include="Assets\Scripts\GUI\Buttons\NewBehaviourScript.cs" />
+     <Compile Include="Assets\Scripts\GUI\Buttons\RestockButton.cs" />
      <Compile Include="Assets\Scripts\GUI\Buttons\SellConfirm.cs" />
      <Compile Include="Assets\Scripts\GUI\Buttons\SkipDay.cs" />
      <Compile Include="Assets\Scripts\GUI\Buttons\SkipMonth.cs" />
@@ -121,9 +122,11 @@
      <Compile Include="Assets\Scripts\GUI\Dialogs\AddEquipmentOnClicked.cs" />
      <Compile Include="Assets\Scripts\GUI\Dialogs\Confirm.cs" />
      <Compile Include="Assets\Scripts\GUI\Dialogs\EquipmentPopup.cs" />
+     <Compile Include="Assets\Scripts\GUI\Dialogs\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\GUI\Dialogs\Popup.cs" />
      <Compile Include="Assets\Scripts\GUI\Dialogs\PopupManager.cs" />
      <Compile Include="Assets\Scripts\GUI\Dialogs\RemoveEquipmentOnClick.cs" />
+     <Compile Include="Assets\Scripts\GUI\Dialogs\RestockPopup.cs" />
      <Compile Include="Assets\Scripts\GUI\Displays\DetectClicksAndTouches.cs" />
      <Compile Include="Assets\Scripts\GUI\Displays\HUDFPS.cs" />
      <Compile Include="Assets\Scripts\GUI\Displays\MouseLook.cs" />
@@ -139,11 +142,13 @@
      <Compile Include="Assets\Scripts\GUI\Helpers\DestroyParticleAfterTime.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\GetSelectedObject.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\Helper.cs" />
+     <Compile Include="Assets\Scripts\GUI\Helpers\Load.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\LookAtMouse.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\NameGenerator.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ObjectPlacement.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ObjectSelect.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\RepairButtonUI.cs" />
+     <Compile Include="Assets\Scripts\GUI\Helpers\Save.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ScrollControl.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ScrollTexture.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\SelectObjectOnClicked.cs" />
@@ -175,6 +180,7 @@
      <Compile Include="Assets\Scripts\GameObjects\OnObjectButtons\RepairButton.cs" />
      <Compile Include="Assets\Scripts\GameObjects\OnObjectButtons\SellButton.cs" />
      <Compile Include="Assets\Scripts\GameObjects\Patient.cs" />
+     <Compile Include="Assets\Scripts\GameObjects\ReStockableObject.cs" />
      <Compile Include="Assets\Scripts\GameObjects\Staff.cs" />
      <Compile Include="Assets\Scripts\GameObjects\StockObject.cs" />
      <Compile Include="Assets\Scripts\GameObjects\StockableObject.cs" />
@@ -183,6 +189,7 @@
      <Compile Include="Assets\Scripts\Helper\Bubble.cs" />
      <Compile Include="Assets\Scripts\Helper\CheatCodeListener.cs" />
      <Compile Include="Assets\Scripts\Helper\ObjectColours.cs" />
+     <Compile Include="Assets\Scripts\Helper\ObjectSerialization.cs" />
      <Compile Include="Assets\Scripts\Helper\PathThroughObjects.cs" />
      <Compile Include="Assets\Scripts\Helper\RandomMessages.cs" />
      <Compile Include="Assets\Scripts\Helper\ScaleOverTimeAndDestroy.cs" />
@@ -196,6 +203,30 @@
      <Compile Include="Assets\Scripts\Menu\Exit.cs" />
      <Compile Include="Assets\Scripts\Menu\LoadScene.cs" />
      <Compile Include="Assets\Scripts\Menu\SplashScreen.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\AddSomeForce.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\AdditionalData.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\AdditionalDataStorage.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\ArrayOfPrefabs.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\CentreAndPointMe.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\ColorMe.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\CreateChildSphere.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\CreateTexture.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\DeleteComponent.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\DeletedComponent.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\IsDeserializing.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\KeepAReference.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\OpenDoor.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\RenameObject.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\SaveAndLoad.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\SaveAndLoadToServer.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\SaveAndReload.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\ScaleObject.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\TestCoroutines.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\TestJSON.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\TestLoading.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\TestSerialization.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\VariablesToSave.cs" />
+     <Compile Include="Assets\UnitySerializer\Scripts\changecolor.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh2.shader" />
@@ -207,6 +238,8 @@
      <None Include="Assets\Standard Assets\Detonator\Resources\Detonator\Textures\HeatDistort.shader" />
      <None Include="Assets\Scripts\Shaders\OutlinedDiffuse.shader" />
      <None Include="Assets\AstarPathfindingProject\ExampleScenes\Materials\Projector Multiply.shader" />
+     <None Include="Assets\Scripts\Shaders\Cook-Torrance.shader" />
+     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\AstarPathfindingProject\ExampleScenes\Materials\DiffuseAlwaysVisible.shader" />
      <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh.shader" />
      <None Include="Assets\AstarPathfindingProject\Plugins\dependencies.txt" />
@@ -214,6 +247,7 @@
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicOutline.shader" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Light.shader" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
+     <None Include="Assets\Plugins\whydoidoit.com\license.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
      <None Include="Assets\AstarPathfindingProject\ExampleScenes\Materials\Projector Light.shader" />
@@ -222,6 +256,7 @@
      <None Include="Assets\AstarPathfindingProject\link.xml" />
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\License.txt" />
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\Readme.txt" />
+     <None Include="Assets\UnitySerializer\readme.txt" />
  <Reference Include="Ionic.Zip.Reduced">
  <HintPath>Assets\AstarPathfindingProject\Plugins\DotNetZip\Ionic.Zip.Reduced.dll</HintPath>
  </Reference>

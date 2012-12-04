@@ -60,6 +60,14 @@ public class Helper : MonoBehaviour {
 		ObjectManager.SimulateWearAndTear(28);
 	}
 	
+	public static void SimulateDay()
+	{
+		PatientManager.DestroyPatients ();
+		PatientManager.SimulateDay();
+		StaffManager.ResetStaff();
+		MoneyManager.SimulateDailyIncome();
+		//ObjectManager.SimulateWearAndTear(1);
+	}
 
 	// Update is called once per frame
 	void Update () {

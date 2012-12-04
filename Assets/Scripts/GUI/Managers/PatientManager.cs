@@ -1,8 +1,9 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+	[SerializeAll]
 public class PatientManager : MonoBehaviour {
-	
+
 	public int initialSatisfaction;
 	
 	public static int patientSatisfaction = 50; //Out of 100, dictates patient satisfaction and quality of treatment. If this number falls below 20 the clinic is in trouble!
@@ -38,6 +39,16 @@ public class PatientManager : MonoBehaviour {
 		float hap = Random.Range(1,temp);
 		int un = (int)temp - (int)hap;
 		happyPatients += (int)hap;
+		unsuccessfulPatients += un;
+	}
+	
+	public static void SimulateDay()
+	{
+		float temp = Random.Range (0, (float)GetMonthlyPatients ()/28);
+		allTimePatients += (int)temp;
+		float hap = Random.Range (1,temp);
+		int un = (int)temp - (int)hap;
+		happyPatients+= (int)hap;
 		unsuccessfulPatients += un;
 	}
 	

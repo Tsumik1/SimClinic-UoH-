@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
 public class WaypointManager : MonoBehaviour {
 	
 	
@@ -64,7 +63,7 @@ public class WaypointManager : MonoBehaviour {
 	
 		public static Waypoint GetPracticeWaypoint()
 	{
-		Waypoint it = new Waypoint();
+		Waypoint it = null;
 		foreach(Waypoint point in FindObjectsOfType(typeof(Waypoint)))
 		{
 			if(point.action == Waypoint.Action.practice)

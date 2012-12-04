@@ -1,8 +1,9 @@
 using UnityEngine;
 using System.Collections;
-
+[SerializeAll]
 public class MoneyManager : MonoBehaviour 
 {
+
 	public int initialMoney; 
 	public GameObject moneyDisplay; 
 	public string currency = "£"; 
@@ -213,7 +214,21 @@ public class MoneyManager : MonoBehaviour
 			extraCash *= (noOfPatients / 2);
 		}
 		income = System.Math.Truncate(income);
-		print (income);
+		money += income;
+	}
+	
+	public static void SimulateDailyIncome()
+	{
+		int noOfPatients = PatientManager.GetMonthlyPatients() / 24;
+		double min = ConditionManager.minCost * noOfPatients;
+		double max = ConditionManager.maxCost * noOfPatients;
+				double income = (double)Random.Range ((float)min,(float)max);
+		if(ObjectManager.HasShop())
+		{
+			double extraCash = Random.Range((float)ProductManager.min, (float)ProductManager.max);
+			extraCash *= (noOfPatients / 2);
+		}
+				income = System.Math.Truncate(income);
 		money += income;
 	}
 	public static double GetRepairCostAtMonth(int month)

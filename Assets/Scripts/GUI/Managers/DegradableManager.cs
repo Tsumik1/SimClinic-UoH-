@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+	[SerializeAll]
 public class DegradableManager : MonoBehaviour {
 	
 	public BasicObject[] basicObjects;

@@ -7,8 +7,9 @@ public class Popup : MonoBehaviour {
 	private BasicObject current; 
 	public GameObject nameDisplay;
 	public GameObject descriptionDisplay;
-	public GameObject lifeDisplay;
+	//public GameObject lifeDisplay;
 	public GameObject sellValueDisplay;
+	public GameObject qualityDisplay;
 	public HealthBar healthbar; 
 	
 	// Use this for initialization
@@ -37,7 +38,7 @@ public class Popup : MonoBehaviour {
 				healthbar.renderer.enabled = false; 
 			}
 			sellValueDisplay.GetComponent<TextMesh>().text = current.sellValue.ToString ("f0");
-			
+			qualityDisplay.GetComponent<TextMesh>().text = current.quality.ToString ();
 						SendMessage ("FormatString", description);
 		}
 

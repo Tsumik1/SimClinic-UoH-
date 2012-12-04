@@ -36,19 +36,28 @@ public class ObjectManager : MonoBehaviour {
 	{
 		return selectedObject;
 	}
+	
 	public static void SimulateWearAndTear(int loss)
 	{
 		foreach(BasicObject item in FindObjectsOfType(typeof(BasicObject)))
 		{
-			item.life -= loss;
+			item.TakeLife(loss);
 		}
+		ReStockableObject[] otherItems = FindObjectsOfType (typeof(ReStockableObject)) as ReStockableObject[];
+		foreach(ReStockableObject r in otherItems)
+		{
+			r.timeTillNextLevel -= loss;
+		}
+		
 
 	}
+	
 	public static int GetCapacity()
 	{
 		StockableObject sel = selectedObject as StockableObject;
 		return sel.capacity;
 	}
+	
 	public static int GetPatientCount()
 	{
 		int t = 0;
@@ -58,6 +67,7 @@ public class ObjectManager : MonoBehaviour {
 		}
 		return t;
 	}
+	
 	public static StorageSpace GetNextFreeSpace()
 	{
 		StockableObject sel = selectedObject as StockableObject;
@@ -125,4 +135,6 @@ public class ObjectManager : MonoBehaviour {
 	{
 		handEquipment = handheldEquipment;
 	}
+	
+
 }

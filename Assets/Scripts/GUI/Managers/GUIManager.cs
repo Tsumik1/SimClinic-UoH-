@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+	[SerializeAll]
 public class GUIManager : MonoBehaviour {
 
 	

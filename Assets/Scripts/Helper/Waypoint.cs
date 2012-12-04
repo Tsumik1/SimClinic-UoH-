@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+	[SerializeAll]
 public class Waypoint : MonoBehaviour {
 	
 	public enum Action
