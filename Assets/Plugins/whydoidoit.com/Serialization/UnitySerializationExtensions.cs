@@ -417,7 +417,10 @@ public class SerializeScriptableObjectReference : SerializerExtensionBase<object
 		var id = SaveGameManager.GetAssetId(target);
 		if(id.index == -1)
 		{
-			return new object[] { true, target.GetType().AssemblyQualifiedName, UnitySerializer.SerializeForDeserializeInto(target) };
+			byte[] data = null;
+				data = UnitySerializer.SerializeForDeserializeInto(target);
+			return new object[] { true, target.GetType().FullName, data };
+			
 		}
 		else
 		{
@@ -436,7 +439,7 @@ public class SerializeScriptableObjectReference : SerializerExtensionBase<object
 	{
 		if((bool)data[0])
 		{
-			var newInstance = ScriptableObject.CreateInstance(Type.GetType((string)data[1]));
+			var newInstance = ScriptableObject.CreateInstance(UnitySerializer.GetTypeEx(data[1]));
 			UnitySerializer.DeserializeInto((byte[])data[2], newInstance);
 			return newInstance;
 		}
@@ -470,6 +473,12 @@ public class SerializeGameObjectReference : SerializerExtensionBase<GameObject>
 	
 	public override IEnumerable<object> Save (GameObject target)
 	{
+				//Is this a reference to a prefab
+		var assetId = SaveGameManager.GetAssetId(target);
+		if(assetId.index !=-1)
+		{
+			return new object[] { 0, true, null, assetId  };
+		}
 		return new object[] { target.GetId (), UniqueIdentifier.GetByName (target.gameObject.GetId ()) != null /* Identify a prefab */ };
 	}
 	
@@ -484,7 +493,11 @@ public class SerializeGameObjectReference : SerializerExtensionBase<GameObject>
 		}
 		Radical.Log ("GameObject: {0}", data [0]);
 #endif
-		
+		if(data.Length > 3)
+		{
+			var asset = SaveGameManager.GetAsset((SaveGameManager.AssetReference)data[3]) as GameObject;	
+			return asset;
+		}
 		return instance ?? new UnitySerializer.DeferredSetter ((d) => {
 			return UniqueIdentifier.GetByName ((string)data [0]) ;
 		}) { enabled = (bool)data [1]};
@@ -771,22 +784,20 @@ public class SerializeComponentReference: SerializerExtensionBase<Component>
 
 	public override IEnumerable<object> Save (Component target)
 	{
+		//Is this a reference to a prefab
+		var assetId = SaveGameManager.GetAssetId(target);
+		if(assetId.index !=-1)
+		{
+			return new object[] { null, true, target.GetType().FullName, assetId  };
+		}
+	
 		if(UniqueIdentifier.GetByName (target.gameObject.GetId ()) != null)
 		{
-			return new object[] { target.gameObject.GetId (), true, target.GetType ().AssemblyQualifiedName,"" /* Identify a prefab */ };
+			return new object[] { target.gameObject.GetId (), true,target.GetType().FullName,"" /* Identify a prefab */ };
 		}
 		else
 		{
-			//Is this a reference to a prefab
-			var assetId = SaveGameManager.GetAssetId(target);
-			if(assetId.index !=-1)
-			{
-				return new object[] { target.gameObject.GetId (), true, target.GetType ().AssemblyQualifiedName, assetId  };
-			}
-			else
-			{
-				return new object[] { target.gameObject.GetId (), false, target.GetType ().AssemblyQualifiedName,"" /* Identify a prefab */ };
-			}
+			return new object[] { target.gameObject.GetId (), false, target.GetType().FullName,"" /* Identify a prefab */ };
 		}
 	}
 	
@@ -801,11 +812,11 @@ public class SerializeComponentReference: SerializerExtensionBase<Component>
 		if(data[3] != null && data[3].GetType() == typeof(SaveGameManager.AssetReference))
 		{
 			var asset = SaveGameManager.GetAsset((SaveGameManager.AssetReference)data[3]) as GameObject;	
-			return asset != null ? asset.GetComponent (Type.GetType ((string)data [2])) : null;
+			return asset != null ? asset.GetComponent (UnitySerializer.GetTypeEx (data [2])) : null;
 		}
 		return new UnitySerializer.DeferredSetter ((d) => {
 			var item = UniqueIdentifier.GetByName ((string)data [0]);
-			return item != null ? item.GetComponent (Type.GetType ((string)data [2])) : null;
+			return item != null ? item.GetComponent (UnitySerializer.GetTypeEx (data [2])) : null;
 		}) { enabled = (bool)data [1]};
 	}
 }

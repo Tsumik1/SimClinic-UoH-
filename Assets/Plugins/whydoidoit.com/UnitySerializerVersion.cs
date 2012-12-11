@@ -6,5 +6,5 @@ using System.Collections;
 
 public class UnitySerializerVersion : MonoBehaviour {
 
-	public static int[] version = new [] { 2,2,1 };
+	public static int[] version = new [] { 2, 2, 2 };
 }

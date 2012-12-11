@@ -15,9 +15,6 @@ using Object = UnityEngine.Object;
 
 #endregion
 
-/// <summary>
-/// Can be used to time events by wrapping them in a using(new Timing("caption")) block
-/// </summary>
 public class Timing : IDisposable
 {
     private readonly string _caption;
@@ -39,9 +36,6 @@ public class Timing : IDisposable
     #endregion
 }
 
-/// <summary>
-/// Serialize all public and private members
-/// </summary>
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct)]
 public class SerializeAll : Attribute
 {
@@ -83,21 +77,13 @@ public class DoNotChecksum : Attribute
 {
 }
 
-/// <summary>
-/// Interface implemented by things that want to know that they have been
-/// deserialized
-/// </summary>
 public interface IDeserialized
 {
-	/// <summary>
-	/// Called when the instance has been deserialized
-	/// </summary>
     void Deserialized();
 }
 
 namespace Serialization
 {
-	
     public class SerializePrivateFieldOfType
     {
         private static readonly Index<string, List<SerializePrivateFieldOfType>> privateFields =
@@ -196,22 +182,12 @@ namespace Serialization
             AttributeListType = attributeListType;
         }
     }
-	
-	/// <summary>
-	/// Indicates that a class or type should be 
-	/// set at the end of the deserialization process
-	/// </summary>
+
     [AttributeUsage(AttributeTargets.Class)]
     public class DeferredAttribute : Attribute
     {
     }
-	
-	/// <summary>
-	/// Indicates that this property should use a 
-	/// specialist to modify its value between saving
-	/// and loading.  For example setting times to be relative
-	/// to the current game time.
-	/// </summary>
+
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class Specialist : Attribute
     {
@@ -222,135 +198,55 @@ namespace Serialization
             Type = type;
         }
     }
-	
-	/// <summary>
-	/// Indicates that a class provides a specialist serializer
-	/// </summary>
+
     [AttributeUsage(AttributeTargets.Class)]
     public class SpecialistProvider : Attribute
     {
     }
-	
-	/// <summary>
-	/// Implemented by classes that are custom serializers that wish to control the serialization process
-	/// </summary>
+
     public interface ISerializeObjectEx : ISerializeObject
     {
-		/// <summary>
-		/// Determines whether this instance can serialize the specified targetType instance.
-		/// </summary>
-		/// <returns>
-		/// <c>true</c> if this instance can serialize the specified targetType instance; otherwise, <c>false</c>.
-		/// </returns>
-		/// <param name='targetType'>
-		/// If set to <c>true</c> target type.
-		/// </param>
-		/// <param name='instance'>
-		/// If set to <c>true</c> instance.
-		/// </param>
         bool CanSerialize(Type targetType, object instance);
     }
-	
-	/// <summary>
-	/// Implemented by specialists to convert data 
-	/// between saving and loading
-	/// </summary>
+
     public interface ISpecialist
     {
-		/// <summary>
-		/// Serialize the specified value.
-		/// </summary>
-		/// <param name='value'>
-		/// Value to serialize
-		/// </param>
         object Serialize(object value);
-		/// <summary>
-		/// Deserialize a converted value
-		/// </summary>
-		/// <param name='value'>
-		/// The converted value to convert back
-		/// </param>
         object Deserialize(object value);
     }
-	
-	/// <summary>
-	/// Interface implemented by custom serializers
-	/// to serialize a specific object
-	/// </summary>
+
     public interface ISerializeObject
     {
-		/// <summary>
-		/// Serialize the specified target to an object[]
-		/// </summary>
-		/// <param name='target'>
-		/// Target to serialize
-		/// </param>
         object[] Serialize(object target);
-		/// <summary>
-		/// Deserialize the specified data into an instance (or return one)
-		/// </summary>
-		/// <param name='data'>
-		/// The data that was formerly serialized
-		/// </param>
-		/// <param name='instance'>
-		/// An instance to deserialize into (can be null)
-		/// </param>
         object Deserialize(object[] data, object instance);
     }
-	
-	/// <summary>
-	/// Interface implemented by classes that can create objects
-	/// </summary>
+
     public interface ICreateObject
     {
-		/// <summary>
-		/// Create the specified itemType.
-		/// </summary>
-		/// <param name='itemType'>
-		/// Item type.
-		/// </param>
         object Create(Type itemType);
     }
-	
-	/// <summary>
-	/// Flags a class as being a serializer for a particular type
-	/// </summary>/
+
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public class SerializerAttribute : Attribute
     {
         internal readonly Type SerializesType;
-		
-		/// <summary>
-		/// Initializes a new instance of the <see cref="Serialization.SerializerAttribute"/> class.
-		/// </summary>
-		/// <param name='serializesType'>
-		/// The type that can be serialized
-		/// </param>
+
         public SerializerAttribute(Type serializesType)
         {
             SerializesType = serializesType;
         }
     }
-	
-	[AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
+
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class OnlyInterfaces : Attribute
     {
     }
-	
-	/// <summary>
-	/// Indicates that the class serializes subclasses of the specified type
-	/// </summary>
+
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public class SubTypeSerializerAttribute : Attribute
     {
         internal readonly Type SerializesType;
-		
-		/// <summary>
-		/// Initializes a new instance of the <see cref="Serialization.SubTypeSerializerAttribute"/> class.
-		/// </summary>
-		/// <param name='serializesType'>
-		/// The type from which serialized types derives from
-		/// </param>
+
         public SubTypeSerializerAttribute(Type serializesType)
         {
             SerializesType = serializesType;
@@ -430,9 +326,6 @@ namespace Serialization
         private static readonly Dictionary<string, ushort> PrewarmedNames = new Dictionary<string, ushort>();
         private static readonly HashSet<Type> privateTypes = new HashSet<Type>();
         private static readonly Stack<Type> currentTypes = new Stack<Type>();
-		/// <summary>
-		/// The current file version
-		/// </summary>
         public static int currentVersion;
         private static int _forceJSON;
 
@@ -443,41 +336,37 @@ namespace Serialization
             new Dictionary<Type, Dictionary<string, EntryConfiguration>>();
 
         /// <summary>
-        ///  Indicates whether the serializer is in checksum mode
+        ///   Put the serializer into Checksum mode
         /// </summary>
         public static bool IsChecksum { get; private set; }
 		
-		/// <summary>
-		/// Gets the type from a string, where that string can be a shorter version
-		/// than normally specified.  Using this you can find most types for loaded
-		/// assemblies from their short name.
-		/// </summary>
-		/// <returns>
-		/// The type
-		/// </returns>
-		/// <param name='fullTypeName'>
-		/// The FullName to search for
-		/// </param>/
-        public static Type GetTypeEx(string fullTypeName)
+		public static T Copy<T>(T original) where T : class
+		{
+			return Deserialize<T>(Serialize(original));
+		}
+
+        public static Type GetTypeEx(object fullTypeName)
         {
-            var type = Type.GetType(fullTypeName);
-            if (type != null)
-            {
-                return type;
-            }
-            var assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetType(fullTypeName) != null);
-            return assembly != null ? assembly.GetType(fullTypeName) : null;
+			if(fullTypeName is string)
+			{
+	            var type = Type.GetType((string)fullTypeName);
+	            if (type != null)
+	            {
+	                return type;
+	            }
+	            var assembly = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetType((string)fullTypeName) != null);
+	            return assembly != null ? assembly.GetType((string)fullTypeName) : null;
+			}
+			else if(fullTypeName is ushort)
+			{
+				if((ushort)fullTypeName >= 60000)
+					return PrewarmLookup[(ushort)fullTypeName-60000];
+				return Type.GetTypeFromHandle( _knownTypesList[(ushort)fullTypeName]);
+			}
+			return null;
         }
 
-		/// <summary>
-		/// Serializes an object graph to a file
-		/// </summary>
-		/// <param name='obj'>
-		/// The root of the object graph
-		/// </param>
-		/// <param name='fileName'>
-		/// The file beneath Application.persistentDataPath
-		/// </param>
+
         public static void SerializeToFile(object obj, string fileName)
         {
             using (var file = File.Create(DataPath + "/" + fileName))
@@ -485,25 +374,14 @@ namespace Serialization
                 Serialize(obj, file, false);
             }
         }
-		/// <summary>
-		/// Deserializes an object graph from file.
-		/// </summary>
-		/// <returns>
-		/// The object that has been deserialized
-		/// </returns>
-		/// <param name='fileName'>
-		/// The file within Application.persistentDataPath
-		/// </param>
-		/// <typeparam name='T'>
-		/// The type of the object to deserialize
-		/// </typeparam>
+
         public static T DeserializeFromFile<T>(string fileName) where T : class
         {
             if (!File.Exists(DataPath + "/" + fileName))
             {
                 return null;
             }
-            using (var file = File.Open(DataPath + "/" + fileName, FileMode.Open))
+            using (var file = File.Open(Application.persistentDataPath + "/" + fileName, FileMode.Open))
             {
                 return Deserialize(file) as T;
             }
@@ -523,21 +401,12 @@ namespace Serialization
             }
             DeserializedObject.Clear();
         }
-		
-		/// <summary>
-		/// Adds an action that will be executed at the end of the
-		/// deserialization process.  Often used by custom serializers
-		/// to add extra functionality late  in the process.
-		/// </summary>
-		/// <param name='action'>
-		/// The action to run
-		/// </param>/
-        public static void AddFinalAction(Action action)
+
+        public static void AddFinalAction(Action a)
         {
-            FinalDeserialization.Add(action);
+            FinalDeserialization.Add(a);
         }
-		
-		
+
         public static void RunDeferredActions(int count = 1, bool clear = true)
         {
 			lock (FixupFunctions)
@@ -600,12 +469,20 @@ namespace Serialization
 
         internal static void PushPropertyNames(bool clear)
         {
-            _propertyNamesStack.Push(new PropertyNameStackEntry {propertyList = _propertyList, propertyLookup = _propertyLookup});
-            if (clear)
-            {
-                _propertyList = new List<string>();
-                _propertyLookup = new Dictionary<string, ushort>();
-            }
+			if(SerializationScope.IsPrimaryScope)
+			{
+	            _propertyNamesStack.Push(new PropertyNameStackEntry {propertyList = _propertyList, propertyLookup = _propertyLookup});
+	            if (clear)
+	            {
+	                _propertyList = new List<string>();
+	                _propertyLookup = new Dictionary<string, ushort>();
+	            }
+			}
+			else
+			{
+				_propertyList = _propertyList ?? new List<string>();
+				_propertyLookup = _propertyLookup ?? new Dictionary<string, ushort>();
+			}
         }
 
         internal static void PushPropertyNames()
@@ -615,9 +492,12 @@ namespace Serialization
 
         internal static void PopPropertyNames()
         {
-            var stackEntry = _propertyNamesStack.Pop();
-            _propertyList = stackEntry.propertyList;
-            _propertyLookup = stackEntry.propertyLookup;
+			if(SerializationScope.IsPrimaryScope)
+			{
+	            var stackEntry = _propertyNamesStack.Pop();
+	            _propertyList = stackEntry.propertyList;
+	            _propertyLookup = stackEntry.propertyLookup;
+			}
         }
 
 
@@ -666,7 +546,7 @@ namespace Serialization
             return Deserialize(array) as T;
         }
 		
-		/// <summary>
+				/// <summary>
 		/// Writes a byte array to a file.
 		/// </summary>
 		/// <param name='data'>
@@ -703,18 +583,7 @@ namespace Serialization
 			f.Close();
 		}
 		
-		/// <summary>
-		/// Deserializes a JSON string to an object graph
-		/// </summary>
-		/// <returns>
-		/// The object deserialized
-		/// </returns>
-		/// <param name='data'>
-		/// The JSON data
-		/// </param>
-		/// <typeparam name='T'>
-		/// The type of the object to deserialize
-		/// </typeparam>
+		
         public static T JSONDeserialize<T>(string data) where T : class
         {
             return JSONDeserialize(data) as T;
@@ -786,13 +655,7 @@ namespace Serialization
         {
             RegisterSerializationAssembly(null);
         }
-		
-		/// <summary>
-		/// Registers an assembly as a provider of serialization extensions
-		/// </summary>
-		/// <param name='assembly'>
-		/// The assembly to register
-		/// </param>
+
         public static void RegisterSerializationAssembly(Assembly assembly)
         {
             if (assembly == null) 
@@ -1002,13 +865,7 @@ namespace Serialization
             return result;
         }
 
-		/// <summary>
-		/// Adds a type that should have all of its private
-		/// members serialized
-		/// </summary>
-		/// <param name='tp'>
-		/// The type to be added
-		/// </param>
+
         public static void AddPrivateType(Type tp)
         {
             privateTypes.Add(tp);
@@ -1135,7 +992,7 @@ namespace Serialization
         }
 
 
-        internal static object Deserialize(IStorage storage)
+        public static object Deserialize(IStorage storage)
         {
             using (new SerializationScope())
             {
@@ -1177,22 +1034,14 @@ namespace Serialization
         {
             return Deserialize(inputStream, null);
         }
-		
-		/// <summary>
-		/// Deserializes an object from a stream containing JSON
-		/// </summary>
-		/// <returns>
-		/// The object graph rehydrated
-		/// </returns>
-		/// <param name='inputStream'>
-		/// Input stream.
-		/// </param>
+
         public static object JSONDeserialize(Stream inputStream)
         {
             return JSONDeserialize(inputStream, null);
         }
 
-	    public static object JSONDeserialize(Stream inputStream, object instance)
+
+        public static object JSONDeserialize(Stream inputStream, object instance)
         {
             // this version always uses the BinarySerializer
             using (new SerializationScope())
@@ -1224,6 +1073,7 @@ namespace Serialization
                 finally
                 {
                     PopKnownTypes();
+					PopPropertyNames();
                     Verbose = v;
                 }
             }
@@ -1268,6 +1118,7 @@ namespace Serialization
                 finally
                 {
                     PopKnownTypes();
+					PopPropertyNames();
                     Verbose = v;
                 }
             }
@@ -1305,20 +1156,31 @@ namespace Serialization
 
         internal static void PopKnownTypes()
         {
-            var stackEntry = _knownTypesStack.Pop();
-            _knownTypesList = stackEntry.knownTypesList;
-            _knownTypesLookup = stackEntry.knownTypesLookup;
+			if(SerializationScope.IsPrimaryScope)
+			{
+	            var stackEntry = _knownTypesStack.Pop();
+	            _knownTypesList = stackEntry.knownTypesList;
+	            _knownTypesLookup = stackEntry.knownTypesLookup;
+			}
         }
 
         private static void PushKnownTypes(bool clear)
         {
-            _knownTypesStack.Push(new KnownTypesStackEntry {knownTypesList = _knownTypesList, knownTypesLookup = _knownTypesLookup});
-            if (!clear)
-            {
-                return;
-            }
-            _knownTypesList = new List<RuntimeTypeHandle>();
-            _knownTypesLookup = new Dictionary<RuntimeTypeHandle, ushort>();
+			if(SerializationScope.IsPrimaryScope)
+			{
+	            _knownTypesStack.Push(new KnownTypesStackEntry {knownTypesList = _knownTypesList, knownTypesLookup = _knownTypesLookup});
+	            if (!clear)
+	            {
+	                return;
+	            }
+	            _knownTypesList = new List<RuntimeTypeHandle>();
+	            _knownTypesLookup = new Dictionary<RuntimeTypeHandle, ushort>();
+			}
+			else
+			{
+	            _knownTypesList = _knownTypesList ?? new List<RuntimeTypeHandle>();
+	            _knownTypesLookup = _knownTypesLookup ?? new Dictionary<RuntimeTypeHandle, ushort>();
+			}
         }
 
         internal static void PushKnownTypes()
@@ -1347,16 +1209,7 @@ namespace Serialization
                 }
             }
         }
-		
-		/// <summary>
-		/// Deserializes JSON to an object graph
-		/// </summary>
-		/// <returns>
-		/// The root of the object graph
-		/// </returns>
-		/// <param name='json'>
-		/// Json.
-		/// </param>
+
         public static object JSONDeserialize(string json)
         {
             using (new SerializationScope())
@@ -1442,24 +1295,26 @@ namespace Serialization
             }
         }
 
-        internal static void JSONSerialize(object item, IStorage storage)
+        public static void JSONSerialize(object item, IStorage storage)
         {
             JSONSerialize(item, storage, false);
         }
 
 
-        internal static void Serialize(object item, IStorage storage)
+        public static void Serialize(object item, IStorage storage)
         {
             Serialize(item, storage, false);
         }
 
-        internal static void Serialize(object item, IStorage storage, bool forDeserializeInto)
+        public static void Serialize(object item, IStorage storage, bool forDeserializeInto)
         {
             var verbose = Verbose;
             Verbose = false;
             CreateStacks();
+		
             using (new SerializationScope())
             {
+				SerializationScope.SetPrimaryScope();
                 try
                 {
                     storage.StartSerializing();
@@ -1477,13 +1332,14 @@ namespace Serialization
             }
         }
 
-        internal static void JSONSerialize(object item, IStorage storage, bool forDeserializeInto)
+        public static void JSONSerialize(object item, IStorage storage, bool forDeserializeInto)
         {
             var verbose = Verbose;
             Verbose = false;
             CreateStacks();
             using (new SerializationScope())
             {
+				SerializationScope.SetPrimaryScope();
                 try
                 {
                     storage.StartSerializing();
@@ -1501,24 +1357,25 @@ namespace Serialization
             }
         }
 
-        internal static void JSONSerialize(object item, Stream outputStream)
+        public static void JSONSerialize(object item, Stream outputStream)
         {
             JSONSerialize(item, outputStream, false);
         }
 
 
-        internal static void Serialize(object item, Stream outputStream)
+        public static void Serialize(object item, Stream outputStream)
         {
             Serialize(item, outputStream, false);
         }
 
-        internal static void JSONSerialize(object item, Stream outputStream, bool forDeserializeInto)
+        public static void JSONSerialize(object item, Stream outputStream, bool forDeserializeInto)
         {
             CreateStacks();
 
 
             using (new SerializationScope())
             {
+				SerializationScope.SetPrimaryScope();
                 //var serializer = Activator.CreateInstance(SerializerType) as IStorage;
                 var serializer = new JSONSerializer();
                 //BinarySerializer serializer = new BinarySerializer();
@@ -1536,13 +1393,15 @@ namespace Serialization
             }
         }
 
-        internal static void Serialize(object item, Stream outputStream, bool forDeserializeInto)
+        public static void Serialize(object item, Stream outputStream, bool forDeserializeInto)
         {
             CreateStacks();
 
 
             using (new SerializationScope())
             {
+				SerializationScope.SetPrimaryScope();
+
                 //var serializer = Activator.CreateInstance(SerializerType) as IStorage;
                 var serializer = new BinarySerializer();
                 serializer.StartSerializing();
@@ -1555,7 +1414,7 @@ namespace Serialization
                 var outputWr = new BinaryWriter(outputStream);
                 outputWr.Write(serializer.Data);
                 outputWr.Flush();
-                outputStream.Seek(0, SeekOrigin.Begin);
+                
             }
         }
 
@@ -1583,10 +1442,10 @@ namespace Serialization
 
 
         /// <summary>
-        ///   Serialize an object into a JSON string
+        ///   Serialize an object into an array of bytes
         /// </summary>
         /// <param name="item"> The object to serialize </param>
-        /// <returns> A string array representation of the item </returns>
+        /// <returns> A byte array representation of the item </returns>
         public static string JSONSerialize(object item)
         {
             using (new SerializationScope())
@@ -1600,47 +1459,32 @@ namespace Serialization
             }
         }
 
-		
-		/// <summary>
-		/// Stores an object in JSON suitable for deserializing back into an instance
-		/// </summary>
-		/// <returns>
-		/// The JSON string
-		/// </returns>
-		/// <param name='item'>
-		/// Root of object graph to serialize
-		/// </param>
+
         public static string JSONSerializeForDeserializeInto(object item)
         {
             using (new SerializationScope())
             {
-                using (var outputStream = new MemoryStream())
+			    using (var outputStream = new MemoryStream())
                 {
                     JSONSerialize(item, outputStream, true);
                     //Reset the verbose mode
                     return Encoding.Default.GetString(outputStream.ToArray());
                 }
+			
             }
         }
 
-		/// <summary>
-		/// Serializes an object graph suitable for later deserialization into an instance
-		/// </summary>
-		/// <returns>
-		/// The data representing the object graph
-		/// </returns>
-		/// <param name='item'>
-		/// The item that is the root of the graph to save
-		/// </param>
+
         public static byte[] SerializeForDeserializeInto(object item)
         {
             using (new SerializationScope())
             {
-                using (var outputStream = new MemoryStream())
+				using (var outputStream = new MemoryStream())
                 {
                     Serialize(item, outputStream, true);
                     return outputStream.ToArray();
                 }
+			
             }
         }
 
@@ -1704,10 +1548,6 @@ namespace Serialization
                    tp == typeof (TimeSpan) || tp == typeof (Guid) || tp == typeof (decimal);
         }
 		
-		/// <summary>
-		/// The object currently being serialized - useful for custom serializers that need this
-		/// access when they are serializing something without knowledge of its owner
-		/// </summary>
 		public static object currentlySerializingObject;
 		
         private static void SerializeObjectAndProperties(object item, Type itemType, IStorage storage)
@@ -1805,7 +1645,17 @@ namespace Serialization
             throw new MissingConstructorException(error);
         }
 
-
+		
+		internal static ushort GetTypeId(object o)
+		{
+			return GetTypeId(o.GetType().TypeHandle);
+		}
+		
+		internal static ushort GetTypeId(Type type)
+		{
+			return GetTypeId(type.TypeHandle);
+		}
+		
         /// <summary>
         ///   Logs a type and returns a unique token for it
         /// </summary>
@@ -1954,14 +1804,18 @@ namespace Serialization
                         storage.BeginWriteProperty("data", typeof (object[]));
                         var serializer = Serializers[itemType];
                         var data = serializer.Serialize(item);
-                        SerializeObject(new Entry()
-                                            {
-                                                Name = "data",
-                                                Value = data,
-                                                StoredType = typeof (object[])
-                                            }, storage);
+						using(new SerializationSplitScope())
+						{
+	                        SerializeObject(new Entry()
+	                                            {
+	                                                Name = "data",
+	                                                Value = data,
+	                                                StoredType = typeof (object[])
+	                                            }, storage);
+						}
                         storage.EndWriteProperty();
                         storage.EndWriteObject();
+						_seenObjects[item] = objectId;
                         return;
                     }
 
@@ -1988,14 +1842,18 @@ namespace Serialization
                             storage.BeginWriteObject(objectId, itemType, false);
                             storage.BeginWriteProperty("data", typeof (object[]));
                             var data = serializeObject.Serialize(item);
-                            SerializeObject(new Entry()
-                                                {
-                                                    Name = "data",
-                                                    Value = data,
-                                                    StoredType = typeof (object[])
-                                                }, storage);
+							using(new SerializationSplitScope())
+							{
+	                            SerializeObject(new Entry()
+	                                                {
+	                                                    Name = "data",
+	                                                    Value = data,
+	                                                    StoredType = typeof (object[])
+	                                                }, storage);
+							}
                             storage.EndWriteProperty();
                             storage.EndWriteObject();
+							_seenObjects[item] = objectId;
                         }
                         return;
                     }
@@ -2009,6 +1867,7 @@ namespace Serialization
                 //We are going to serialize an object
                 if (!skipRecord && !itemType.IsValueType)
                 {
+					//Debug.Log(objectId.ToString() + " : " + item.ToString());
                     _seenObjects[item] = objectId;
                 }
                 storage.BeginWriteObject(objectId, itemType, false);
@@ -2239,10 +2098,7 @@ namespace Serialization
         }
 
         #region Nested type: Nuller
-		
-		/// <summary>
-		/// Used to represent a null value in the serialization stream
-		/// </summary>
+
         public class Nuller
         {
         }
@@ -2279,11 +2135,7 @@ namespace Serialization
         public delegate object GetData(Dictionary<string, object> parameters);
 
         #endregion
-		
-		/// <summary>
-		/// The object currently being deserialized, useful for custom serializer that need
-		/// to know the context of the sub object that they are working on.
-		/// </summary>
+
         public static object DeserializingObject;
         private static readonly Stack<object> DeserializingStack = new Stack<object>();
         private static readonly List<DeferredSetter> FixupFunctions = new List<DeferredSetter>();
@@ -2388,9 +2240,13 @@ namespace Serialization
                                              StoredType = typeof (object[])
                                          };
                         storage.BeginReadProperty(nentry);
-                        var data =
-                            (object[])
-                            DeserializeObject(nentry, storage);
+						object[] data = null;
+						using(new SerializationSplitScope())
+						{
+	                        data =
+	                            (object[])
+	                            DeserializeObject(nentry, storage);
+						}
                         var result = serializer.Deserialize(data, entry.Value);
                         storage.EndReadProperty();
                         storage.EndReadObject();
@@ -2426,12 +2282,14 @@ namespace Serialization
                                              };
                             storage.BeginReadProperty(nentry);
                             //If we have a custom serializer then use it!
-
-                            var data =
-                                (object[])
-                                DeserializeObject(nentry, storage);
-
-
+							object[] data;
+							using(new SerializationSplitScope())
+							{
+	                            data =
+	                                (object[])
+	                                DeserializeObject(nentry, storage);
+	
+							}
                             var result = serializeObject.Deserialize(data, entry.Value);
                             storage.EndReadProperty();
                             storage.EndReadObject();
@@ -3032,11 +2890,7 @@ namespace Serialization
             }
             storage.EndReadFields();
         }
-		
-		/// <summary>
-		/// Deferred setter - used to store data and set it at the end of the serialization
-		/// process.  This is used for things like Vector3 positions etc
-		/// </summary>
+
         public class DeferredSetter
         {
 			public int priority = 0;
@@ -3067,8 +2921,7 @@ namespace Serialization
         #endregion
 
         #region Nested type: ForceJSON
-		
-		
+
         public class ForceJSON : IDisposable
         {
             public ForceJSON()
@@ -3119,7 +2972,7 @@ namespace Serialization
         #endregion
 
         private static readonly Dictionary<Type, WriteAValue> Writers = new Dictionary<Type, WriteAValue>();
-        internal static readonly Dictionary<Type, ReadAValue> Readers = new Dictionary<Type, ReadAValue>();
+        public static readonly Dictionary<Type, ReadAValue> Readers = new Dictionary<Type, ReadAValue>();
         private static readonly Dictionary<string, bool> componentNames = new Dictionary<string, bool>();
 
 
@@ -3206,6 +3059,10 @@ namespace Serialization
 
         private static object GuidReader(BinaryReader reader)
         {
+			if(currentVersion >=10)
+			{
+				return new Guid(reader.ReadBytes(16));
+			}
             return new Guid(reader.ReadString());
         }
 
@@ -3246,7 +3103,7 @@ namespace Serialization
 
         private static object CharReader(BinaryReader reader)
         {
-            return (char)reader.ReadUInt16();
+            return reader.ReadChar();
         }
 
         private static object FloatReader(BinaryReader reader)
@@ -3302,12 +3159,12 @@ namespace Serialization
 
         private static void ShortWriter(BinaryWriter writer, object value)
         {
-            writer.Write((Int16) value);
+            writer.Write((short) value);
         }
 
         private static void LongWriter(BinaryWriter writer, object value)
         {
-            writer.Write((Int64) value);
+            writer.Write((long) value);
         }
 
         private static void ByteWriter(BinaryWriter writer, object value)
@@ -3317,32 +3174,32 @@ namespace Serialization
 
         private static void UIntWriter(BinaryWriter writer, object value)
         {
-            writer.Write((UInt32) value);
+            writer.Write((uint) value);
         }
 
         private static void IntWriter(BinaryWriter writer, object value)
         {
-            writer.Write((Int32) value);
+            writer.Write((int) value);
         }
 
         private static void ULongWriter(BinaryWriter writer, object value)
         {
-            writer.Write((UInt64) value);
+            writer.Write((ulong) value);
         }
 
         private static void DoubleWriter(BinaryWriter writer, object value)
         {
-            writer.Write((Double) value);
+            writer.Write((double) value);
         }
 
         private static void UShortWriter(BinaryWriter writer, object value)
         {
-            writer.Write((UInt16) value);
+            writer.Write((ushort) value);
         }
 
         private static void CharWriter(BinaryWriter writer, object value)
         {
-            writer.Write((UInt16)(char) value);
+            writer.Write((char) value);
         }
 
         private static void TimeSpanWriter(BinaryWriter writer, object value)
@@ -3357,7 +3214,7 @@ namespace Serialization
 
         private static void GuidWriter(BinaryWriter writer, object value)
         {
-            writer.Write(value.ToString());
+            writer.Write(((Guid)value).ToByteArray());
         }
 
         private static void BoolWriter(BinaryWriter writer, object value)
@@ -3370,13 +3227,13 @@ namespace Serialization
         private static void ByteArrayWriter(BinaryWriter writer, object value)
         {
             var array = value as byte[];
-            writer.Write((Int32) array.Length);
+            writer.Write((int) array.Length);
             writer.Write(array);
         }
 
         private static void FloatWriter(BinaryWriter writer, object value)
         {
-            writer.Write((Single) value);
+            writer.Write((float) value);
         }
 
         private static void DecimalWriter(BinaryWriter writer, object value)
@@ -3405,7 +3262,7 @@ namespace Serialization
 
             if (!Writers.TryGetValue(value.GetType(), out write))
             {
-                writer.Write((Int32) value);
+                writer.Write((int) value);
                 return;
             }
             write(writer, value);
@@ -3469,15 +3326,14 @@ namespace Serialization
 
         #region Nested type: SerializationScope
 		
-		/// <summary>
-		/// Used to define a scope for serialization in which all
-		/// types and property names will be kept together.  An 
-		/// advanced use of this is in the case of some custom serializers.
-		/// It is used in a using(new SerializationScope()) block.
-		/// </summary>
+		
         public class SerializationScope : IDisposable
         {
-            //[ThreadStatic]
+			static Stack<bool> _primaryScopeStack = new Stack<bool>();
+			static bool _hasSetPrimaryScope;
+			static bool _primaryScope;
+            
+			//[ThreadStatic]
             private static int _counter = 0;
 
             public static bool IsInScope
@@ -3492,9 +3348,20 @@ namespace Serialization
             {
                 get
                 {
-                    return _counter <= 1;
+                    return _primaryScope || true;
                 }
             }
+			
+			public static void SetPrimaryScope()
+			{
+				if(_hasSetPrimaryScope)
+					return;
+				_primaryScope = true;
+				_hasSetPrimaryScope = true;
+			}
+			
+			
+			
 
 #if US_LOGGING
 			DateTime startTime;
@@ -3502,6 +3369,8 @@ namespace Serialization
 
             public SerializationScope()
             {
+				_primaryScopeStack.Push(_primaryScope);
+				_primaryScope = false;
                 if (_seenObjects == null)
                 {
                     _seenObjects = new Dictionary<object, int>();
@@ -3529,10 +3398,12 @@ namespace Serialization
 
             public void Dispose()
             {
+				_primaryScope = _primaryScopeStack.Pop();
                 if (--_counter != 0)
                 {
                     return;
                 }
+				_hasSetPrimaryScope = false;
                 RunDeferredActions();
 #if US_LOGGING
 					Radical.LogNow("Saving {0:#,0} in {1:0.000} @ {2:0.000}", _nextId, (DateTime.Now - startTime).TotalSeconds, (DateTime.Now - startTime).TotalMilliseconds/_nextId);
@@ -3541,16 +3412,18 @@ namespace Serialization
                 _seenObjects.Clear();
                 _loadedObjects.Clear();
                 _seenTypes.Clear();
+				if(_knownTypesLookup != null) _knownTypesLookup.Clear();
+				if(_knownTypesList != null) _knownTypesList.Clear();
+				if(_propertyLookup != null) _propertyLookup.Clear();
+				if(_propertyList != null) _propertyList.Clear();
+				
             }
         }
 
         #endregion
 
         #region Nested type: SerializationSplitScope
-		
-		/// <summary>
-		/// Class that forces a split of the current serialization scope
-		/// </summary>
+
         public class SerializationSplitScope : IDisposable
         {
             public SerializationSplitScope()

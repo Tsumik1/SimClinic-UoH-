@@ -56,8 +56,18 @@ public class Helper : MonoBehaviour {
 		PatientManager.DestroyPatients();
 		PatientManager.SimulateMonth ();
 		StaffManager.ResetStaff();
-		MoneyManager.SimulateMonthlyIncome();
-		ObjectManager.SimulateWearAndTear(28);
+		if(StaffManager.StaffHired (Staff.Role.practitioner))
+		{
+			MoneyManager.SimulateMonthlyIncome();
+		}
+		if(StaffManager.StaffHired (Staff.Role.caretaker))
+		{
+			ObjectManager.SimulateWearAndTear (14);
+		}
+		else
+		{
+			ObjectManager.SimulateWearAndTear(28);
+		}
 	}
 	
 	public static void SimulateDay()

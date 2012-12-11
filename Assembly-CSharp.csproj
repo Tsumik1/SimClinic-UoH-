@@ -109,10 +109,12 @@
      <Compile Include="Assets\Scripts\Camera\ResetCamera.cs" />
      <Compile Include="Assets\Scripts\Camera\RevertToMainCamera.cs" />
      <Compile Include="Assets\Scripts\Camera\SwitchToFirstPerson.cs" />
+     <Compile Include="Assets\Scripts\Environment\DayNightController.cs" />
      <Compile Include="Assets\Scripts\GUI\Buttons\AmendLoan.cs" />
      <Compile Include="Assets\Scripts\GUI\Buttons\ButtonBehaviour.cs" />
      <Compile Include="Assets\Scripts\GUI\Buttons\ButtonMove.cs" />
      <Compile Include="Assets\Scripts\GUI\Buttons\CreateObjectOnClicked.cs" />
+     <Compile Include="Assets\Scripts\GUI\Buttons\FireConfirm.cs" />
      <Compile Include="Assets\Scripts\GUI\Buttons\RestockButton.cs" />
      <Compile Include="Assets\Scripts\GUI\Buttons\SellConfirm.cs" />
      <Compile Include="Assets\Scripts\GUI\Buttons\SkipDay.cs" />
@@ -152,6 +154,7 @@
      <Compile Include="Assets\Scripts\GUI\Helpers\ScrollControl.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ScrollTexture.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\SelectObjectOnClicked.cs" />
+     <Compile Include="Assets\Scripts\GUI\Helpers\SpawnPoint.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\StorageSpace.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ToolTipC.cs" />
      <Compile Include="Assets\Scripts\GUI\Managers\ConditionManager.cs" />
@@ -169,6 +172,10 @@
      <Compile Include="Assets\Scripts\GUI\Managers\TimeManager.cs" />
      <Compile Include="Assets\Scripts\GUI\Managers\WaypointManager.cs" />
      <Compile Include="Assets\Scripts\GUI\Overview\Patients.cs" />
+     <Compile Include="Assets\Scripts\GUI\StaffScreen\FireButton.cs" />
+     <Compile Include="Assets\Scripts\GUI\StaffScreen\HireButton.cs" />
+     <Compile Include="Assets\Scripts\GUI\StaffScreen\SalaryButton.cs" />
+     <Compile Include="Assets\Scripts\GUI\StaffScreen\StaffScreen.cs" />
      <Compile Include="Assets\Scripts\GameObjects\BasicObject.cs" />
      <Compile Include="Assets\Scripts\GameObjects\DestroyParent.cs" />
      <Compile Include="Assets\Scripts\GameObjects\EquipmentObject.cs" />
@@ -195,12 +202,14 @@
      <Compile Include="Assets\Scripts\Helper\ScaleOverTimeAndDestroy.cs" />
      <Compile Include="Assets\Scripts\Helper\SellValue.cs" />
      <Compile Include="Assets\Scripts\Helper\SetTimeScaleOnClick.cs" />
-     <Compile Include="Assets\Scripts\Helper\Spawner.cs" />
+     <Compile Include="Assets\Scripts\Helper\Spawner2.cs" />
      <Compile Include="Assets\Scripts\Helper\StaffWaypoint.cs" />
      <Compile Include="Assets\Scripts\Helper\Waypoint.cs" />
      <Compile Include="Assets\Scripts\Helper\WireframeRenderer.cs" />
      <Compile Include="Assets\Scripts\Lib\Mathfx.cs" />
      <Compile Include="Assets\Scripts\Menu\Exit.cs" />
+     <Compile Include="Assets\Scripts\Menu\GotoOptions.cs" />
+     <Compile Include="Assets\Scripts\Menu\LoadGame.cs" />
      <Compile Include="Assets\Scripts\Menu\LoadScene.cs" />
      <Compile Include="Assets\Scripts\Menu\SplashScreen.cs" />
      <Compile Include="Assets\UnitySerializer\Scripts\AddSomeForce.cs" />
@@ -231,15 +240,19 @@
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh2.shader" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
+     <None Include="Assets\Scripts\Shaders\TexturedTextShader.shader" />
      <None Include="Assets\Scripts\Shaders\ProgressBar.shader" />
+     <None Include="Assets\Scripts\Shaders\ForceField.shader" />
      <None Include="Assets\AstarPathfindingProject\Readme_upgrading.txt" />
      <None Include="Assets\AstarPathfindingProject\Plugins\DotNetZip\License.txt" />
+     <None Include="Assets\Standard Assets\Tessellation Shaders\BumpedSpecularSmooth.shader" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Standard Assets\Detonator\Resources\Detonator\Textures\HeatDistort.shader" />
      <None Include="Assets\Scripts\Shaders\OutlinedDiffuse.shader" />
      <None Include="Assets\AstarPathfindingProject\ExampleScenes\Materials\Projector Multiply.shader" />
      <None Include="Assets\Scripts\Shaders\Cook-Torrance.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
+     <None Include="Assets\Scripts\Shaders\Binary.shader" />
      <None Include="Assets\AstarPathfindingProject\ExampleScenes\Materials\DiffuseAlwaysVisible.shader" />
      <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh.shader" />
      <None Include="Assets\AstarPathfindingProject\Plugins\dependencies.txt" />
@@ -255,7 +268,9 @@
      <None Include="Assets\Scripts\Shaders\Glass.shader" />
      <None Include="Assets\AstarPathfindingProject\link.xml" />
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\License.txt" />
+     <None Include="Assets\Scripts\Shaders\Shield.shader" />
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\Readme.txt" />
+     <None Include="Assets\Standard Assets\Tessellation Shaders\BumpedSpecularDisplacement.shader" />
      <None Include="Assets\UnitySerializer\readme.txt" />
  <Reference Include="Ionic.Zip.Reduced">
  <HintPath>Assets\AstarPathfindingProject\Plugins\DotNetZip\Ionic.Zip.Reduced.dll</HintPath>

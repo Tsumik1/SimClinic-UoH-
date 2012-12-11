@@ -160,16 +160,18 @@ public class SaveGameManager : MonoBehaviour
 	
 	public static void RefreshReferences()
 	{
-		_gotReferences = false;
 		if(Instance != null)
+		{
+			Instance._gotReferences = false;
 			Instance.GetAllReferences();
+		}
 	}
 	
 	public delegate void AllowAssetDelegate(UnityEngine.Object asset, ref bool allow);
 	public static event AllowAssetDelegate FilterAssetReference = delegate {};
 	
 	
-	static bool _gotReferences;
+	bool _gotReferences;
 	
 	void GetAllReferences()
 	{
@@ -177,35 +179,25 @@ public class SaveGameManager : MonoBehaviour
 		{
 			return;	
 		}
-		//_gotReferences =true;
+		_gotReferences =true;
+		/*
 		var types = new [] { "UnityEngine.AnimationClip", "UnityEngine.AudioClip", "UnityEngine.Mesh", "UnityEngine.Material",
-			"UnityEngine.GameObject", "UnityEngine.Texture", "UnityEngine.TextAsset", "UnityEngine.ScriptableObject", 
+			"UnityEngine.Texture", "UnityEngine.TextAsset", "UnityEngine.ScriptableObject", "UnityEngine.Renderer", "UnityEngine.Collider",
 			"UnityEngine.Animator", "UnityEngine.Avatar", "UnityEngine.Cloth", "UnityEngine.Terrain", 
 			"UnityEngine.LensFlare", "UnityEngine.Font", "UnityEngine.RenderTexture", "UnityEngine.LineRenderer", "UnityEngine.Renderer",
 			"UnityEngine.ParticleRenderer", "UnityEngine.SkinnedMeshRenderer","UnityEngine.MeshFilter", "UnityEngine.MeshRenderer", 
 			"UnityEngine.BoxCollider", "UnityEngine.SphereCollider", "UnityEngine.TerrainCollider", 
 			"UnityEngine.MeshCollider", "UnityEngine.CapsuleCollider",
 			"UnityEngine.GUISkin", "UnityEngine.PhysicMaterial", "UnityEngine.Font", "UnityEngine.CubeMap" };
-		
-		
+		*/
+		var types = new [] { "UnityEngine.Object" };
 		var assets = types.Select(t=>UnitySerializer.GetTypeEx(t)).Where(t=>t!=null).SelectMany(t=>Resources.FindObjectsOfTypeAll(t))
+			.Concat(Resources.FindObjectsOfTypeAll(typeof(GameObject)).Cast<GameObject>().SelectMany(g=>g.GetAllComponentsInChildren<Transform>().Select(t=>(UnityEngine.Object)t.gameObject)))
 			.Where(g=>g!=null && !string.IsNullOrEmpty(g.name) && g.GetInstanceID()>0 )
 			.Distinct()
-			.ToList(); 
+			.ToList();
 		
 		
-	/*	var assets = Resources.FindObjectsOfTypeAll(typeof(AnimationClip))
-			.Concat(Resources.FindObjectsOfTypeAll(typeof(AudioClip)))
-			.Concat(Resources.FindObjectsOfTypeAll(typeof(Mesh)))
-			.Concat(Resources.FindObjectsOfTypeAll(typeof(Material)))
-			.Concat(Resources.FindObjectsOfTypeAll(typeof(GameObject)))
-			.Concat(Resources.FindObjectsOfTypeAll(typeof(Texture)))
-			.Concat(Resources.FindObjectsOfTypeAll(typeof(TextAsset)))
-			.Concat(Resources.FindObjectsOfTypeAll(typeof(ScriptableObject)))
-			.Where(g=>g!=null && !string.IsNullOrEmpty(g.name) && g.GetInstanceID()>0 )
-			.Distinct()
-			.ToList(); */
-
 		_assetStore.Clear();
 		foreach(var a in assets)
 		{

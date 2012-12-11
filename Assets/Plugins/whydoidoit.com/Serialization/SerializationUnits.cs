@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 
@@ -96,19 +96,27 @@ namespace Serialization
 
             var stream = new MemoryStream();
             var outputWr = new BinaryWriter(stream);
-            outputWr.Write("SerV9");
+            outputWr.Write("SerV10");
             //New, store the verbose property
             outputWr.Write(UnitySerializer.Verbose);
-            outputWr.Write(UnitySerializer._knownTypesLookup.Count);
-            foreach (var kt in UnitySerializer._knownTypesLookup.Keys.Select(r=>Type.GetTypeFromHandle(r)))
-            {
-				outputWr.Write(kt.FullName);
-            }
-            outputWr.Write(UnitySerializer._propertyLookup.Count);
-            foreach (var pi in UnitySerializer._propertyLookup.Keys)
-            {
-                outputWr.Write(pi);
-            }
+			if(UnitySerializer.SerializationScope.IsPrimaryScope)
+			{
+	            outputWr.Write(UnitySerializer._knownTypesLookup.Count);
+	            foreach (var kt in UnitySerializer._knownTypesLookup.Keys.Select(r=>Type.GetTypeFromHandle(r)))
+	            {
+					outputWr.Write(kt.FullName);
+	            }
+	            outputWr.Write(UnitySerializer._propertyLookup.Count);
+	            foreach (var pi in UnitySerializer._propertyLookup.Keys)
+	            {
+	                outputWr.Write(pi);
+	            }
+			}
+			else
+			{
+				outputWr.Write(0);
+				outputWr.Write(0);
+			}
 			outputWr.Write(data.Length);
             outputWr.Write(data);
             outputWr.Flush();

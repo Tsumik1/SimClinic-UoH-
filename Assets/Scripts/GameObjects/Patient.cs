@@ -259,7 +259,7 @@ public class Patient : MonoBehaviour {
 		if(targetPoint && myPath)
 		{
 			myPath.target = targetPoint.transform;
-			timeToStayAtWaypoint = 1;
+			timeToStayAtWaypoint = 10;
 			state = State.leaving;
 		}
 		else 

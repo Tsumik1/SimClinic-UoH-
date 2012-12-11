@@ -14,6 +14,34 @@ public class StaffManager : MonoBehaviour {
 	{
 	
 	}
+	public static bool StaffHired(Staff.Role role)
+	{
+		bool b = false;
+		foreach(Staff staff in FindObjectsOfType(typeof(Staff)))
+		{
+			if(staff.role == role)
+			{
+				b = true; 
+				break; 
+			}
+			else
+			{
+				b  = false; 
+			}
+		}
+		return b;
+	}
+	public static Staff GetStaff(Staff.Role role)
+	{
+		foreach(Staff staff in FindObjectsOfType(typeof(Staff)))
+		{
+			if(staff.role == role)
+			{
+				return staff;
+			}			
+		}
+		return null;
+	}
 	public static void UpdateStaffTimeToNextWaypoint()
 	{
 		foreach(Staff staff in FindObjectsOfType(typeof(Staff)))

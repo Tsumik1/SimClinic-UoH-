@@ -115,6 +115,10 @@ public class WaypointManager : MonoBehaviour {
 			return FindWaypoints(staff, Waypoint.Action.reception, Waypoint.Action.receptionAction);
 		case Staff.Role.practitioner:
 			return FindWaypoints(staff, Waypoint.Action.practice, Waypoint.Action.practiceAction);
+		case Staff.Role.gardener:
+			return FindWaypoints (staff, Waypoint.Action.plant, Waypoint.Action.plant);
+		case Staff.Role.cleaner: 
+			return FindWaypoints(staff, Waypoint.Action.clinic, Waypoint.Action.work);
 		default:
 			return null;
 		}
@@ -127,7 +131,7 @@ public class WaypointManager : MonoBehaviour {
 		List<Waypoint> availableWaypoints = new List<Waypoint>();
 		foreach(Waypoint point in FindObjectsOfType(typeof(Waypoint)))
 		{
-			if(point.action == type && point.owner == staff)
+			if(point.action == type && point.owner == staff && staff.role != Staff.Role.gardener && staff.role != Staff.Role.caretaker && staff.role != Staff.Role.cleaner)
 			{
 				desk = point; 
 			}

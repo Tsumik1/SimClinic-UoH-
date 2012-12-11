@@ -28,7 +28,7 @@ public class TimeManager : MonoBehaviour
 	
 	//These are a bunch of helper support classes to better manage the time of day to be able to 
 	//effectivly perform actions when needed in specific time frames.
-	public class Day : MonoBehaviourEx
+	public class Day 
 	{
 		//Simple class to help manage days. 
 		public int day; 
@@ -105,7 +105,7 @@ public class TimeManager : MonoBehaviour
 		}
 	}
 	
-	public class Month : MonoBehaviourEx
+	public class Month 
 	{
 		public int month; 
 		public string monthName; 
@@ -171,7 +171,7 @@ public class TimeManager : MonoBehaviour
 		}
 	}
 	
-	public class Year : MonoBehaviourEx
+	public class Year 
 	{
 		public int year; 
 		
@@ -182,11 +182,17 @@ public class TimeManager : MonoBehaviour
 		
 	}
 	
-	public class Hour : MonoBehaviourEx
+	public class Hour 
 	{
 		public int hour; 
 		
 		public bool endOfDay;
+		
+		public Hour()
+		{
+			//default constructor, necessecary for serialization
+			hour = 0;
+		}
 		
 		public Hour(int theHour)
 		{
@@ -202,10 +208,13 @@ public class TimeManager : MonoBehaviour
 		}
 	}
 	
-	public class Minute : MonoBehaviourEx
+	public class Minute 
 	{
 		public int minute; 
-		
+		public Minute()
+		{
+			minute = 0;
+		}
 		public Minute(int theMinute)
 		{
 			minute = theMinute;
@@ -354,7 +363,7 @@ public class TimeManager : MonoBehaviour
 	{
 		if(currentMinute.minute == randomMinute)
 		{
-			Spawner.SpawnPatient ();
+			Spawner2.SpawnPatient ();
 			RandomMinute();
 		}
 		StaffManager.UpdateStaffTimeToNextWaypoint();

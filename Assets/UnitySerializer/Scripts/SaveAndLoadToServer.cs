@@ -12,37 +12,37 @@ public class SaveAndLoadToServer : MonoBehaviour {
 		{
 			if(targetGameObject && GUILayout.Button("Save to server JSON"))
 			{
-				JSONLevelSerializer.SaveObjectTreeToServer("ftp://whydoidoit.net/Downloads/testme.json", targetGameObject,"*****","*****", Completed);
+				JSONLevelSerializer.SaveObjectTreeToServer("ftp://whydoidoit.net/testme.json", targetGameObject,"testserializer","T3sts3rializer", Completed);
 				Destroy(targetGameObject);
 			}
 			if(!targetGameObject && GUILayout.Button("Load from server JSON"))
 			{
-				JSONLevelSerializer.LoadObjectTreeFromServer("http://whydoidoit.net/Downloads/testme.json", CompletedJSONLoad);
+				JSONLevelSerializer.LoadObjectTreeFromServer("http://whydoidoit.net/testserializer/testme.json", CompletedJSONLoad);
 			}
 			if(targetGameObject && GUILayout.Button("Save to server Binary"))
 			{
-				LevelSerializer.SaveObjectTreeToServer("ftp://whydoidoit.net/Downloads/testme.dat", targetGameObject,"*******","*****", Completed);
+				LevelSerializer.SaveObjectTreeToServer("ftp://whydoidoit.net/testme.dat", targetGameObject, "testserializer", "T3sts3rializer", Completed);
 				Destroy(targetGameObject);
 			}
 			if(!targetGameObject && GUILayout.Button("Load from server Binary"))
 			{
-				LevelSerializer.LoadObjectTreeFromServer("http://whydoidoit.net/Downloads/testme.dat", CompletedLoad);
+				LevelSerializer.LoadObjectTreeFromServer("http://whydoidoit.net/testserializer/testme.dat", CompletedLoad);
 			}
 			if(GUILayout.Button("Save scene to server JSON"))
 			{
-				JSONLevelSerializer.SerializeLevelToServer("ftp://whydoidoit.net/Downloads/testscene.json", "*******", "*****", Completed);
+				JSONLevelSerializer.SerializeLevelToServer("ftp://whydoidoit.net/testscene.json", "testserializer", "T3sts3rializer", Completed);
 			}
 			if(GUILayout.Button("Load scene from server JSON"))
 			{
-				JSONLevelSerializer.LoadSavedLevelFromServer("http://whydoidoit.net/Downloads/testscene.json");
+				JSONLevelSerializer.LoadSavedLevelFromServer("http://whydoidoit.net/testserializer/testscene.json");
 			}
 			if(GUILayout.Button("Save scene to server Binary"))
 			{
-				JSONLevelSerializer.SerializeLevelToServer("ftp://whydoidoit.net/Downloads/testscene.data", "*******", "", Completed);
+				JSONLevelSerializer.SerializeLevelToServer("ftp://whydoidoit.net/testscene.data", "testserializer", "T3sts3rializer", Completed);
 			}
 			if(GUILayout.Button("Load scene from server Binary"))
 			{
-				JSONLevelSerializer.LoadSavedLevelFromServer("http://whydoidoit.net/Downloads/testscene.data");
+				JSONLevelSerializer.LoadSavedLevelFromServer("http://whydoidoit.net/testserializer/testscene.data");
 			}
 		}
 	}

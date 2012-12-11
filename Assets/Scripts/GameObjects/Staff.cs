@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Pathfinding;
 
+[RequireComponent(typeof(AIPath))]
 public class Staff : MonoBehaviour
 {
 	
@@ -77,7 +78,7 @@ public class Staff : MonoBehaviour
 						timeToStayAtWaypoint = point.timeToStayAtWaypoint;
 					}
 				} else {
-					print ("No Objects To Own :(. Staff without purpose!"); // needs to add random message system here.
+					//print ("No Objects To Own :(. Staff without purpose!"); // needs to add random message system here.
 				}
 			}
 		}
@@ -174,8 +175,15 @@ public class Staff : MonoBehaviour
 			waypointNumber++; 
 			if(waypointNumber >= waypoints.Length)
 			{
-				ReturnToDesk();
-				waypointNumber = waypoints.Length - 1;
+				if(role != Role.gardener || role != Role.cleaner || role != Role.caretaker)
+				{
+					ReturnToDesk();
+					waypointNumber = waypoints.Length - 1;
+				}
+				else
+				{
+					GoHome ();
+				}
 			}
 		}
 		else

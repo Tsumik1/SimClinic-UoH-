@@ -37,7 +37,7 @@ public class TestJSON : MonoBehaviour {
 		
 		if(GUILayout.Button("Press me"))
 		{
-			JSONLevelSerializer.SerializeLevelToServer("ftp://whydoidoit.net/Downloads/testIt.json", "whydoidoit", "W!ll14m1", (error)=>{
+			JSONLevelSerializer.SerializeLevelToServer("ftp://whydoidoit.net/testIt.json", "testserializer", "T3sts3rializer", (error)=>{
 				Debug.Log(transform.position.ToString());
 			});
 			

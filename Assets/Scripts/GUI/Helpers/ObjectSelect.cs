@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+[SerializeAll]
 public class ObjectSelect : MonoBehaviour {
 	
 	
@@ -10,17 +10,18 @@ public class ObjectSelect : MonoBehaviour {
 	
 	public float iconRotateRate =1.0f; 
 	
+	private GameObject[] objectCopy; 
 	private int selectedObject = 0; 
 	// Use this for initialization
 	void Start () 
 	{
-	
+		
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		//objectIcons[selectedObject].transform.Rotate (Vector3.up, iconRotateRate * Time.deltaTime);
+
 	}
 	
 	

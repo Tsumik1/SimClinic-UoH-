@@ -10,7 +10,9 @@ public class PopupManager : MonoBehaviour {
 	public GameObject leftButton;
 	public GameObject rightButton; 
 	public GameObject restockPop;
+	public GameObject fireConfirm; 
 	
+	public static GameObject fireConfirmer;
 	public static GameObject sellConfirmer;
 	public static GameObject infoPopper;
 	public static GameObject stockPopup;
@@ -29,6 +31,7 @@ public class PopupManager : MonoBehaviour {
 		overPopup = overPop;
 		financePopup= financePop;
 		restockPopup = restockPop;
+		fireConfirmer = fireConfirm;
 	}
 	
 	// Update is called once per frame

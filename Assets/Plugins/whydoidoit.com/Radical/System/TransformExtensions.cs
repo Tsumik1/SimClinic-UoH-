@@ -61,6 +61,12 @@ public static class TransformExtensions
 		return component;
 	}
 	
+	
+	public static List<T> GetAllComponentsInChildren<T>(this Transform parent) where T : Component
+	{
+		return GetAllComponentsInChildren<T>(parent, null);
+	}
+	
 	/// <summary>
 	/// Gets components in children, including disabled ones
 	/// </summary>
@@ -73,9 +79,9 @@ public static class TransformExtensions
 	/// <typeparam name='T'>
 	/// The type to find
 	/// </typeparam>
-	public static T[] GetAllComponentsInChildren<T>(this Transform parent) where T : Component
+	public static List<T> GetAllComponentsInChildren<T>(this Transform parent, List<T> list) where T : Component
     {
-        var list = new List<T>();
+        list = list ?? new List<T>();
 		var p = parent.GetComponent<T>();
 		if(p) list.Add(p);
         foreach(var child in parent.Cast<Transform>())
@@ -85,9 +91,9 @@ public static class TransformExtensions
             {
                 list.Add(candidate);
             }
-            list.AddRange(GetAllComponentsInChildren<T>(child));
+            GetAllComponentsInChildren<T>(child, list);
         }
-        return list.ToArray();
+        return list;
     }
 	
 	/// <summary>
@@ -102,7 +108,7 @@ public static class TransformExtensions
 	/// <typeparam name='T'>
 	/// The type to find
 	/// </typeparam>
-	public static T[] GetAllComponentsInChildren<T>(this Component comp) where T : Component
+	public static List<T> GetAllComponentsInChildren<T>(this Component comp) where T : Component
 	{
 		return GetAllComponentsInChildren<T>(comp.transform);
 	}
@@ -119,7 +125,7 @@ public static class TransformExtensions
 	/// <typeparam name='T'>
 	/// The type to find
 	/// </typeparam>
-	public static T[] GetAllComponentsInChildren<T>(this GameObject go) where T : Component
+	public static List<T> GetAllComponentsInChildren<T>(this GameObject go) where T : Component
 	{
 		return GetAllComponentsInChildren<T>(go.transform);
 	}

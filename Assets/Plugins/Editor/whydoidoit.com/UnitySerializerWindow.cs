@@ -13,6 +13,7 @@ using System.Collections.Generic;
 #if UNITY_EDITOR
 using UnityEditor;
 
+[InitializeOnLoad]
 public class UnitySerializerWindow : EditorWindow
 {
 	
@@ -29,6 +30,14 @@ public class UnitySerializerWindow : EditorWindow
 		store = AssetDatabase.LoadAssetAtPath(path + "Store.psd", typeof(Texture2D)) as Texture2D;
 		prefab = AssetDatabase.LoadAssetAtPath(path + "Prefab.psd", typeof(Texture2D)) as Texture2D;
 		manager = AssetDatabase.LoadAssetAtPath(path + "Manager.psd", typeof(Texture2D)) as Texture2D;
+		
+		if(!EditorPrefs.GetBool("ShowedWarning", false))
+		{
+			if(EditorUtility.DisplayDialog("Information", "The Unity Serializer wizard menu has moved! It is now under the Window menu on the menu bar to save space.", "Got It", "Remind Me Again"))
+			{
+				EditorPrefs.SetBool("ShowedWarning", true);
+			} 
+		} 
 		
 	}
 	
@@ -93,7 +102,7 @@ public class UnitySerializerWindow : EditorWindow
 		
 	}
 	
-	[MenuItem("Unity Serializer/Wizard %&0")]
+	[MenuItem("Window/Unity Serializer/Wizard %&0")]
 	static void Init ()
 	{
 		// Get existing open window or if none, make a new one:
@@ -102,7 +111,7 @@ public class UnitySerializerWindow : EditorWindow
 		window.Show ();
 	}
 	
-	[MenuItem("Unity Serializer/Store Information %&s")]
+	[MenuItem("Window/Unity Serializer/Store Information %&s")]
 	static void AddStoreInformation ()
 	{
 		if (Selection.activeGameObject == null)
@@ -110,7 +119,7 @@ public class UnitySerializerWindow : EditorWindow
 		Add (typeof(StoreInformation), Selection.activeGameObject);
 	}
 	
-	[MenuItem("Unity Serializer/Unique Identifier %&u")]
+	[MenuItem("Window/Unity Serializer/Unique Identifier %&u")]
 	static void AddUniqueIdentifier ()
 	{
 		if (Selection.activeGameObject == null)
@@ -118,7 +127,7 @@ public class UnitySerializerWindow : EditorWindow
 		Add (typeof(UniqueIdentifier), Selection.activeGameObject);
 	}
 	
-	[MenuItem("Unity Serializer/Prefab Identifier %&p")]
+	[MenuItem("Window/Unity Serializer/Prefab Identifier %&p")]
 	static void AddPrefabIdentifier ()
 	{
 		if (Selection.activeGameObject == null || PrefabUtility.GetPrefabType (Selection.activeGameObject) == PrefabType.None || Has (Selection.activeGameObject, typeof(PrefabIdentifier)))
@@ -126,16 +135,7 @@ public class UnitySerializerWindow : EditorWindow
 		Add (typeof(PrefabIdentifier), Selection.activeGameObject);
 	}
 	
-	[MenuItem("Unity Serializer/Empty Object Identifier %&e")]
-	static void AddEmptyObjectIdentifier ()
-	{
-		if (Selection.activeGameObject == null)
-			return;
-		Add (typeof(EmptyObjectIdentifier), Selection.activeGameObject);	
-	}
-	
-	
-	[MenuItem("Unity Serializer/Materials %&m")]
+	[MenuItem("Window/Unity Serializer/Materials %&m")]
 	static void AddMaterials ()
 	{
 		if (Selection.activeGameObject == null || Selection.activeGameObject.GetComponent<StoreInformation>() == null )
@@ -143,7 +143,7 @@ public class UnitySerializerWindow : EditorWindow
 		Selection.activeGameObject.AddComponent<StoreMaterials>();
 	}
 	
-	[MenuItem("Unity Serializer/Remove All %&x")]
+	[MenuItem("Window/Unity Serializer/Remove All %&x")]
 	static void Remove ()
 	{
 		if (Selection.activeGameObject == null)
@@ -164,11 +164,8 @@ public class UnitySerializerWindow : EditorWindow
 	
 	void BuildLocalAssetStore()
 	{
-		var tmp = Resources.FindObjectsOfTypeAll(typeof(AnimationClip))
-			.Concat(Resources.FindObjectsOfTypeAll(typeof(AudioClip)))
-			.Concat(Resources.FindObjectsOfTypeAll(typeof(Mesh)))
-			.Concat(Resources.FindObjectsOfTypeAll(typeof(Material)))
-			.Concat(Resources.FindObjectsOfTypeAll(typeof(Texture)))
+		var tmp = Resources.FindObjectsOfTypeAll(typeof(UnityEngine.Object))
+			.Concat(Resources.FindObjectsOfTypeAll(typeof(GameObject)).Cast<GameObject>().SelectMany(g=>g.GetAllComponentsInChildren<Transform>().Select(t=>(UnityEngine.Object)t.gameObject)))
 			.Distinct()
 			.ToList();
 		var assets = tmp
@@ -238,7 +235,7 @@ public class UnitySerializerWindow : EditorWindow
 		if (showReferences) {
 			using (new ScrollView(ref scroll)) {
 				using (new Vertical()) {
-					foreach (var tp in _assetStore) {
+					foreach (var tp in _assetStore.OrderBy(tp=>tp.Key)) {
 						if (!open.ContainsKey (tp.Key))
 							open [tp.Key] = false;
 						
@@ -255,7 +252,7 @@ public class UnitySerializerWindow : EditorWindow
 						if (open [tp.Key]) {
 							foreach (var n in tp.Value.OrderByDescending(q=>q.Value.Count).ThenBy(q=>q.Key)) {
 								using (new Horizontal()) {
-									GUILayout.Space (10);
+									GUILayout.Space (20);
 									if (!open.ContainsKey (tp.Key + n.Key))
 										open [tp.Key + n.Key] = false;
 									if (n.Value.Count <= 1) {
@@ -273,7 +270,7 @@ public class UnitySerializerWindow : EditorWindow
 									using (new Vertical()) {
 										foreach (var i in n.Value.Cast<UnityEngine.Object>()) {
 											using (new Horizontal()) {
-												GUILayout.Space (20);
+												GUILayout.Space (35);
 												var addOn="";
 												if(!AssetDatabase.IsMainAsset(i) && !AssetDatabase.IsSubAsset(i))
 												{

@@ -123,6 +123,7 @@ public class PatientManager : MonoBehaviour {
 		else
 			return false;
 	}
+	
 	public static void MinutePassed()
 	{
 		foreach(Patient patient in FindObjectsOfType(typeof(Patient)))

@@ -124,6 +124,11 @@ public static class SerializationHelper
 		var ui = go.GetComponent<UniqueIdentifier>();
 		return ui != null ? ui.IsDeserializing : false;
 	}
+	public static bool IsDeserializing(this Component co)
+	{
+		var ui = co.GetComponent<UniqueIdentifier>();
+		return ui != null ? ui.IsDeserializing : false;
+	}
 }
 
 

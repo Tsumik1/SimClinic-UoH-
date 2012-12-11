@@ -10,7 +10,9 @@ public class ScrollControl : MonoBehaviour {
 	public enum Direction
 	{
 		up,
-		down
+		down,
+		left,
+		right
 	}
 	
 	public Direction direction;
@@ -46,8 +48,14 @@ public class ScrollControl : MonoBehaviour {
 		case Direction.down:
 			newPosition.y -= scrollAmount;
 			break;
+		case Direction.left:
+			newPosition.x -= scrollAmount;
+			break;
+		case Direction.right: 
+			newPosition.x += scrollAmount;
+			break;
 		default:
-				break;
+			break;
 		}
 		if(contentCamera)
 			contentCamera.transform.position = newPosition;
