@@ -11,10 +11,19 @@ public class ButtonBehaviour: MonoBehaviour {
 		Unique
 	}
 	
-	public ButtonType type; 
-	public Material mouseOver; 
-	public Color defaultHoverColor; 
+	public enum Action
+	{
+		standard, 
+		radio
+	}
 	
+	public ButtonType type; 
+	public Action behaviour;
+	public Material mouseOver; 
+	public Material pressed;
+	public Color defaultHoverColor; 
+	public Color defaultPressedColor;
+	public bool trueFalse;
 	
 	private Material standard; 
 	private Color defaultColor;
@@ -27,10 +36,42 @@ public class ButtonBehaviour: MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
+		if(trueFalse)
+		{
+			renderer.material = mouseOver;
+		}
+		else
+		{
+			//renderer.material = standard;
+		}
 	}
 	
+	public void OnMouseDown()
+	{
+		//SendMessage("Clicked");
+		print("Button Pressed!");
+		if(type == ButtonType.Image)
+		{
+			renderer.material = pressed;
+		}
+		if(type == ButtonType.Default)
+		{
+			renderer.material.color = defaultPressedColor;
+		}
+		if(behaviour == Action.radio)
+		{
+			trueFalse = !trueFalse;
+		}
+	}
+	
+	public void OnMouseUp()
+	{
+		   renderer.material = standard;
+		renderer.material.color = standardColor;
+		
+	}
 	
 	public void OnMouseEnter ()
 	{

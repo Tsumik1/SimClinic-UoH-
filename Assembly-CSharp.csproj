@@ -142,6 +142,7 @@
      <Compile Include="Assets\Scripts\GUI\Helpers\CreateTable.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\DefaultTab.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\DestroyParticleAfterTime.cs" />
+     <Compile Include="Assets\Scripts\GUI\Helpers\GameObjectExtender.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\GetSelectedObject.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\Helper.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\Load.cs" />
@@ -149,13 +150,16 @@
      <Compile Include="Assets\Scripts\GUI\Helpers\NameGenerator.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ObjectPlacement.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ObjectSelect.cs" />
+     <Compile Include="Assets\Scripts\GUI\Helpers\RadioButton.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\RepairButtonUI.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\Save.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ScrollControl.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ScrollTexture.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\SelectObjectOnClicked.cs" />
+     <Compile Include="Assets\Scripts\GUI\Helpers\Slider.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\SpawnPoint.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\StorageSpace.cs" />
+     <Compile Include="Assets\Scripts\GUI\Helpers\TextBox.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ToolTipC.cs" />
      <Compile Include="Assets\Scripts\GUI\Managers\ConditionManager.cs" />
      <Compile Include="Assets\Scripts\GUI\Managers\DegradableManager.cs" />
@@ -207,10 +211,14 @@
      <Compile Include="Assets\Scripts\Helper\Waypoint.cs" />
      <Compile Include="Assets\Scripts\Helper\WireframeRenderer.cs" />
      <Compile Include="Assets\Scripts\Lib\Mathfx.cs" />
+     <Compile Include="Assets\Scripts\Menu\AlterQuality.cs" />
      <Compile Include="Assets\Scripts\Menu\Exit.cs" />
+     <Compile Include="Assets\Scripts\Menu\GetQualityLevel.cs" />
      <Compile Include="Assets\Scripts\Menu\GotoOptions.cs" />
+     <Compile Include="Assets\Scripts\Menu\InitialSettings.cs" />
      <Compile Include="Assets\Scripts\Menu\LoadGame.cs" />
      <Compile Include="Assets\Scripts\Menu\LoadScene.cs" />
+     <Compile Include="Assets\Scripts\Menu\SaveSettings.cs" />
      <Compile Include="Assets\Scripts\Menu\SplashScreen.cs" />
      <Compile Include="Assets\UnitySerializer\Scripts\AddSomeForce.cs" />
      <Compile Include="Assets\UnitySerializer\Scripts\AdditionalData.cs" />
@@ -250,7 +258,9 @@
      <None Include="Assets\Standard Assets\Detonator\Resources\Detonator\Textures\HeatDistort.shader" />
      <None Include="Assets\Scripts\Shaders\OutlinedDiffuse.shader" />
      <None Include="Assets\AstarPathfindingProject\ExampleScenes\Materials\Projector Multiply.shader" />
+     <None Include="Assets\Tools\SoundEffectGenerator(SFXR)\readme.txt" />
      <None Include="Assets\Scripts\Shaders\Cook-Torrance.shader" />
+     <None Include="Assets\EyecyShadersLite\Shader\Normal-BumpSpec.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Scripts\Shaders\Binary.shader" />
      <None Include="Assets\AstarPathfindingProject\ExampleScenes\Materials\DiffuseAlwaysVisible.shader" />
@@ -258,6 +268,7 @@
      <None Include="Assets\AstarPathfindingProject\Plugins\dependencies.txt" />
      <None Include="Assets\AstarPathfindingProject\ExampleScenes\_Example Scenes.txt" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-BasicOutline.shader" />
+     <None Include="Assets\Tools\texturestudio\Version History.txt" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Light.shader" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
      <None Include="Assets\Plugins\whydoidoit.com\license.txt" />
@@ -270,8 +281,13 @@
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\License.txt" />
      <None Include="Assets\Scripts\Shaders\Shield.shader" />
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\Readme.txt" />
+     <None Include="Assets\Scripts\Shaders\UnlitTransparentColor.shader" />
+     <None Include="Assets\EyecyShadersLite\Shader\Reflect-Glossy.shader" />
+     <None Include="Assets\XML\Settings.xml" />
+     <None Include="Assets\EyecyShadersLite\Shader\Normal-SpecMap.shader" />
      <None Include="Assets\Standard Assets\Tessellation Shaders\BumpedSpecularDisplacement.shader" />
      <None Include="Assets\UnitySerializer\readme.txt" />
+     <None Include="Assets\EyecyShadersLite\Shader\Normal-Spec.shader" />
  <Reference Include="Ionic.Zip.Reduced">
  <HintPath>Assets\AstarPathfindingProject\Plugins\DotNetZip\Ionic.Zip.Reduced.dll</HintPath>
  </Reference>

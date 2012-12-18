@@ -1,17 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\Helpers\Helper.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\Buttons\ButtonBehaviour.cs">
     <Files>
-      <File FileName="Assets\Scripts\GUI\StaffScreen\StaffScreen.cs" Line="53" Column="62" />
-      <File FileName="Assets\Scripts\GUI\StaffScreen\HireButton.cs" Line="50" Column="1" />
-      <File FileName="Assets\Scripts\GameObjects\Staff.cs" Line="81" Column="8" />
-      <File FileName="Assets\Scripts\GUI\Helpers\CreateTable.cs" Line="1" Column="1" />
-      <File FileName="Assets\Plugins\Editor\whydoidoit.com\UnitySerializerWindow.cs" Line="81" Column="5" />
-      <File FileName="Assets\Scripts\GUI\Dialogs\PopupManager.cs" Line="32" Column="28" />
-      <File FileName="Assets\Scripts\GUI\StaffScreen\FireButton.cs" Line="23" Column="27" />
-      <File FileName="Assets\Scripts\GUI\Buttons\FireConfirm.cs" Line="27" Column="1" />
-      <File FileName="Assets\Scripts\GUI\Managers\WaypointManager.cs" Line="138" Column="30" />
-      <File FileName="Assets\Scripts\GUI\Helpers\Helper.cs" Line="54" Column="36" />
+      <File FileName="Assets\Scripts\GUI\Helpers\Slider.cs" Line="19" Column="27" />
+      <File FileName="Assets\Scripts\Helper\CheatCodeListener.cs" Line="28" Column="6" />
+      <File FileName="Assets\Scripts\GUI\Helpers\ObjectPlacement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameObjects\HealthBar.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUI\Helpers\TextBox.cs" Line="69" Column="5" />
+      <File FileName="Assets\Scripts\GUI\Buttons\ButtonBehaviour.cs" Line="46" Column="45" />
+      <File FileName="Assets\Scripts\Shaders\UnlitTransparentColor.shader" Line="32" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

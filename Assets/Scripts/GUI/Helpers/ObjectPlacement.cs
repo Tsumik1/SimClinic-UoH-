@@ -1,39 +1,26 @@
-/* 
- * Esse Script movimenta o GameObject quando você clica ou
- * mantém o botão esquerdo do mouse apertado.
- * 
- * Para usá-lo, adicione esse script ao gameObject que você quer mover
- * seja o Player ou outro
- * 
- * Autor: Vinicius Rezendrix - Brasil
- * Data: 11/08/2012
- * 
- * This script moves the GameObeject when you
- * click or click and hold the LeftMouseButton
- * 
- * Simply attach it to the gameObject you wanna move (player or not)
- * 
- * Autor: Vinicius Rezendrix - Brazil
- * Data: 11/08/2012 
- *
- */
- 
 using UnityEngine;
 using System.Collections;
- 
+
+
+/* Name: Object Placement Script 
+ * Description: This script controls the movement and placement of the game objects. This class is crucial
+ * to the drag and drop mentality through the game system.  
+ * Author: Blake Kendrick 
+ * Date: 01/10/2012
+ * */
 public class ObjectPlacement : MonoBehaviour 
 {	
 	private Transform myTransform;				// this transform
 	private Vector3 destinationPosition;		// The destination Point
 	private float destinationDistance;			// The distance between myTransform and destinationPosition
- 	private bool validPlace = true; 
-	private bool isPlaced = false; 
-	private Color defaultColour;
-	private Material defaultMaterial; 
-	private Vector3 defaultPosition;
-	//private Component script;
-	public float moveSpeed = 10000;	
-	private float height; 
+ 	private bool validPlace = true;  			// Flag for correct placement 
+	private bool isPlaced = false; 				// Flag that checks if it is placed. 
+	private Color defaultColour;				// the objects default colour...NOW OBSOLETE
+	private Material defaultMaterial; 		// the objects default material...NOW OBSOLETE
+	private Vector3 defaultPosition;			//A deault position generated at runtime. 
+	//private Component script;	
+	public float moveSpeed = 10000;				//How fast the objects move to the mouse. Default value SHOULD be fine. 	
+	private float height; 						//How high off the ground objects are, this can be altered to create a floating effect. 
  	
 	public enum Type
 	{
@@ -45,8 +32,18 @@ public class ObjectPlacement : MonoBehaviour
 		outdoors = 5,
 	}
 	
-	public Type type;
+	public Type type;						//The type of object to be placed
 	
+	void Awake()
+	{
+		gameObject.StoreStandardColour();   //Store Colours 
+		
+		foreach(Transform child in transform)
+		{
+			child.gameObject.StoreStandardColour();
+		}
+	}
+	//Initialisation 
 	void Start () {
 		myTransform = transform;							// sets myTransform to this GameObject.transform
 		destinationPosition = myTransform.position;			// prevents myTransform reset
@@ -55,15 +52,15 @@ public class ObjectPlacement : MonoBehaviour
 		defaultPosition = transform.position;
 	}
 	
-	public void MoveAgain()
+	public void MoveAgain() //Sets flags to move the object again. 
 	{
 		isPlaced = false;
 		validPlace = true;
 	}
  
 	void Update () {
-		Vector3 grounder = transform.position;
-		BoxCollider objectCollider = GetComponent(typeof(BoxCollider)) as BoxCollider;
+		Vector3 grounder = transform.position; //references ground. 
+		BoxCollider objectCollider = GetComponent(typeof(BoxCollider)) as BoxCollider; // Gets BoxCollider attached to object. 
 		float temp = 0f + objectCollider.size.z / 2f;
 		grounder.y = temp; 
 		transform.position = grounder; 
@@ -119,7 +116,8 @@ public class ObjectPlacement : MonoBehaviour
 			ObjectPlacementManager.placing = false; 
 			//renderer.material.color = defaultColour; 
 			//renderer.material = defaultMaterial;
-			ChangeColour(Color.white);
+			//ChangeColour(Color.white);
+			RevertColor();
 			isPlaced = true;
 			BasicObject script = GetComponent(typeof(BasicObject)) as BasicObject;
 			script.EnableObject();
@@ -137,26 +135,24 @@ public class ObjectPlacement : MonoBehaviour
 		}
 	}
 	
+	//Changes the Colour of gameObject. 
 	void ChangeColour(Color col)
 	{
+		gameObject.ChangeColour(col);
+	}
+	
+	
+	//reverts the colour. 
+	void RevertColor()
+	{
+		gameObject.RevertColour();
 		foreach(Transform child in transform)
 		{
-			if(child.renderer)
-			{
-							foreach(Material mat in child.renderer.materials)
-			{
-				mat.color = col;
-			}
-			}
-
-					//child.renderer.material.color = green; 
-		}
-		foreach(Material mat in renderer.materials)
-		{
-			mat.color = col;
+			child.gameObject.RevertColour();
 		}
 	}
 	
+	//Checks if it's a valid place to put the object. 
 	void CheckValid(Collision collision)
 	{
 		
@@ -205,6 +201,8 @@ public class ObjectPlacement : MonoBehaviour
 		else validPlace = false;
 	}
 	
+	
+	//Moves the object to the top of the collision. 
 	void PlaceToTopOfObject(Collision collision)
 	{
 		BoxCollider collider = collision.gameObject.GetComponent<BoxCollider>();
@@ -213,6 +211,9 @@ public class ObjectPlacement : MonoBehaviour
 		temp.y = collision.gameObject.GetComponent<BoxCollider>().transform.position.y + collider.size.z;
 		height = temp.y;
 	}
+	
+	
+	//Collision Checks, pass through to the Validty check to ensure they are valid collisions. 
 	void OnCollisionEnter(Collision collision)
 	{ 
 		CheckValid (collision);
@@ -228,6 +229,8 @@ public class ObjectPlacement : MonoBehaviour
 			validPlace = true;
     }
 	
+	
+	//Invalid Location...
 	public void InvalidLocation(bool valid)
 	{
 		print("GOT HERE");

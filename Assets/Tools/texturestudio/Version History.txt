@@ -1,0 +1,66 @@
+Date		Ver. #	Changes
+_______________|_______|__________________________________________
+May 02, 2005	1,14	Fixed the memory access violations that
+			were occurring on some computers, thanks
+			to the help of Troy Robinson (aka. "Pongo").
+
+April 29, 2005	1.13	Added the ability to load images from the
+			commandline. This also allows files to be
+			associated with Texture Studio, and for
+			files to be dragged and dropped on to
+			texture studio to load them. Also changed
+			the image load function to CopyRect the
+			pixels from the loaded image into a blank
+			image, possibly fixing the reported
+			memory access violations.
+
+April 29, 2005	1.12	Fixed a bug in the seamless texture algorithm
+			where spme "garbage" pixels would appear in some
+			cases, in addition to improving the algorithm
+			slightly.
+
+April 29, 2005	1.11	Made Texture Studio more CPU efficient, so
+			CPU power is efficiently shared with other
+			applications currently running.
+
+April 29, 2005	1.10	Significantly improved the perspective
+			correction algorithm by eliminating the
+			"blocky" look (with linear filtering added)
+
+April 28, 2005	1.01	Slightly improved the Open and Save dialog
+			by making them remember the last path used
+			so loading and saving textures from other
+			paths is not so tedious. Also a few changes
+			were made to the tutorial.
+
+April 28, 2005	1.00	Wrote manual and tutorial.
+
+April 27, 2005	1.00	Added a "Reset View" option under the tools
+			menu, and the ability to switch between the
+			final image and the original in the Preview
+			/ Save mode.
+
+April 27, 2005	0.99	Fixed a few problems with the perspective
+			correction with non power-of-two texture
+			sizes, and limited the specified texture
+			sizes in the first stage to power-of-two
+			texture sizes.
+
+April 27, 2005	0.98	Finished perspective correction algorithm.
+
+April 27, 2005	0,93	Finished perspective correction user
+			interface.
+
+April 27, 2005	0.90	Finished user interface integration (with
+			the algorithms). Added save capability.
+
+April 26, 2005	0.60	User interface design completed.
+	
+April 26, 2005	0.50	Finished brightness correction algorithm
+			and added sharpness and contrast algorithm.
+			Also greatly improved the seamless texture
+			algorithm.
+
+April 25, 2005	0.30	Finished seamless texture algorithm.
+
+April 25, 2005	0.00	Project started.

@@ -2,6 +2,12 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+
+/* Name: CheatCodeListener
+ * Description: This class controls the cheats in game. Will remain mostly undocumented. 
+ * Author: Blake Kendrick 
+ * Date: 02/11/2012
+ * */
 public class CheatCodeListener : MonoBehaviour
 {
     private string m_Keys = "";
@@ -64,6 +70,8 @@ public class CheatCodeListener : MonoBehaviour
 	void OnWherehastherumgoneCode()
 	{
 		print ("WHERE HAS THE RUM GONE!!!!!!");
+		//Makes all patients talk like Jack Sparrow
+		
 	}
 	
 	void OnIwantmoreCode()

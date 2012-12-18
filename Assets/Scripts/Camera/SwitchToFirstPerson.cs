@@ -30,6 +30,10 @@ public class SwitchToFirstPerson : MonoBehaviour {
 				{
 					cam.GetComponent<DetectClicksAndTouches>().enabled = false;
 				}
+				if(cam.GetComponent<DetectClicksAndTouches>())
+				{
+					cam.GetComponent<DetectClicksAndTouches>().enabled = false;
+				}
 			}
 			
 			//Camera.main.enabled = false; 

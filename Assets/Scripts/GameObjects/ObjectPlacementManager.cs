@@ -5,8 +5,16 @@ public class ObjectPlacementManager : MonoBehaviour {
 
 	
 	public static bool placing = false;
+	
 	// Use this for initialization
-	void Start () {
+	void Awake () 
+	{
+		GameObject[] objects = FindObjectsOfType(typeof(GameObject)) as GameObject[];
+		
+		foreach(GameObject o  in objects)
+		{
+			o.StoreStandardColour();
+		}
 	
 	}
 	
