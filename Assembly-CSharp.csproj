@@ -137,6 +137,7 @@
      <Compile Include="Assets\Scripts\GUI\FinanceScreen\Outgoings.cs" />
      <Compile Include="Assets\Scripts\GUI\FinanceScreen\Overview.cs" />
      <Compile Include="Assets\Scripts\GUI\GameOver\PlayAgain.cs" />
+     <Compile Include="Assets\Scripts\GUI\Helpers\CheckFields.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\ColorPicker.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\CreateGraph.cs" />
      <Compile Include="Assets\Scripts\GUI\Helpers\CreateTable.cs" />

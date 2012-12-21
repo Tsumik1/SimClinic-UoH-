@@ -83,4 +83,40 @@ public class Helper : MonoBehaviour {
 	void Update () {
 	
 	}
+	
+	public static string FormatString(string txt, int maxChars)
+	{
+		string t = "";
+		int currentLine = 1; 
+		int charCount = 0;
+		string[] words = txt.Split (" " [0]);
+		string result = "";
+		
+		for(int i = 0; i < words.Length; i++)
+		{
+			string word = words[i].Trim ();
+			if(i==0)
+			{
+				result = words[0];
+				t = result; 
+				
+			}
+			if(i>0)
+			{
+				charCount += word.Length +1; 
+				if(charCount <= maxChars)
+				{
+					result += " " + word;
+				}
+				else
+				{
+					charCount = 0;
+					result += "\n" + word;
+				}
+			}
+			
+			t = result;
+		}
+		return t;
+	}
 }

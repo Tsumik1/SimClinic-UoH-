@@ -1,0 +1,152 @@
+-debug
+-target:library
+-nowarn:0169
+-out:Temp/Assembly-CSharp-firstpass.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll"
+-r:Assets/AstarPathfindingProject/Plugins/DotNetZip/Ionic.Zip.Reduced.dll
+-r:Assets/AstarPathfindingProject/Plugins/JsonFx/JsonFx.Json.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll"
+-define:UNITY_STANDALONE
+-define:ENABLE_MICROPHONE
+-define:ENABLE_IMAGEEFFECTS
+-define:ENABLE_WEBCAM
+-define:ENABLE_AUDIO_FMOD
+-define:ENABLE_NETWORK
+-define:ENABLE_MONO
+-define:ENABLE_PHYSICS
+-define:ENABLE_TERRAIN
+-define:ENABLE_CACHING
+-define:ENABLE_SUBSTANCE
+-define:ENABLE_GENERICS
+-define:ENABLE_CLOTH
+-define:ENABLE_MOVIES
+-define:ENABLE_AUDIO
+-define:ENABLE_WWW
+-define:ENABLE_SHADOWS
+-define:ENABLE_DUCK_TYPING
+-define:UNITY_4_0_0
+-define:UNITY_4_0
+-define:UNITY_STANDALONE_WIN
+-define:ENABLE_PROFILER
+-define:UNITY_EDITOR
+Assets/Plugins/whydoidoit.com/7zip/Common/CRC.cs
+Assets/Plugins/whydoidoit.com/7zip/Common/InBuffer.cs
+Assets/Plugins/whydoidoit.com/7zip/Common/OutBuffer.cs
+Assets/Plugins/whydoidoit.com/7zip/Compress/LZ/IMatchFinder.cs
+Assets/Plugins/whydoidoit.com/7zip/Compress/LZ/LzBinTree.cs
+Assets/Plugins/whydoidoit.com/7zip/Compress/LZ/LzInWindow.cs
+Assets/Plugins/whydoidoit.com/7zip/Compress/LZ/LzOutWindow.cs
+Assets/Plugins/whydoidoit.com/7zip/Compress/LZMA/LzmaBase.cs
+Assets/Plugins/whydoidoit.com/7zip/Compress/LZMA/LzmaDecoder.cs
+Assets/Plugins/whydoidoit.com/7zip/Compress/LZMA/LzmaEncoder.cs
+Assets/Plugins/whydoidoit.com/7zip/Compress/RangeCoder/RangeCoder.cs
+Assets/Plugins/whydoidoit.com/7zip/Compress/RangeCoder/RangeCoderBit.cs
+Assets/Plugins/whydoidoit.com/7zip/Compress/RangeCoder/RangeCoderBitTree.cs
+Assets/Plugins/whydoidoit.com/7zip/Compress/SevenZipHelper.cs
+Assets/Plugins/whydoidoit.com/7zip/ICoder.cs
+Assets/Plugins/whydoidoit.com/ClickMeAndDie.cs
+Assets/Plugins/whydoidoit.com/LitJson/IJsonWrapper.cs
+Assets/Plugins/whydoidoit.com/LitJson/JsonData.cs
+Assets/Plugins/whydoidoit.com/LitJson/JsonException.cs
+Assets/Plugins/whydoidoit.com/LitJson/JsonMapper.cs
+Assets/Plugins/whydoidoit.com/LitJson/JsonReader.cs
+Assets/Plugins/whydoidoit.com/LitJson/JsonWriter.cs
+Assets/Plugins/whydoidoit.com/LitJson/Lexer.cs
+Assets/Plugins/whydoidoit.com/LitJson/ParserToken.cs
+Assets/Plugins/whydoidoit.com/Radical/RPCEnabler.cs
+Assets/Plugins/whydoidoit.com/Radical/System/Broadcaster.cs
+Assets/Plugins/whydoidoit.com/Radical/System/Curves.cs
+Assets/Plugins/whydoidoit.com/Radical/System/Delegates/DelegateSupport.cs
+Assets/Plugins/whydoidoit.com/Radical/System/Easing.cs
+Assets/Plugins/whydoidoit.com/Radical/System/InheritableRPC.cs
+Assets/Plugins/whydoidoit.com/Radical/System/LoadAnimations.cs
+Assets/Plugins/whydoidoit.com/Radical/System/Loom.cs
+Assets/Plugins/whydoidoit.com/Radical/System/MonoBehaviourEx.cs
+Assets/Plugins/whydoidoit.com/Radical/System/Radical.cs
+Assets/Plugins/whydoidoit.com/Radical/System/RadicalRoutine.cs
+Assets/Plugins/whydoidoit.com/Radical/System/RadicalRoutineHelper.cs
+Assets/Plugins/whydoidoit.com/Radical/System/Smoothing.cs
+Assets/Plugins/whydoidoit.com/Radical/System/Testing/Inherited.cs
+Assets/Plugins/whydoidoit.com/Radical/System/Testing/SimpleCaller.cs
+Assets/Plugins/whydoidoit.com/Radical/System/TransformExtensions.cs
+Assets/Plugins/whydoidoit.com/Radical/System/XmlSupport.cs
+Assets/Plugins/whydoidoit.com/ResultLogger.cs
+Assets/Plugins/whydoidoit.com/Serialization/EmptyObjectIdentifier.cs
+Assets/Plugins/whydoidoit.com/Serialization/Entry.cs
+Assets/Plugins/whydoidoit.com/Serialization/GetSet.cs
+Assets/Plugins/whydoidoit.com/Serialization/GetSetGeneric.cs
+Assets/Plugins/whydoidoit.com/Serialization/GetWritableAttributes.cs
+Assets/Plugins/whydoidoit.com/Serialization/IStorage.cs
+Assets/Plugins/whydoidoit.com/Serialization/InRangeItem.cs
+Assets/Plugins/whydoidoit.com/Serialization/JSONLevelLoader.cs
+Assets/Plugins/whydoidoit.com/Serialization/JSONLevelSerializer.cs
+Assets/Plugins/whydoidoit.com/Serialization/JSONSerializer.cs
+Assets/Plugins/whydoidoit.com/Serialization/LevelLoader.cs
+Assets/Plugins/whydoidoit.com/Serialization/LevelSerializer.cs
+Assets/Plugins/whydoidoit.com/Serialization/OnlyInRangeManager.cs
+Assets/Plugins/whydoidoit.com/Serialization/PrefabIdentifier.cs
+Assets/Plugins/whydoidoit.com/Serialization/RemoveEditors.cs
+Assets/Plugins/whydoidoit.com/Serialization/Rooms/DontStoreObjectInRoom.cs
+Assets/Plugins/whydoidoit.com/Serialization/Rooms/Examples/PlayerLocator.cs
+Assets/Plugins/whydoidoit.com/Serialization/Rooms/Examples/PlayerSpawnPoint.cs
+Assets/Plugins/whydoidoit.com/Serialization/Rooms/PreserveObjectWhenLoading.cs
+Assets/Plugins/whydoidoit.com/Serialization/Rooms/Room.cs
+Assets/Plugins/whydoidoit.com/Serialization/Rooms/RoomDataSaveGameStorage.cs
+Assets/Plugins/whydoidoit.com/Serialization/Rooms/RoomLoader.cs
+Assets/Plugins/whydoidoit.com/Serialization/Rooms/RoomManager.cs
+Assets/Plugins/whydoidoit.com/Serialization/SaveGameManager.cs
+Assets/Plugins/whydoidoit.com/Serialization/SerializationUnits.cs
+Assets/Plugins/whydoidoit.com/Serialization/Storage.cs
+Assets/Plugins/whydoidoit.com/Serialization/StoreInformation.cs
+Assets/Plugins/whydoidoit.com/Serialization/StoreMaterials.cs
+Assets/Plugins/whydoidoit.com/Serialization/StoredReferences.cs
+Assets/Plugins/whydoidoit.com/Serialization/TimeSpecialist.cs
+Assets/Plugins/whydoidoit.com/Serialization/UniqueIdentifier.cs
+Assets/Plugins/whydoidoit.com/Serialization/UnitySerializationExtensions.cs
+Assets/Plugins/whydoidoit.com/Serialization/UnitySerializer.cs
+Assets/Plugins/whydoidoit.com/Serialization/prewarm.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/Checksums/Adler32.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/Checksums/CRC32.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/Checksums/IChecksum.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/Checksums/StrangeCRC.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/Compression/Deflater.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/Compression/DeflaterConstants.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/Compression/DeflaterEngine.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/Compression/DeflaterHuffman.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/Compression/DeflaterPending.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/Compression/Inflater.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/Compression/InflaterDynHeader.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/Compression/InflaterHuffmanTree.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/Compression/PendingBuffer.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/Compression/Streams/DeflaterOutputStream.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/Compression/Streams/InflaterInputStream.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/Compression/Streams/OutputWindow.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/Compression/Streams/StreamManipulator.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/Encryption/PkzipClassic.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/Encryption/ZipAESStream.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/Encryption/ZipAESTransform.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/SharpZipBaseException.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/ZipConstants.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/ZipEntry.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/ZipExtraData.cs
+Assets/Plugins/whydoidoit.com/SharpZIP/src/ZipHelperStream.cs
+Assets/Plugins/whydoidoit.com/UnitySerializerVersion.cs
+Assets/Plugins/whydoidoit.com/Utility/Types.cs
+"Assets/Standard Assets/Detonator/System/Detonator.cs"
+"Assets/Standard Assets/Detonator/System/DetonatorBurstEmitter.cs"
+"Assets/Standard Assets/Detonator/System/DetonatorCloudRing.cs"
+"Assets/Standard Assets/Detonator/System/DetonatorFireball.cs"
+"Assets/Standard Assets/Detonator/System/DetonatorForce.cs"
+"Assets/Standard Assets/Detonator/System/DetonatorGlow.cs"
+"Assets/Standard Assets/Detonator/System/DetonatorHeatwave.cs"
+"Assets/Standard Assets/Detonator/System/DetonatorLight.cs"
+"Assets/Standard Assets/Detonator/System/DetonatorShockwave.cs"
+"Assets/Standard Assets/Detonator/System/DetonatorSmoke.cs"
+"Assets/Standard Assets/Detonator/System/DetonatorSound.cs"
+"Assets/Standard Assets/Detonator/System/DetonatorSparks.cs"
+"Assets/Standard Assets/Detonator/System/DetonatorSpray.cs"
+"Assets/Standard Assets/ListExtension.cs"
+"Assets/Standard Assets/Scripts/General Scripts/ActivateTrigger.cs"
+"Assets/Standard Assets/Scripts/Utility Scripts/CombineChildren.cs"
+"Assets/Standard Assets/Scripts/Utility Scripts/MeshCombineUtility.cs"
+"Assets/Standard Assets/Water (Basic)/Sources/Scripts/WaterSimple.cs"

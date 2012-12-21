@@ -5,6 +5,7 @@ public class GotoOptions : MonoBehaviour {
 	
 	
 	public Transform location;
+	public bool active = true; 
 	// Use this for initialization
 	void Start () {
 	
@@ -17,6 +18,9 @@ public class GotoOptions : MonoBehaviour {
 	
 	void Clicked()
 	{
-		Camera.main.transform.position = location.position;
+		if(active)
+		{
+			Camera.main.transform.position = location.position;
+		}
 	}
 }
