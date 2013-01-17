@@ -57,9 +57,9 @@ public class MoneyManager : MonoBehaviour
 		}
 		monthlyRent = initialRent;
 		bills = billCostPerMonth;
-		money = initialMoney;
-		actualMoney = money; 
-		outstandingLoanAmount = 0; // At least until we sort it out in playerprefs... 
+		money = PlayerPrefs.GetFloat ("AvailableCash");
+		outstandingLoanAmount = PlayerPrefs.GetFloat ("PlayerLoan"); // At least until we sort it out in playerprefs... 
+		actualMoney = money - outstandingLoanAmount; 
 		percentage = initialInterestRate / 100;
 		//print("PER : " + percentage);
 	}

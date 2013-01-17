@@ -51,6 +51,7 @@ function OnGUI() {
     if(GUILayout.Button("Save Game"))
     {
        LevelSerializer.SaveGame(gameName);
+       PlayerPrefs.Save();
     }
     GUILayout.Space(60);
     for(var sg in LevelSerializer.SavedGames[LevelSerializer.PlayerName]) { 

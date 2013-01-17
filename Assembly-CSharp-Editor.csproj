@@ -78,10 +78,11 @@
      <None Include="Assets\AstarPathfindingProject\ExampleScenes\Materials\Projector Multiply.shader" />
      <None Include="Assets\Tools\SoundEffectGenerator(SFXR)\readme.txt" />
      <None Include="Assets\Scripts\Shaders\Cook-Torrance.shader" />
-     <None Include="Assets\EyecyShadersLite\Shader\Normal-BumpSpec.shader" />
+     <None Include="Assets\Editor\EyecyShadersLite\Shader\Normal-BumpSpec.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Scripts\Shaders\Binary.shader" />
      <None Include="Assets\AstarPathfindingProject\ExampleScenes\Materials\DiffuseAlwaysVisible.shader" />
+     <None Include="Assets\Prefabs\skydome\aScattering2.1.shader" />
      <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh.shader" />
      <None Include="Assets\AstarPathfindingProject\Plugins\dependencies.txt" />
      <None Include="Assets\AstarPathfindingProject\ExampleScenes\_Example Scenes.txt" />
@@ -93,6 +94,7 @@
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
      <None Include="Assets\AstarPathfindingProject\ExampleScenes\Materials\Projector Light.shader" />
+     <None Include="Assets\Prefabs\skydome\aScattering2.0.shader" />
      <None Include="Assets\AstarPathfindingProject\Readme.txt" />
      <None Include="Assets\Scripts\Shaders\Glass.shader" />
      <None Include="Assets\AstarPathfindingProject\link.xml" />
@@ -100,12 +102,12 @@
      <None Include="Assets\Scripts\Shaders\Shield.shader" />
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\Readme.txt" />
      <None Include="Assets\Scripts\Shaders\UnlitTransparentColor.shader" />
-     <None Include="Assets\EyecyShadersLite\Shader\Reflect-Glossy.shader" />
+     <None Include="Assets\Editor\EyecyShadersLite\Shader\Reflect-Glossy.shader" />
      <None Include="Assets\XML\Settings.xml" />
-     <None Include="Assets\EyecyShadersLite\Shader\Normal-SpecMap.shader" />
+     <None Include="Assets\Editor\EyecyShadersLite\Shader\Normal-SpecMap.shader" />
      <None Include="Assets\Standard Assets\Tessellation Shaders\BumpedSpecularDisplacement.shader" />
      <None Include="Assets\UnitySerializer\readme.txt" />
-     <None Include="Assets\EyecyShadersLite\Shader\Normal-Spec.shader" />
+     <None Include="Assets\Editor\EyecyShadersLite\Shader\Normal-Spec.shader" />
  <Reference Include="Ionic.Zip.Reduced">
  <HintPath>Assets\AstarPathfindingProject\Plugins\DotNetZip\Ionic.Zip.Reduced.dll</HintPath>
  </Reference>

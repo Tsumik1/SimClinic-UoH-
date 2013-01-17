@@ -1,12 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\Helpers\CheckFields.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\Helpers\CameraMoveByOrder.cs">
     <Files>
-      <File FileName="Assets\Scripts\GUI\Helpers\CheckFields.cs" Line="51" Column="22" />
-      <File FileName="Assets\Scripts\GUI\Helpers\TextBox.cs" Line="55" Column="7" />
-      <File FileName="Assets\Scripts\GUI\Helpers\TextWrapper.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GUI\Helpers\Helper.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\GUI\Buttons\ButtonBehaviour.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUI\Helpers\CameraMoveByOrder.cs" Line="40" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

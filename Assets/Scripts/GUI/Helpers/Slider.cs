@@ -11,7 +11,9 @@ public class Slider : MonoBehaviour {
 	
 	public int min;
 	public int max;
+	public int defaultValue;
 	public int[] snaps;
+	public int roundValue; 
 	public TextMesh minDisplay; //displays min value
 	public TextMesh maxDisplay; //displays max value. 
 	public TextMesh valDisplay;
@@ -22,6 +24,7 @@ public class Slider : MonoBehaviour {
 	private BoxCollider pointCol; //collider
 	private Vector3 minPosition;
 	private Vector3 maxPosition;
+	private string roundControl;
 	// Use this for initialization
 	void Start () 
 	{
@@ -37,14 +40,27 @@ public class Slider : MonoBehaviour {
 				snaps[i] = min;
 			}
 		}
+		roundControl = "f" + roundValue;
 		minPosition = transform.position;
 		minPosition.x = minPosition.x - (renderer.bounds.size.x /2f)  + (point.renderer.bounds.size.x/2f);
 		//minPosition.x = minPosition.x - (parentCol.size.x / transform.parent.lossyScale.x) - (myCol.size.x * transform.localScale.x * 2);
 		maxPosition = transform.position;
 		//maxPosition.x += parentCol.size.x - (myCol.size.x * transform.lossyScale.x) - (myCol.size.x* transform.localScale.x * 2); 
 		maxPosition.x = maxPosition.x +(renderer.bounds.size.x / 2f) - (point.renderer.bounds.size.x/2f);
+		if(defaultValue == 0 || defaultValue == null)
+		{
+			defaultValue = max/2;
+		}
+		sliderValue = defaultValue;
+		Vector3 neat = point.transform.localPosition;
+		neat.x = 0; 
+		point.transform.localPosition = neat; 
 	}
 	
+	public float GetValue()
+	{
+		return sliderValue;
+	}
 	// Update is called once per frame
 	void Update () 
 	{
@@ -59,7 +75,7 @@ public class Slider : MonoBehaviour {
 		}
 		if(valDisplay)
 		{
-			valDisplay.text = sliderValue.ToString();
+			valDisplay.text = sliderValue.ToString(roundControl);
 		}
 	}
 	
@@ -103,7 +119,7 @@ public class Slider : MonoBehaviour {
 						//currentLife = (currentLife - min)/(max - min);
 		sliderValue = Vector3.Distance (minPosition, point.transform.position) / Vector3.Distance (minPosition,maxPosition) * max;
 		//print (sliderValue);
-		sliderValue = Mathf.Round (sliderValue);
+		//sliderValue = Mathf.Round (sliderValue);
 		sliderValue = Mathf.Clamp (sliderValue,min,max);
 		
 	}

@@ -227,7 +227,7 @@ public class TimeManager : MonoBehaviour
 			return;
 		}
 		//Will use playerprefs here to sort this out but for testing purposes...
-		currentDate = new DateTime(2012,10,18,8,0,0);
+		currentDate = new DateTime(2012,10,18,6,0,0);
 		Time.timeScale = timeSpeed; 
 		//month = currentDate.Month;
 		currentDay = new Day();

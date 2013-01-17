@@ -2,7 +2,7 @@ fileFormatVersion: 2
 guid: cddbdf20295f1ef4396eb3e800502894
 TrueTypeFontImporter:
   serializedVersion: 2
-  fontSize: 90
+  fontSize: 500
   fontColor: {r: 0, g: 0, b: 0, a: 1}
   forceTextureCase: -2
   characterSpacing: 1
@@ -10,6 +10,6 @@ TrueTypeFontImporter:
   includeFontData: 1
   use2xBehaviour: 0
   fontNames: []
-  customCharacters: 
+  customCharacters: "\xA3"
   fontRenderingMode: 0
   userData: 

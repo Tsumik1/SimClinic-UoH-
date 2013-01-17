@@ -51,24 +51,30 @@ public class RemoveEquipmentOnClick : MonoBehaviour {
 			case Equip.tens:
 				if(e.objectName == ObjectManager.handheldEquipment[0].GetComponent<BasicObject>().objectName && e.ownerPlace == s)
 					{
-						s.inUse = false;
-						MoneyManager.money += e.sellValue;
-						current.numberOfItemsStored--;
-						current.tensCount--;
-						Destroy (e.gameObject);
-						complete = true;
+						if(current.tensCount > 0)
+						{
+							s.inUse = false;
+							MoneyManager.money += e.sellValue;
+							current.numberOfItemsStored--;
+							current.tensCount--;
+							Destroy (e.gameObject);
+							complete = true;
+						}
 						break;
 					}
 				break;
 				case Equip.dop:
 				  if(e.objectName == ObjectManager.handheldEquipment[1].GetComponent<BasicObject>().objectName && e.ownerPlace == s)
 					{
-						s.inUse = false;
-						MoneyManager.money += e.sellValue;
-						current.numberOfItemsStored--;
-						current.dopCount--;
-						Destroy (e.gameObject);
-						complete = true;
+						if(current.dopCount > 0)
+						{
+							s.inUse = false;
+							MoneyManager.money += e.sellValue;
+							current.numberOfItemsStored--;
+							current.dopCount--;
+							Destroy (e.gameObject);
+							complete = true;
+						}
 						break;
 					}
 				break; 
